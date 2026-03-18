@@ -132,10 +132,55 @@
 
 </div>
 
-<!-- STYLE CARTES -->
+
 
 <style>
-/* GRID */
+
+/* ================= TEXTE ================= */
+
+.split-section {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin: 60px 0;
+}
+
+.split-section.reverse {
+    flex-direction: row-reverse;
+}
+
+.split-text {
+    flex: 1;
+}
+
+.split-text h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.split-text p {
+    font-size: 1.05em;
+    line-height: 1.7;
+    color: #555;
+}
+
+.split-image {
+    flex: 1;
+}
+
+.split-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.split-image img:hover {
+    transform: scale(1.03);
+    transition: 0.3s;
+}
+
+/* ================= TEAM ================= */
+
 .team-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -143,7 +188,6 @@
     margin-top: 30px;
 }
 
-/* CARD */
 .team-card {
     background: linear-gradient(145deg, #ffffff, #f0f0f0);
     padding: 25px;
@@ -152,16 +196,13 @@
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     transition: all 0.3s ease;
     position: relative;
-    overflow: hidden;
 }
 
-/* HOVER EFFECT */
 .team-card:hover {
     transform: translateY(-10px) scale(1.03);
     box-shadow: 0 15px 35px rgba(0,0,0,0.25);
 }
 
-/* TOP COLOR BAR */
 .team-card::before {
     content: "";
     position: absolute;
@@ -172,26 +213,17 @@
     background: linear-gradient(90deg, #2ecc71, #27ae60);
 }
 
-/* NAME */
 .team-card h3 {
     margin-top: 10px;
-    font-size: 1.3em;
 }
 
-/* ROLE */
 .role {
     color: #27ae60;
     font-weight: bold;
-    margin-bottom: 10px;
 }
 
-/* DESCRIPTION */
-.team-card p {
-    font-size: 0.95em;
-    color: #555;
-}
+/* ================= RESPONSIVE ================= */
 
-/* RESPONSIVE */
 @media screen and (max-width: 900px) {
     .team-grid {
         grid-template-columns: 1fr 1fr;
