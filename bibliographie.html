@@ -1,32 +1,143 @@
 <!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+<html lang="fr">
 
 <head>
-	<title>Bibliographie</title>
+	<title>Bibliographie - Amazonie</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<noscript>
 		<link rel="stylesheet" href="assets/css/noscript.css" />
 	</noscript>
+
+	<style>
+		/* ===== Section générale ===== */
+		.post p {
+			text-align: justify;
+			line-height: 1.9;
+			font-size: 1.03rem;
+		}
+
+		.post header.major p {
+			max-width: 850px;
+			margin: 0 auto;
+			font-size: 1.05rem;
+			color: #555;
+		}
+
+		/* ===== Image principale ===== */
+		.image.main img {
+			border-radius: 18px;
+			box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+			max-height: 430px;
+			object-fit: cover;
+		}
+
+		/* ===== Bloc intro ===== */
+		.biblio-intro {
+			background: linear-gradient(135deg, #f8f9fa, #eef3f1);
+			padding: 2rem;
+			border-radius: 18px;
+			margin: 2rem 0 3rem 0;
+			box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+			border-left: 6px solid #2e7d32;
+		}
+
+		.biblio-intro h2 {
+			margin-bottom: 0.8rem;
+			font-size: 1.6rem;
+			color: #1f3d2b;
+		}
+
+		/* ===== Liste bibliographique ===== */
+		.biblio-list {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 1.2rem;
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+
+		.biblio-item {
+			background: #ffffff;
+			padding: 1.3rem 1.4rem;
+			border-radius: 16px;
+			box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+			border: 1px solid rgba(0, 0, 0, 0.06);
+			transition: transform 0.25s ease, box-shadow 0.25s ease;
+		}
+
+		.biblio-item:hover {
+			transform: translateY(-4px);
+			box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+		}
+
+		.biblio-item strong {
+			color: #1f3d2b;
+		}
+
+		.biblio-item a {
+			color: #2e7d32;
+			text-decoration: none;
+			font-weight: 600;
+			word-break: break-word;
+		}
+
+		.biblio-item a:hover {
+			text-decoration: underline;
+		}
+
+		/* ===== Petit label ===== */
+		.source-tag {
+			display: inline-block;
+			margin-bottom: 0.7rem;
+			padding: 0.25rem 0.7rem;
+			font-size: 0.78rem;
+			font-weight: 700;
+			letter-spacing: 0.04em;
+			text-transform: uppercase;
+			border-radius: 999px;
+			background: #e8f5e9;
+			color: #2e7d32;
+		}
+
+		/* ===== Citation finale ===== */
+		.note-finale {
+			margin-top: 3rem;
+			padding: 1.5rem;
+			border-radius: 16px;
+			background: #f7f7f7;
+			border-left: 5px solid #444;
+			color: #555;
+			font-size: 0.98rem;
+		}
+
+		/* ===== Responsive ===== */
+		@media screen and (max-width: 736px) {
+			.biblio-intro {
+				padding: 1.3rem;
+			}
+
+			.biblio-item {
+				padding: 1rem;
+			}
+
+			.post header.major h1 {
+				font-size: 2rem;
+			}
+		}
+	</style>
 </head>
 
 <body class="is-preload">
 
-	<!-- Wrapper -->
 	<div id="wrapper">
 
-		<!-- Header -->
 		<header id="header">
 			<a href="index.html" class="logo">Amazonie</a>
 		</header>
 
-		<!-- Nav -->
 		<nav id="nav">
 			<ul class="links">
 				<li><a href="index.html">ACCUEIL</a></li>
@@ -36,82 +147,145 @@
 				<li class="active"><a href="bibliographie.html">Bibliographie</a></li>
 			</ul>
 			<ul class="icons">
-				<!--Facebook-->
 				<li>
-					<a href="https://www.facebook.com/ISEN.Ouest/" class="icon brands fa-facebook" target="_blank"
-						rel="noopener noreferrer">
+					<a href="https://www.facebook.com/ISEN.Ouest/" class="icon brands fa-facebook" target="_blank" rel="noopener noreferrer">
 						<span class="label">Facebook</span>
 					</a>
 				</li>
-				<!--Instagram-->
 				<li>
-					<a href="https://www.instagram.com/isenbrest/" class="icon brands fa-instagram" target="_blank"
-						rel="noopener noreferrer">
+					<a href="https://www.instagram.com/isenbrest/" class="icon brands fa-instagram" target="_blank" rel="noopener noreferrer">
 						<span class="label">Instagram</span>
 					</a>
 				</li>
-				<!--Linkedin-->
 				<li>
-					<a href="https://www.linkedin.com/company/isen-yncrea-ouest/" class="icon brands fa-linkedin"
-						target="_blank" rel="noopener noreferrer">
+					<a href="https://www.linkedin.com/company/isen-yncrea-ouest/" class="icon brands fa-linkedin" target="_blank" rel="noopener noreferrer">
 						<span class="label">Linkedin</span>
 					</a>
 				</li>
 			</ul>
 		</nav>
 
-		<!-- Main -->
 		<div id="main">
-
-			<!-- Post -->
 			<section class="post">
 				<header class="major">
-					<span class="date">April 25, 2017</span>
-					<h1> Bibliographie</h1>
-					<p>L’Amazonie, qui s’étend sur plus de cinq millions de kilomètres carrés en Amérique du Sud,
-						constitue la plus grande forêt tropicale du monde et l’un des écosystèmes les plus riches de la
-						planète. Pendant des siècles, cette région est restée relativement préservée, en raison de son
-						isolement géographique et de son accès difficile. Elle a été habitée principalement par des
-						peuples autochtones, dont les modes de vie reposaient sur une exploitation durable des
-						ressources naturelles. La forêt représentait alors un espace de vie, de culture et d’équilibre
-						entre l’homme et la nature.</p>
+					<span class="date">Mars 2026</span>
+					<h1>Bibliographie</h1>
+					<p>
+						Cette bibliographie regroupe les principales sources mobilisées pour analyser les enjeux
+						environnementaux, sociaux, politiques et économiques liés à l’Amazonie.
+					</p>
 				</header>
-				<div class="image main"><img src="images/maxresdefault.jpg" alt="" /></div>
-				<p>Cependant, à partir de la seconde moitié du XXᵉ siècle, l’Amazonie connaît une transformation
-					profonde. Dans les années 1960 et 1970, plusieurs gouvernements, notamment au Brésil, lancent des
-					politiques visant à intégrer la région au développement économique national. La construction
-					d’infrastructures majeures, comme la route Transamazonienne, marque un tournant décisif. Ces
-					nouvelles voies d’accès facilitent l’arrivée de colons, d’investisseurs et d’entreprises, entraînant
-					une exploitation accrue des ressources naturelles.</p>
-				<p>Cette ouverture de la forêt s’accompagne d’une intensification rapide des activités économiques.
-					L’élevage de bétail devient l’un des principaux moteurs de la déforestation, suivi par l’expansion
-					de l’agriculture industrielle, notamment la culture du soja destinée à l’exportation. Parallèlement,
-					l’exploitation du bois et les activités minières se développent, attirées par les richesses
-					naturelles de la région. Si ces activités contribuent à la croissance économique et à la création
-					d’emplois, elles engendrent également des conséquences environnementales majeures. La déforestation
-					massive entraîne une perte importante de biodiversité, fragilise les sols et perturbe les cycles
-					hydrologiques et climatiques.</p>
-				<p>À partir des années 1990, la communauté internationale commence à prendre conscience de l’importance
-					cruciale de l’Amazonie pour l’équilibre écologique mondial. La forêt joue en effet un rôle
-					fondamental dans la régulation du climat, en absorbant d’importantes quantités de dioxyde de carbone
-					et en influençant les régimes de précipitations. Face à l’ampleur des dégâts, des mesures de
-					protection sont progressivement mises en place. Celles-ci incluent la création de parcs naturels, la
-					reconnaissance des territoires autochtones et le renforcement des politiques environnementales.</p>
-				<p>Malgré ces efforts, la situation reste aujourd’hui préoccupante. Les pressions économiques
-					persistent, notamment en raison de la demande mondiale croissante en matières premières agricoles et
-					minières. Dans certaines périodes, les politiques de protection sont affaiblies, ce qui entraîne une
-					reprise de la déforestation. L’Amazonie se trouve ainsi au cœur d’un dilemme complexe : d’un côté,
-					la nécessité de favoriser le développement économique et d’améliorer les conditions de vie des
-					populations locales ; de l’autre, l’urgence de préserver un écosystème essentiel pour la planète.
-				</p>
-				<p>Ainsi, l’histoire de l’Amazonie illustre une tension constante entre exploitation et conservation.
-					Trouver un équilibre durable entre ces deux enjeux représente aujourd’hui l’un des plus grands défis
-					environnementaux et économiques du XXIᵉ siècle.</p>
-			</section>
 
+				<div class="image main">
+					<img src="images/maxresdefault.jpg" alt="Forêt amazonienne" />
+				</div>
+
+				<div class="biblio-intro">
+					<h2>Sources de référence</h2>
+					<p>
+						Les documents ci-dessous comprennent des ouvrages, rapports institutionnels, textes juridiques
+						et publications d’organisations engagées dans la protection de l’Amazonie et des peuples autochtones.
+					</p>
+				</div>
+
+				<ul class="biblio-list">
+					<li class="biblio-item">
+						<span class="source-tag">Article</span><br>
+						<strong>Autres Brésils.</strong> (2023, 2 octobre).
+						<em>L'histoire des peuples autochtones du Brésil ne commence pas en 1988 !</em><br>
+						<a href="https://www.autresbresils.net" target="_blank">www.autresbresils.net</a>
+					</li>
+
+					<li class="biblio-item">
+						<span class="source-tag">Livre</span><br>
+						<strong>Cabanes, V.</strong> (2016).
+						<em>Un nouveau droit pour la Terre : pour en finir avec l'écocide.</em>
+						Paris : Éditions du Seuil.
+					</li>
+
+					<li class="biblio-item">
+						<span class="source-tag">Rapport</span><br>
+						<strong>Comissão Pastoral da Terra (CPT).</strong> (2024).
+						<em>Conflitos no Campo Brasil 2023.</em>
+						Goiânia : CPT Nacional.<br>
+						<a href="https://cptnacional.org.br" target="_blank">cptnacional.org.br</a>
+					</li>
+
+					<li class="biblio-item">
+						<span class="source-tag">Texte juridique</span><br>
+						<strong>Congrès National du Brésil.</strong> (1988).
+						<em>Constitution de la République fédérative du Brésil.</em>
+						Brasilia : Sénat Fédéral.
+					</li>
+
+					<li class="biblio-item">
+						<span class="source-tag">Loi</span><br>
+						<strong>Congrès National du Brésil.</strong> (2023).
+						<em>Loi n° 14.701 du 20 octobre 2023 (Marco Temporal).</em>
+						Diário Oficial da União.
+					</li>
+
+					<li class="biblio-item">
+						<span class="source-tag">Rapport scientifique</span><br>
+						<strong>Fundação Oswaldo Cruz (Fiocruz).</strong> (2024).
+						<em>Impacto do mercúrio em áreas protégées e peuples de la forêt dans l'Amazonie Orientale.</em>
+						Rio de Janeiro : Fiocruz.
+					</li>
+
+					<li class="biblio-item">
+						<span class="source-tag">ONG</span><br>
+						<strong>Global Witness.</strong> (2023).
+						<em>Standing Firm: The Land and Environmental Defenders on the Frontlines of the Climate Crisis.</em>
+						London : Global Witness.<br>
+						<a href="https://www.globalwitness.org" target="_blank">www.globalwitness.org</a>
+					</li>
+
+					<li class="biblio-item">
+						<span class="source-tag">Rapport</span><br>
+						<strong>Greenpeace.</strong> (2019).
+						<em>Destruction certifiée : comment l’agro-industrie alimente la déforestation en Amazonie.</em>
+					</li>
+
+					<li class="biblio-item">
+						<span class="source-tag">Rapport</span><br>
+						<strong>WWF.</strong> (2020).
+						<em>Living Amazon Report.</em>
+					</li>
+
+					<li class="biblio-item">
+						<span class="source-tag">Article scientifique</span><br>
+						<strong>Fearnside, P. M.</strong> (2016).
+						<em>Environmental and social impacts of hydroelectric dams in Brazilian Amazonia.</em>
+						Environmental Science &amp; Policy.
+					</li>
+
+					<li class="biblio-item">
+						<span class="source-tag">Rapport</span><br>
+						<strong>Global Witness.</strong> (2021).
+						<em>Deforestation and human rights violations in the Amazon.</em>
+					</li>
+
+					<li class="biblio-item">
+						<span class="source-tag">Rapport institutionnel</span><br>
+						<strong>FAO.</strong> (2018).
+						<em>The State of the World’s Forests.</em>
+					</li>
+
+					<li class="biblio-item">
+						<span class="source-tag">Analyse</span><br>
+						<strong>Observatoire des multinationales.</strong> (2022).
+						<em>Greenwashing et déforestation : les limites des engagements volontaires.</em>
+					</li>
+				</ul>
+
+				<div class="note-finale">
+					<strong>Note :</strong> cette bibliographie peut être complétée par des articles académiques,
+					des cartes, des données statistiques et des rapports institutionnels récents afin de renforcer
+					l’analyse du sujet.
+				</div>
+			</section>
 		</div>
 
-		<!-- Footer -->
 		<footer id="footer">
 			<section>
 				<form method="post" action="#">
@@ -134,10 +308,11 @@
 					</ul>
 				</form>
 			</section>
+
 			<section class="split contact">
 				<section class="alt">
 					<h3>Address</h3>
-					<p>20rue Cuirassé Brest, Bretagne, France</p>
+					<p>20 rue Cuirassé, Brest, Bretagne, France</p>
 				</section>
 				<section>
 					<h3>Phone</h3>
@@ -150,24 +325,18 @@
 				<section>
 					<h3>Social</h3>
 					<ul class="icons alt">
-						<!--Facebook-->
 						<li>
-							<a href="https://www.facebook.com/ISEN.Ouest/" class="icon brands fa-facebook"
-								target="_blank" rel="noopener noreferrer">
+							<a href="https://www.facebook.com/ISEN.Ouest/" class="icon brands fa-facebook" target="_blank" rel="noopener noreferrer">
 								<span class="label">Facebook</span>
 							</a>
 						</li>
-						<!--Instagram-->
 						<li>
-							<a href="https://www.instagram.com/isenbrest/" class="icon brands fa-instagram"
-								target="_blank" rel="noopener noreferrer">
+							<a href="https://www.instagram.com/isenbrest/" class="icon brands fa-instagram" target="_blank" rel="noopener noreferrer">
 								<span class="label">Instagram</span>
 							</a>
 						</li>
-						<!--Linkedin-->
 						<li>
-							<a href="https://www.linkedin.com/company/isen-yncrea-ouest/"
-								class="icon brands fa-linkedin" target="_blank" rel="noopener noreferrer">
+							<a href="https://www.linkedin.com/company/isen-yncrea-ouest/" class="icon brands fa-linkedin" target="_blank" rel="noopener noreferrer">
 								<span class="label">Linkedin</span>
 							</a>
 						</li>
@@ -176,17 +345,13 @@
 			</section>
 		</footer>
 
-		<!-- Copyright -->
 		<div id="copyright">
 			<ul>
-				<li>&copy; Untitled</li>
-				<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+				<li>ISEN 2026</li>
 			</ul>
 		</div>
-
 	</div>
 
-	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrollex.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -194,47 +359,6 @@
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
-
-</body>
-
-</html>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Bibliographie</title>
-</head>
-<body>
-
-<h1>Bibliographie</h1>
-
-<ul>
-    <li>Autres Brésils. (2023, 2 octobre). L'histoire des peuples autochtones du Brésil ne commence pas en 1988 ! Récupéré de https://www.autresbresils.net</li>
-
-    <li>Cabanes, V. (2016). Un nouveau droit pour la Terre : pour en finir avec l'écocide. Paris : Éditions du Seuil.</li>
-
-    <li>Comissão Pastoral da Terra (CPT). (2024). Conflitos no Campo Brasil 2023. Goiânia : CPT Nacional. Récupéré de https://cptnacional.org.br</li>
-
-    <li>Congrès National du Brésil. (1988). Constitution de la République fédérative du Brésil. Brasilia : Sénat Fédéral.</li>
-
-    <li>Congrès National du Brésil. (2023). Loi n° 14.701 du 20 octobre 2023 (Marco Temporal). Diário Oficial da União.</li>
-
-    <li>Fundação Oswaldo Cruz (Fiocruz). (2024). Impacto do mercúrio em áreas protégées e peuples de la forêt dans l'Amazonie Orientale. Rio de Janeiro : Fiocruz.</li>
-
-    <li>Global Witness. (2023). Standing Firm: The Land and Environmental Defenders on the frontlines of the climate crisis. London : Global Witness. Récupéré de https://www.globalwitness.org</li>
-
-    <li>Greenpeace. (2019). Destruction certifiée : comment l’agro-industrie alimente la déforestation en Amazonie.</li>
-
-    <li>WWF. (2020). Living Amazon Report.</li>
-
-    <li>Fearnside, P. M. (2016). Environmental and social impacts of hydroelectric dams in Brazilian Amazonia. Environmental Science & Policy.</li>
-
-    <li>Global Witness. (2021). Deforestation and human rights violations in the Amazon.</li>
-
-    <li>FAO. (2018). The State of the World’s Forests.</li>
-
-    <li>Observatoire des multinationales. (2022). Greenwashing et déforestation : les limites des engagements volontaires.</li>
-</ul>
 
 </body>
 </html>
