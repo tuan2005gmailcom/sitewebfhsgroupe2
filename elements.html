@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="fr">
+<html lang="fr" style="scroll-behavior: smooth;">
 
 <head>
     <title>Podcast - Amazonie</title>
@@ -33,12 +33,29 @@
             margin: 0;
             padding: 0;
             color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* ===== EN-TÊTE ET NAVIGATION (CONSERVÉS MAIS STYLISÉS) ===== */
+        /* Anti-lag Hardware Acceleration */
+        .strip-card, .podcast-image, .audio-player-wrapper {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+
+        /* ===== CORRECTIF BUGS HTML5 UP (Lien bleu et scroll infini) ===== */
+        #navPanel, #titleBar, .navPanelToggle, a[href="#navPanel"], a[href="#menu"] {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* ===== EN-TÊTE ===== */
         #header {
             text-align: center;
-            padding: 2.5rem 0 1rem 0;
+            padding: 2.5rem 0 1.5rem 0;
             background: var(--bg-beige);
         }
 
@@ -51,15 +68,22 @@
             letter-spacing: -1px;
         }
 
+        /* ===== NAVIGATION (STICKY + GLASSMORPHISM) ===== */
         #nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 1rem 0;
-            border-top: 1px solid rgba(0,0,0,0.05);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
+            padding: 1.2rem 2rem;
+            background: rgba(246, 245, 240, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
             flex-wrap: wrap;
+            transition: all 0.3s ease;
         }
 
         #nav .links {
@@ -70,19 +94,36 @@
             padding: 0;
         }
 
+        #nav .links li {
+            position: relative;
+        }
+
         #nav .links a {
             text-decoration: none;
             color: var(--text-dark);
             font-size: 0.85rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            padding: 0.5rem 0;
             transition: color 0.3s;
         }
 
-        #nav .active a, #nav .links a:hover {
-            color: var(--gold);
+        #nav .links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
         }
+
+        #nav .active a { color: var(--gold); }
+        #nav .active a::after, #nav .links a:hover::after { width: 100%; }
+        #nav .links a:hover { color: var(--gold); }
 
         #nav .icons {
             list-style: none;
@@ -95,17 +136,28 @@
         #nav .icons a {
             color: var(--green-dark);
             font-size: 1.1rem;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
         }
 
-        #nav .icons a:hover {
-            color: var(--gold);
+        #nav .icons a:hover { color: var(--gold); transform: translateY(-2px); }
+
+        /* Bouton Menu Mobile (Hamburger) */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.3s;
         }
+        .mobile-toggle:hover { color: var(--gold); }
 
         /* ===== HERO SECTION ===== */
         .podcast-hero {
-            background: linear-gradient(to bottom, rgba(18, 40, 27, 0.3), rgba(18, 40, 27, 0.95)), 
-                        url('https://images.unsplash.com/photo-1518182170546-076616fdacaf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            background: linear-gradient(to bottom, rgba(18, 40, 27, 0.4), rgba(18, 40, 27, 0.95)), 
+                        url('images/overlay_amazon.png') center/cover no-repeat;
             text-align: center;
             padding: 6rem 2rem 8rem 2rem;
             position: relative;
@@ -136,7 +188,7 @@
             text-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* ===== CARTES ÉDITORIALES (Chevauchement) ===== */
+        /* ===== CARTES ÉDITORIALES ===== */
         .editorial-strip {
             display: flex;
             justify-content: center;
@@ -148,298 +200,134 @@
             padding: 0 20px;
         }
 
-        .strip-card {
-            flex: 1;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-
-        .strip-light {
-            background: linear-gradient(145deg, #f2f7f4, #dce5df);
-            border: 1px solid rgba(255,255,255,0.6);
-        }
-
-        .strip-light h2 {
-            font-family: var(--font-serif);
-            color: var(--green-dark);
-            margin: 0 0 1rem 0;
-            font-size: 1.8rem;
-        }
-
-        .strip-light p {
-            color: #555;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        .strip-dark {
-            background: linear-gradient(145deg, var(--green-mid), var(--green-dark));
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .strip-dark h2 {
-            font-family: var(--font-serif);
-            color: var(--gold);
-            margin: 0 0 1rem 0;
-            font-size: 1.8rem;
-        }
-
-        .strip-dark p {
-            color: var(--gold-light);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin: 0;
-            opacity: 0.8;
-        }
+        .strip-card { flex: 1; padding: 2.5rem; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+        .strip-light { background: linear-gradient(145deg, #f2f7f4, #dce5df); border: 1px solid rgba(255,255,255,0.6); }
+        .strip-light h2 { font-family: var(--font-serif); color: var(--green-dark); margin: 0 0 1rem 0; font-size: 1.8rem; }
+        .strip-light p { color: #555; font-size: 0.95rem; margin: 0; }
+        .strip-dark { background: linear-gradient(145deg, var(--green-mid), var(--green-dark)); border: 1px solid rgba(212, 175, 55, 0.2); }
+        .strip-dark h2 { font-family: var(--font-serif); color: var(--gold); margin: 0 0 1rem 0; font-size: 1.8rem; }
+        .strip-dark p { color: var(--gold-light); font-size: 0.95rem; margin: 0; opacity: 0.9; }
 
         /* ===== SECTION PODCAST CARDS ===== */
-        .section-title {
-            text-align: center;
-            font-family: var(--font-serif);
-            color: var(--green-dark);
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
+        .section-title { text-align: center; font-family: var(--font-serif); color: var(--green-dark); font-size: 2.5rem; margin-bottom: 2rem; }
+        .podcast-layout { display: flex; max-width: 1000px; margin: 0 auto 4rem auto; gap: 2rem; padding: 0 20px; }
+        .podcast-image { flex: 1.2; background: url('https://images.unsplash.com/photo-1552728089-571692ce58db?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover no-repeat; border-radius: 20px; min-height: 350px; position: relative; box-shadow: 0 15px 35px rgba(0,0,0,0.15); overflow: hidden; }
+        .podcast-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 50%); }
+        .podcast-image-text { position: absolute; bottom: 25px; left: 25px; z-index: 2; color: white; }
+        .podcast-image-text small { text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; color: var(--gold); }
+        .podcast-image-text h3 { font-family: var(--font-serif); font-size: 1.8rem; margin: 5px 0 0 0; }
+        
+        .podcast-meta-container { flex: 0.8; display: flex; flex-direction: column; gap: 1.2rem; }
+        .meta-box { background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 15px; padding: 1.2rem 1.5rem; display: flex; align-items: center; gap: 1.5rem; transition: transform 0.3s, background-color 0.3s, border-color 0.3s; }
+        .meta-box:hover { transform: translateX(10px) translateZ(0); background: white; border-color: var(--gold); }
+        .meta-icon { font-size: 1.8rem; color: var(--green-dark); }
+        .meta-text span { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #777; font-weight: 600; margin-bottom: 3px; }
+        .meta-text strong { font-size: 1.1rem; color: var(--green-dark); font-family: var(--font-serif); }
 
-        .podcast-layout {
-            display: flex;
-            max-width: 1000px;
-            margin: 0 auto 4rem auto;
-            gap: 2rem;
-            padding: 0 20px;
-        }
-
-        .podcast-image {
-            flex: 1.2;
-            background: url('https://images.unsplash.com/photo-1552728089-571692ce58db?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
-            border-radius: 20px;
-            min-height: 350px;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            overflow: hidden;
-        }
-
-        .podcast-image::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 50%);
-        }
-
-        .podcast-image-text {
-            position: absolute;
-            bottom: 25px;
-            left: 25px;
-            z-index: 2;
-            color: white;
-        }
-
-        .podcast-image-text small {
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.7rem;
-            color: var(--gold);
-        }
-
-        .podcast-image-text h3 {
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            margin: 5px 0 0 0;
-        }
-
-        .podcast-meta-container {
-            flex: 0.8;
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-
-        .meta-box {
-            background: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            border-radius: 15px;
-            padding: 1.2rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            transition: transform 0.3s;
-        }
-
-        .meta-box:hover {
-            transform: translateX(10px);
-            background: white;
-            border-color: var(--gold);
-        }
-
-        .meta-icon {
-            font-size: 1.8rem;
-            color: var(--green-dark);
-        }
-
-        .meta-text span {
-            display: block;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #777;
-            font-weight: 600;
-            margin-bottom: 3px;
-        }
-
-        .meta-text strong {
-            font-size: 1.1rem;
-            color: var(--green-dark);
-            font-family: var(--font-serif);
-        }
-
-        /* ===== LECTEUR AUDIO (Le design sombre et or) ===== */
+        /* ===== LECTEUR AUDIO ===== */
         .audio-player-wrapper {
             background: linear-gradient(145deg, #183324, #0b1710);
             max-width: 1000px;
             margin: 0 auto 4rem auto;
             border-radius: 20px;
             padding: 2.5rem;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.25);
             border: 1px solid rgba(255,255,255,0.05);
             color: white;
             position: relative;
         }
 
-        .player-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 1rem;
-        }
-
-        .player-header h3 {
-            font-family: var(--font-serif);
-            font-size: 1.6rem;
-            margin: 0;
-            color: white;
-            font-weight: 400;
-        }
-
-        .lang-select {
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 8px 15px;
-            border-radius: 8px;
-            font-family: var(--font-sans);
-            font-size: 0.85rem;
-            cursor: pointer;
-            outline: none;
-        }
+        .player-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem; }
+        .player-header h3 { font-family: var(--font-serif); font-size: 1.6rem; margin: 0; font-weight: 400; }
         
-        .lang-select option {
-            color: var(--text-dark);
-        }
+        .lang-select { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 8px; font-family: var(--font-sans); font-size: 0.85rem; cursor: pointer; outline: none; transition: background 0.3s; }
+        .lang-select:hover { background: rgba(255,255,255,0.2); }
+        .lang-select option { color: var(--text-dark); }
 
-        .player-main {
+        .player-main { display: flex; align-items: center; gap: 2rem; }
+        .play-btn { background: transparent; border: 2px solid var(--gold); color: var(--gold); width: 70px; height: 70px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; cursor: pointer; transition: background-color 0.3s, color 0.3s, transform 0.3s; box-shadow: 0 0 15px rgba(212, 175, 55, 0.1); }
+        .play-btn:hover { background: var(--gold); color: var(--green-dark); box-shadow: 0 0 25px rgba(212, 175, 55, 0.4); transform: scale(1.05) translateZ(0); }
+
+        .progress-container { flex-grow: 1; }
+        .waveform { height: 40px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" preserveAspectRatio="none"><path d="M0,20 Q10,5 20,20 T40,20 T60,35 T80,20 T100,5 T120,20 T140,30 T160,20 T180,10 T200,20" fill="none" stroke="%234ade80" stroke-width="1.5" opacity="0.6"/></svg>') center/100% 100% no-repeat; margin-bottom: 10px; }
+        .time-info { display: flex; justify-content: space-between; font-size: 0.75rem; color: #aaa; margin-bottom: 5px; }
+
+        input[type="range"] { -webkit-appearance: none; width: 100%; height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; outline: none; cursor: pointer; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px var(--gold); cursor: pointer; transition: transform 0.1s; }
+        input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+        .volume-container { display: flex; align-items: center; gap: 10px; margin-top: 2rem; width: 150px; color: #aaa; }
+        .subtitle-box { margin-top: 1.5rem; background: rgba(0, 0, 0, 0.3); border-left: 3px solid var(--gold); padding: 1rem 1.5rem; border-radius: 0 8px 8px 0; font-style: italic; color: var(--gold-light); display: none; }
+        .subtitle-box.active { display: block; }
+
+        /* ===== FOOTER FORM & CONTACT ===== */
+        #footer {
+            max-width: 1000px;
+            margin: 4rem auto 0 auto;
+            padding: 4rem 20px;
             display: flex;
-            align-items: center;
-            gap: 2rem;
+            flex-wrap: wrap;
+            gap: 4rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
         }
 
-        .play-btn {
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+        #footer > section { flex: 1; min-width: 300px; }
+        #footer h3 { font-family: var(--font-serif); color: var(--green-dark); font-size: 1.5rem; margin-top: 0; margin-bottom: 1.5rem; }
+        
+        .fields { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem; }
+        .field { flex: 1; min-width: 100%; }
+        .field.half { min-width: calc(50% - 0.75rem); }
+        
+        #footer label { display: block; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--green-dark); margin-bottom: 0.5rem; }
+        #footer input[type="text"], #footer textarea { 
+            width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1); background: white; font-family: var(--font-sans); color: var(--text-dark); outline: none; transition: border-color 0.3s; box-sizing: border-box; 
         }
-
-        .play-btn:hover {
-            background: var(--gold);
-            color: var(--green-dark);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
-            transform: scale(1.05);
+        #footer input[type="text"]:focus, #footer textarea:focus { border-color: var(--gold); }
+        
+        .actions { list-style: none; padding: 0; margin: 0; }
+        .actions input[type="submit"] {
+            background: var(--green-dark); color: white; border: none; padding: 1rem 2.5rem; border-radius: 30px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: background 0.3s;
         }
+        .actions input[type="submit"]:hover { background: var(--gold); color: var(--green-dark); }
 
-        .progress-container {
-            flex-grow: 1;
+        .split.contact section { margin-bottom: 2rem; }
+        .split.contact p { margin: 0; color: #666; }
+        .split.contact a { color: var(--green-dark); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .split.contact a:hover { color: var(--gold); }
+        
+        .split.contact .icons { list-style: none; padding: 0; margin: 0; display: flex; gap: 1rem; }
+        .split.contact .icons a {
+            display: flex; justify-content: center; align-items: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.1); color: var(--green-dark); transition: all 0.3s;
         }
+        .split.contact .icons a:hover { background: var(--gold); color: white; border-color: var(--gold); transform: translateY(-3px); }
 
-        /* Onde sonore simulée esthétique */
-        .waveform {
-            height: 40px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" preserveAspectRatio="none"><path d="M0,20 Q10,5 20,20 T40,20 T60,35 T80,20 T100,5 T120,20 T140,30 T160,20 T180,10 T200,20" fill="none" stroke="%234ade80" stroke-width="1.5" opacity="0.6"/></svg>') center/100% 100% no-repeat;
-            margin-bottom: 10px;
-        }
+        #copyright { text-align: center; padding: 2rem 20px; color: #888; font-size: 0.85rem; border-top: 1px solid rgba(0,0,0,0.05); margin-top: 2rem; }
+        #copyright ul { list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; gap: 1rem; }
+        #copyright a { color: var(--green-dark); text-decoration: none; }
 
-        .time-info {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            color: #aaa;
-            margin-bottom: 5px;
-        }
-
-        /* Range slider stylisé pour ressembler à l'image */
-        input[type="range"] {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 4px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 2px;
-            outline: none;
-            cursor: pointer;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--gold);
-            box-shadow: 0 0 10px var(--gold);
-            cursor: pointer;
-        }
-
-        .volume-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 2rem;
-            width: 150px;
-            color: #aaa;
-        }
-
-        .subtitle-box {
-            margin-top: 1.5rem;
-            background: rgba(0, 0, 0, 0.3);
-            border-left: 3px solid var(--gold);
-            padding: 1rem 1.5rem;
-            border-radius: 0 8px 8px 0;
-            font-style: italic;
-            color: var(--gold-light);
-            display: none;
-        }
-
-        .subtitle-box.active {
-            display: block;
-        }
-
-        /* ===== RESPONSIVE ===== */
+        /* ===== RESPONSIVE AMÉLIORÉ ===== */
         @media screen and (max-width: 900px) {
-            #nav .links { display: none; } /* Adaptation mobile classique */
+            #nav { justify-content: space-between; }
+            .mobile-toggle { display: block; }
+            
+            /* Le menu s'affiche en colonne sous le header sur mobile */
+            #nav .links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                padding: 1rem 0;
+                gap: 1.5rem;
+            }
+            #nav .links.active { display: flex; }
+            #nav .icons { display: none; }
+
             .editorial-strip { flex-direction: column; margin-top: -2rem; }
             .podcast-layout { flex-direction: column; }
             .hero-title { font-size: 3.5rem; }
             .player-main { flex-direction: column; }
+            #footer { flex-direction: column; gap: 2rem; }
+            .field.half { min-width: 100%; }
         }
     </style>
 </head>
@@ -453,7 +341,10 @@
         </header>
 
         <nav id="nav">
-            <ul class="links">
+            <button class="mobile-toggle" id="mobile-toggle-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="links" id="nav-links">
                 <li><a href="index.html">ACCUEIL</a></li>
                 <li><a href="generic.html">Contexte</a></li>
                 <li class="active"><a href="elements.html">Podcast</a></li>
@@ -478,7 +369,7 @@
             <div class="editorial-strip">
                 <div class="strip-card strip-light">
                     <h2>Écouter notre épisode</h2>
-                    <p>Découvrez un documentaire audio immersif. Branchez vos écouteurs et plongez au cœur de la forêt tropicale pour comprendre ses enjeux.</p>
+                    <p>Découvrez un documentaire audio immersif. Branchez vos écouteurs et plongez au cœur de la forêt tropicale pour comprendre ses enjeux de l'intérieur.</p>
                 </div>
                 <div class="strip-card strip-dark">
                     <h2>Écouter notre épisode</h2>
@@ -492,7 +383,7 @@
                 <div class="podcast-image">
                     <div class="podcast-image-text">
                         <small>Podcast Documentaire</small>
-                        <h3>Amazon rainforest (P1)</h3>
+                        <h3>Amazon rainforest</h3>
                     </div>
                 </div>
 
@@ -562,20 +453,60 @@
 
         </div>
 
-        <footer id="footer" style="padding: 4rem 2rem; max-width: 1000px; margin: 0 auto;">
-            <section style="margin-bottom: 2rem;">
-                <h3 style="font-family: var(--font-serif); color: var(--green-dark);">Nous contacter</h3>
-                <p style="color: #666;">20 rue Cuirassé, Brest, Bretagne, France<br>
-                <a href="mailto:info@amazonie-docu.fr" style="color: var(--gold); text-decoration: none;">info@amazonie-docu.fr</a></p>
+        <footer id="footer">
+            <section>
+                <h3>Contactez-nous</h3>
+                <form method="post" action="#">
+                    <div class="fields">
+                        <div class="field half">
+                            <label for="name">Nom</label>
+                            <input type="text" name="name" id="name" placeholder="Votre nom" />
+                        </div>
+                        <div class="field half">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" id="email" placeholder="Votre email" />
+                        </div>
+                        <div class="field">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" rows="4" placeholder="Votre message..."></textarea>
+                        </div>
+                    </div>
+                    <ul class="actions">
+                        <li><input type="submit" value="Envoyer" /></li>
+                    </ul>
+                </form>
             </section>
-            
-            <div id="copyright" style="border-top: 1px solid #ddd; padding-top: 2rem; font-size: 0.8rem; color: #888;">
-                <ul>
-                    <li style="display:inline; margin-right: 1rem;">&copy; Projet Amazonie ISEN</li>
-                    <li style="display:inline;">Design original adapté de <a href="https://html5up.net" style="color: inherit;">HTML5 UP</a></li>
-                </ul>
-            </div>
+
+            <section class="split contact">
+                <section class="alt">
+                    <h3>Adresse</h3>
+                    <p>20 rue Cuirassé, Brest, Bretagne, France</p>
+                </section>
+                <section>
+                    <h3>Téléphone</h3>
+                    <p><a href="#">(000) 000-0000</a></p>
+                </section>
+                <section>
+                    <h3>Email</h3>
+                    <p><a href="#">info@amazonie-docu.fr</a></p>
+                </section>
+                <section>
+                    <h3>Réseaux Sociaux</h3>
+                    <ul class="icons">
+                        <li><a href="https://www.facebook.com/ISEN.Ouest/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.instagram.com/isenbrest/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="https://www.linkedin.com/company/isen-yncrea-ouest/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </section>
+            </section>
         </footer>
+
+        <div id="copyright">
+            <ul>
+                <li>&copy; Projet Amazonie ISEN</li>
+                <li>Design adapté de <a href="https://html5up.net">HTML5 UP</a></li>
+            </ul>
+        </div>
 
     </div>
 
@@ -589,6 +520,17 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // --- Logique du menu mobile ---
+            const mobileToggleBtn = document.getElementById("mobile-toggle-btn");
+            const navLinks = document.getElementById("nav-links");
+            
+            if(mobileToggleBtn) {
+                mobileToggleBtn.addEventListener("click", function() {
+                    navLinks.classList.toggle("active");
+                });
+            }
+
+            // --- Logique du lecteur audio ---
             const audio = document.getElementById("audio-element");
             const playPauseBtn = document.getElementById("play-pause-btn");
             const playIcon = document.getElementById("play-icon");
@@ -600,7 +542,6 @@
             const langSelect = document.getElementById("lang-select");
             const subtitleDisplay = document.getElementById("subtitle-display");
 
-            // Textes des sous-titres simulés
             const subtitles = {
                 fr: [
                     { start: 0, end: 5, text: "Bienvenue dans ce voyage au cœur de l'Amazonie." },
