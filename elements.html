@@ -37,13 +37,24 @@
             overflow-x: hidden;
         }
 
+        /* ===== ANIMATION D'APPARITION (REVEAL) ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal.active { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+
         /* Anti-lag Hardware Acceleration */
         .strip-card, .podcast-image, .audio-player-wrapper {
             transform: translateZ(0);
             backface-visibility: hidden;
         }
 
-        /* ===== CORRECTIF BUGS HTML5 UP (Lien bleu et scroll infini) ===== */
+        /* ===== CORRECTIF BUGS HTML5 UP ===== */
         #navPanel, #titleBar, .navPanelToggle, a[href="#navPanel"], a[href="#menu"] {
             display: none !important;
             visibility: hidden !important;
@@ -68,7 +79,7 @@
             letter-spacing: -1px;
         }
 
-        /* ===== NAVIGATION (STICKY + GLASSMORPHISM) ===== */
+        /* ===== NAVIGATION (STICKY + VERRE DÉPOLI) ===== */
         #nav {
             position: sticky;
             top: 0;
@@ -86,120 +97,39 @@
             transition: all 0.3s ease;
         }
 
-        #nav .links {
-            list-style: none;
-            display: flex;
-            gap: 2.5rem;
-            margin: 0;
-            padding: 0;
-        }
-
-        #nav .links li {
-            position: relative;
-        }
-
-        #nav .links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 0.5rem 0;
-            transition: color 0.3s;
-        }
-
-        #nav .links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background-color: var(--gold);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
+        #nav .links { list-style: none; display: flex; gap: 2.5rem; margin: 0; padding: 0; }
+        #nav .links li { position: relative; }
+        #nav .links a { text-decoration: none; color: var(--text-dark); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.5rem 0; transition: color 0.3s; }
+        #nav .links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 50%; background-color: var(--gold); transition: all 0.3s ease; transform: translateX(-50%); }
         #nav .active a { color: var(--gold); }
         #nav .active a::after, #nav .links a:hover::after { width: 100%; }
         #nav .links a:hover { color: var(--gold); }
 
-        #nav .icons {
-            list-style: none;
-            display: flex;
-            gap: 1.2rem;
-            margin: 0 0 0 3rem;
-            padding: 0;
-        }
-
-        #nav .icons a {
-            color: var(--green-dark);
-            font-size: 1.1rem;
-            transition: color 0.3s, transform 0.3s;
-            display: inline-block;
-        }
-
+        #nav .icons { list-style: none; display: flex; gap: 1.2rem; margin: 0 0 0 3rem; padding: 0; }
+        #nav .icons a { color: var(--green-dark); font-size: 1.1rem; transition: color 0.3s, transform 0.3s; display: inline-block; }
         #nav .icons a:hover { color: var(--gold); transform: translateY(-2px); }
 
-        /* Bouton Menu Mobile (Hamburger) */
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--green-dark);
-            font-size: 1.8rem;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
+        .mobile-toggle { display: none; background: none; border: none; color: var(--green-dark); font-size: 1.8rem; cursor: pointer; transition: color 0.3s; }
         .mobile-toggle:hover { color: var(--gold); }
 
         /* ===== HERO SECTION ===== */
         .podcast-hero {
             background: linear-gradient(to bottom, rgba(18, 40, 27, 0.4), rgba(18, 40, 27, 0.95)), 
-                        url('images/overlay_amazon.png') center/cover no-repeat;
+                        url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
             text-align: center;
             padding: 6rem 2rem 8rem 2rem;
             position: relative;
         }
 
         .hero-kicker {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            color: #fff;
-            border-radius: 30px;
-            padding: 6px 20px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 1.5rem;
+            background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px);
+            color: #fff; border-radius: 30px; padding: 6px 20px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; display: inline-block; margin-bottom: 1.5rem;
         }
 
-        .hero-title {
-            font-family: var(--font-serif);
-            color: var(--gold);
-            font-size: 6rem;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            margin: 0;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
+        .hero-title { font-family: var(--font-serif); color: var(--gold); font-size: 6rem; text-transform: uppercase; letter-spacing: 5px; margin: 0; text-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
         /* ===== CARTES ÉDITORIALES ===== */
-        .editorial-strip {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            max-width: 1000px;
-            margin: -4rem auto 4rem auto;
-            position: relative;
-            z-index: 10;
-            padding: 0 20px;
-        }
-
+        .editorial-strip { display: flex; justify-content: center; gap: 2rem; max-width: 1000px; margin: -4rem auto 4rem auto; position: relative; z-index: 10; padding: 0 20px; }
         .strip-card { flex: 1; padding: 2.5rem; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
         .strip-light { background: linear-gradient(145deg, #f2f7f4, #dce5df); border: 1px solid rgba(255,255,255,0.6); }
         .strip-light h2 { font-family: var(--font-serif); color: var(--green-dark); margin: 0 0 1rem 0; font-size: 1.8rem; }
@@ -224,7 +154,7 @@
         .meta-text span { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #777; font-weight: 600; margin-bottom: 3px; }
         .meta-text strong { font-size: 1.1rem; color: var(--green-dark); font-family: var(--font-serif); }
 
-        /* ===== LECTEUR AUDIO ===== */
+        /* ===== LECTEUR AUDIO SUR-MESURE ===== */
         .audio-player-wrapper {
             background: linear-gradient(145deg, #183324, #0b1710);
             max-width: 1000px;
@@ -260,17 +190,8 @@
         .subtitle-box { margin-top: 1.5rem; background: rgba(0, 0, 0, 0.3); border-left: 3px solid var(--gold); padding: 1rem 1.5rem; border-radius: 0 8px 8px 0; font-style: italic; color: var(--gold-light); display: none; }
         .subtitle-box.active { display: block; }
 
-        /* ===== FOOTER FORM & CONTACT ===== */
-        #footer {
-            max-width: 1000px;
-            margin: 4rem auto 0 auto;
-            padding: 4rem 20px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4rem;
-            border-top: 1px solid rgba(0,0,0,0.1);
-        }
-
+        /* ===== FOOTER ===== */
+        #footer { max-width: 1000px; margin: 4rem auto 0 auto; padding: 4rem 20px; display: flex; flex-wrap: wrap; gap: 4rem; border-top: 1px solid rgba(0,0,0,0.1); }
         #footer > section { flex: 1; min-width: 300px; }
         #footer h3 { font-family: var(--font-serif); color: var(--green-dark); font-size: 1.5rem; margin-top: 0; margin-bottom: 1.5rem; }
         
@@ -279,15 +200,11 @@
         .field.half { min-width: calc(50% - 0.75rem); }
         
         #footer label { display: block; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--green-dark); margin-bottom: 0.5rem; }
-        #footer input[type="text"], #footer textarea { 
-            width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1); background: white; font-family: var(--font-sans); color: var(--text-dark); outline: none; transition: border-color 0.3s; box-sizing: border-box; 
-        }
+        #footer input[type="text"], #footer textarea { width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1); background: white; font-family: var(--font-sans); color: var(--text-dark); outline: none; transition: border-color 0.3s; box-sizing: border-box; }
         #footer input[type="text"]:focus, #footer textarea:focus { border-color: var(--gold); }
         
         .actions { list-style: none; padding: 0; margin: 0; }
-        .actions input[type="submit"] {
-            background: var(--green-dark); color: white; border: none; padding: 1rem 2.5rem; border-radius: 30px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: background 0.3s;
-        }
+        .actions input[type="submit"] { background: var(--green-dark); color: white; border: none; padding: 1rem 2.5rem; border-radius: 30px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: background 0.3s; }
         .actions input[type="submit"]:hover { background: var(--gold); color: var(--green-dark); }
 
         .split.contact section { margin-bottom: 2rem; }
@@ -296,36 +213,23 @@
         .split.contact a:hover { color: var(--gold); }
         
         .split.contact .icons { list-style: none; padding: 0; margin: 0; display: flex; gap: 1rem; }
-        .split.contact .icons a {
-            display: flex; justify-content: center; align-items: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.1); color: var(--green-dark); transition: all 0.3s;
-        }
+        .split.contact .icons a { display: flex; justify-content: center; align-items: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.1); color: var(--green-dark); transition: all 0.3s; }
         .split.contact .icons a:hover { background: var(--gold); color: white; border-color: var(--gold); transform: translateY(-3px); }
 
         #copyright { text-align: center; padding: 2rem 20px; color: #888; font-size: 0.85rem; border-top: 1px solid rgba(0,0,0,0.05); margin-top: 2rem; }
         #copyright ul { list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; gap: 1rem; }
         #copyright a { color: var(--green-dark); text-decoration: none; }
 
-        /* ===== RESPONSIVE AMÉLIORÉ ===== */
+        /* ===== RESPONSIVE ===== */
         @media screen and (max-width: 900px) {
             #nav { justify-content: space-between; }
             .mobile-toggle { display: block; }
-            
-            /* Le menu s'affiche en colonne sous le header sur mobile */
-            #nav .links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                text-align: center;
-                padding: 1rem 0;
-                gap: 1.5rem;
-            }
+            #nav .links { display: none; flex-direction: column; width: 100%; text-align: center; padding: 1rem 0; gap: 1.5rem; }
             #nav .links.active { display: flex; }
             #nav .icons { display: none; }
-
             .editorial-strip { flex-direction: column; margin-top: -2rem; }
             .podcast-layout { flex-direction: column; }
             .hero-title { font-size: 3.5rem; }
-            .player-main { flex-direction: column; }
             #footer { flex-direction: column; gap: 2rem; }
             .field.half { min-width: 100%; }
         }
@@ -350,8 +254,7 @@
                 <li class="active"><a href="elements.html">Podcast</a></li>
                 <li><a href="apropos.html">À propos</a></li>
                 <li><a href="bibliographie.html">Bibliographie</a></li>
-				<li><a href="contacter.html">Contact</a></li>
-				
+                <li><a href="contact.html">Contact</a></li>
             </ul>
             <ul class="icons">
                 <li><a href="https://www.facebook.com/ISEN.Ouest/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a></li>
@@ -362,25 +265,25 @@
 
         <div id="main">
             
-            <section class="podcast-hero">
+            <section class="podcast-hero reveal">
                 <div class="hero-kicker">Podcast documentaire</div>
                 <h1 class="hero-title">Amazonie</h1>
             </section>
 
             <div class="editorial-strip">
-                <div class="strip-card strip-light">
+                <div class="strip-card strip-light reveal">
                     <h2>Écouter notre épisode</h2>
                     <p>Découvrez un documentaire audio immersif. Branchez vos écouteurs et plongez au cœur de la forêt tropicale pour comprendre ses enjeux de l'intérieur.</p>
                 </div>
-                <div class="strip-card strip-dark">
+                <div class="strip-card strip-dark reveal" style="transition-delay: 0.2s;">
                     <h2>Écouter notre épisode</h2>
                     <p>Un voyage sonore exclusif réunissant chercheurs, populations locales et sons de la nature à l'état pur.</p>
                 </div>
             </div>
 
-            <h2 class="section-title">Podcast cards</h2>
+            <h2 class="section-title reveal">Podcast cards</h2>
 
-            <div class="podcast-layout">
+            <div class="podcast-layout reveal">
                 <div class="podcast-image">
                     <div class="podcast-image-text">
                         <small>Podcast Documentaire</small>
@@ -413,7 +316,7 @@
                 </div>
             </div>
 
-            <div class="audio-player-wrapper">
+            <div class="audio-player-wrapper reveal">
                 <audio id="audio-element" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
 
                 <div class="player-header">
@@ -489,7 +392,7 @@
                 </section>
                 <section>
                     <h3>Email</h3>
-                    <p><a href="#">info@amazonie-docu.fr</a></p>
+                    <p><a href="mailto:fhsgroupe2@gmail.com">fhsgroupe2@gmail.com</a></p>
                 </section>
                 <section>
                     <h3>Réseaux Sociaux</h3>
@@ -531,7 +434,38 @@
                 });
             }
 
-            // --- Logique du lecteur audio ---
+            // --- ANIMATION AU DÉFILEMENT (REVEAL) ---
+            const reveals = document.querySelectorAll('.reveal');
+
+            const revealOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            reveals.forEach(reveal => {
+                revealOnScroll.observe(reveal);
+            });
+            
+            // Forcer l'apparition
+            setTimeout(() => {
+                reveals.forEach(reveal => {
+                    const rect = reveal.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) {
+                        reveal.classList.add('active');
+                    }
+                });
+            }, 100);
+
+            // --- LOGIQUE DU LECTEUR AUDIO SUR MESURE ---
             const audio = document.getElementById("audio-element");
             const playPauseBtn = document.getElementById("play-pause-btn");
             const playIcon = document.getElementById("play-icon");
