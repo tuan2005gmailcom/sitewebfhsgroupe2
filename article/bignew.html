@@ -2,7 +2,7 @@
 <html lang="fr" style="scroll-behavior: smooth;">
 
 <head>
-    <title>Actualité - La rentabilité de la conservation</title>
+    <title>Actualité - Décision Historique en Amazonie</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
@@ -59,6 +59,33 @@
         a[href="#menu"] {
             display: none !important;
             visibility: hidden !important;
+        }
+
+        /* STYLE DU BOUTON RETOUR */
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 3rem;
+            padding: 1rem 2.5rem;
+            background: var(--bg-beige);
+            color: var(--green-dark);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background: var(--gold);
+            color: white;
+            border-color: var(--gold);
+            transform: translateX(-5px);
+            /* Fait glisser le bouton vers la gauche au survol */
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
         }
 
         /* ===== EN-TÊTE ===== */
@@ -191,7 +218,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('images/pic02.jpg') center/cover no-repeat;
+            background: url('https://imgs.mongabay.com/wp-content/uploads/sites/20/2026/03/11172342/Cinta-Larga-men.jpg') center/cover no-repeat;
             z-index: -2;
         }
 
@@ -204,13 +231,6 @@
             bottom: 0;
             background: linear-gradient(to bottom, rgba(18, 40, 27, 0.7), rgba(18, 40, 27, 0.98));
             z-index: -1;
-        }
-
-        .article-title-icon {
-            display: block;
-            margin: 0 auto 1.5rem auto;
-            max-width: 100px;
-            height: auto;
         }
 
         .article-meta {
@@ -277,6 +297,7 @@
             padding-bottom: 0.5rem;
         }
 
+        /* STYLE POUR LES NOUVELLES IMAGES INLINE */
         .article-inline-image {
             width: 100%;
             height: auto;
@@ -297,31 +318,6 @@
             font-size: 1.4rem;
             font-family: var(--font-serif);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.03);
-        }
-
-        /* STYLE DU BOUTON RETOUR */
-        .btn-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 1rem 2.5rem;
-            background: var(--bg-beige);
-            color: var(--green-dark);
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border-radius: 30px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .btn-back:hover {
-            background: var(--gold);
-            color: white;
-            border-color: var(--gold);
-            transform: translateX(-5px);
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
         }
 
         /* ===== FOOTER ===== */
@@ -465,91 +461,62 @@
         <div id="main">
 
             <section class="article-hero reveal">
-                <img src="" alt="" class="article-title-icon">
-
-                <div class="article-meta">Analyse Économique - Mars 2026</div>
-                <h1>Pourquoi conserver la forêt amazonienne est financièrement plus rentable</h1>
+                <div class="article-meta">Actualité - 11 Mars 2026</div>
+                <h1>Le Brésil ouvre la voie à l'exploitation minière en terres indigènes</h1>
             </section>
 
             <div class="article-container reveal">
-
                 <div style="text-align: left;">
-                    <a href="index.html" class="btn-back" style="margin-top: 0; margin-bottom: 2.5rem;"><i
+                    <a href="../index.html" class="btn-back" style="margin-top: 0; margin-bottom: 2.5rem;"><i
                             class="fas fa-arrow-left"></i> Retour à l'accueil</a>
                 </div>
 
-                <p><span class="dropcap">A</span>u Brésil, le mythe d'une croissance économique indissociable du
-                    défrichage intensif a la vie dure. Historiquement, l'expansion de la frontière agricole et minière
-                    s'est faite au prix du sang et de la sève. Aujourd'hui, les données scientifiques sont formelles :
-                    environ <strong>26 % de l'écosystème amazonien</strong> a déjà été altéré ou détruit, approchant
-                    dangereusement du "point de bascule" irréversible (estimé à 20-25 % de déforestation stricte par le
-                    climatologue brésilien Carlos Nobre).</p>
+                <p><span class="dropcap">L</span>e 3 février, à la demande de l'association indigène Cinta Larga
+                    (Patjamaaj), la Cour suprême brésilienne a autorisé pour la première fois la possibilité d'explorer
+                    et d'exploiter des minerais au sein d'un territoire indigène. Bien que cette décision n'autorise pas
+                    automatiquement l'exploitation, elle impose au Congrès un délai de deux ans pour légiférer sur la
+                    question et fixe des règles provisoires.</p>
 
-                <p>Les conséquences sont chiffrées : en 2021, les changements d'affectation des terres et la
-                    déforestation en Amazonie ont représenté <strong>67 % des émissions totales de carbone du
-                        Brésil</strong>. Poursuivre sur cette trajectoire du <em>"Business as Usual"</em> condamnerait
-                    59 millions d'hectares supplémentaires d'ici 2050, transformant le plus grand puits de carbone du
-                    monde en une véritable bombe climatique.</p>
+                <h2>Le dilemme économique des Cinta Larga</h2>
+                <p>La réserve indigène Roosevelt, vaste de 2,7 millions d'hectares dans le sud-ouest de l'Amazonie,
+                    abriterait certains des plus grands gisements de diamants au monde. L'absence de régulation a
+                    empêché les communautés de bénéficier économiquement de ces ressources, laissant le champ libre à
+                    l'exploitation illégale. Ce vide juridique a entraîné la contamination des rivières, la
+                    déforestation et de violents conflits.</p>
 
-                <h2>L'échec économique du modèle prédateur</h2>
-                <p>Malgré les milliards générés par l'agrobusiness (soja, élevage bovin) dans des États comme le Mato
-                    Grosso ou le Pará, la richesse ruisselle peu. Les statistiques montrent un paradoxe accablant :
-                    l'exploitation intensive ne se traduit pas par un développement local. L'Amazonie abrite aujourd'hui
-                    <strong>les populations les plus pauvres et marginalisées du Brésil</strong>, avec un Indice de
-                    Développement Humain (IDH) systématiquement inférieur à la moyenne nationale dans les municipalités
-                    déboisées.</p>
-
-                <img src="images/2eme/Capture.png" alt="Description de l'image 1 (Impact humain ou terres dégradées)"
-                    class="article-inline-image">
-
-                <h2>Un changement de paradigme à 40 milliards de réais</h2>
-                <p>Un rapport décisif intitulé <em>"Nouvelle économie pour l'Amazonie brésilienne"</em>, élaboré par le
-                    World Resources Institute (WRI) en partenariat avec plus de 70 chercheurs, vient pulvériser
-                    l'argument pro-déforestation. LeURS simulations économiques prouvent qu'un modèle "Zéro
-                    Déforestation" n'est pas seulement viable, il est extrêmement lucratif. La transition pourrait
-                    générer <strong>312 000 emplois supplémentaires</strong> et ajouter <strong>40 milliards de
-                        réais</strong> au PIB brésilien d'ici 2050.</p>
+                <img src="../images/bignews/Cinta-Larga-1-1536x1150.jpeg"
+                    alt="Description de l'image 1 (Cinta Larga ou mines)" class="article-inline-image">
 
                 <blockquote class="blockquote-gold">
-                    « Transitionner vers cette économie bas-carbone nécessite un investissement de 1,8 % du PIB annuel
-                    du Brésil. Ce coût est deux fois inférieur aux pertes financières colossales (sécheresses,
-                    effondrement agricole) causées par l'inaction. »
+                    « La motivation principale était de rechercher l'autonomie économique et de meilleures conditions de
+                    vie pour la communauté. L'exploration peut générer des revenus, des infrastructures et l'accès à la
+                    santé. »<br><br>— Gilmar Cinta Larga
                 </blockquote>
 
-                <h2>Quatre leviers industriels et technologiques</h2>
-                <p>Pour accomplir cette métamorphose, le rapport identifie quatre chantiers d'envergure nationale :</p>
-                <ol style="color: #444; font-size: 1.15rem; line-height: 1.9; margin-bottom: 2rem;">
-                    <li><strong>L'explosion de la bioéconomie :</strong> Actuellement évaluée à 2,5 milliards de
-                        dollars, l'exploitation durable de 13 produits forestiers natifs (açaï, noix du Brésil, huile de
-                        pracaxi ou de copaïba pour l'industrie cosmétique et pharmaceutique) pourrait atteindre
-                        <strong>8 milliards de dollars</strong> d'ici 2050.</li>
-                    <li><strong>La restauration des pâturages :</strong> Le Brésil compte plus de 50 millions d'hectares
-                        de terres dégradées. La mise en place de Systèmes Agroforestiers (SAF) permet de combiner arbres
-                        natifs et agriculture commerciale, multipliant la rentabilité au mètre carré sans abattre un
-                        seul arbre supplémentaire.</li>
-                    <li><strong>L'innovation énergétique :</strong> L'énergie solaire pourrait répondre à 55 % de la
-                        demande en électricité d'ici 2050. Des projets pionniers envisagent l'installation de panneaux
-                        solaires flottants directement sur les immenses barrages hydroélectriques existants (comme
-                        Balbina ou Tucuruí).</li>
-                    <li><strong>La réorientation des flux financiers :</strong> Il s'agit de conditionner les crédits
-                        bancaires agricoles au respect strict des normes environnementales et de soutenir massivement
-                        les "écopreneurs" locaux soutenus par des réseaux comme l'<em>Amazon Sacred Headwaters
-                            Alliance</em>.</li>
-                </ol>
+                <img src="../images/bignews/34428770364_16cd2aafd2_b.jpg"
+                    alt="Description de l'image 2 (Risque écologique)" class="article-inline-image">
 
-                <img src="images/2eme/Depositphotos_149660822_XL-scaled-e1663616709841.jpg"
-                    alt="Description de l'image 2 (Bioéconomie, récolte de noix, ou panneaux solaires)"
-                    class="article-inline-image">
+                <h2>Des règles provisoires strictes</h2>
+                <p>Dans l'attente d'une loi, la Cour a établi des conditions drastiques si l'exploitation devait être
+                    validée. L'activité minière serait limitée à seulement 1 % du territoire. De plus, elle
+                    nécessiterait des études d'impact, l'approbation du Congrès et une consultation préalable des
+                    communautés affectées, conformément à la Convention 169 de l'OIT. Une partie des bénéfices devrait
+                    également être partagée avec les communautés pour des projets d'intérêt collectif.</p>
 
-                <p>Alors que la région souffre de sécheresses historiques ayant récemment isolé des villes comme Manaus,
-                    la démonstration est faite : sauver l'Amazonie n'est plus seulement un impératif moral ou
-                    écologique, c'est la stratégie économique la plus rationnelle et rentable pour l'avenir de
-                    l'Amérique du Sud.</p>
+                <h2>Un dangereux précédent écologique ?</h2>
+                <p>Malgré ces garde-fous, la décision suscite de vives inquiétudes. Le ministère brésilien des Peuples
+                    indigènes (MPI) a averti que la présence de peuples en isolement volontaire dans la région rend
+                    cette activity susceptible d'entraîner de graves violations des droits humains. De son côté,
+                    l'Instituto Socioambiental (ISA) craint que cela n'accélère la pression sur le Congrès et n'ouvre la
+                    porte à de multiples demandes d'exploration.</p>
 
-                <div style="text-align: center; margin-top: 3rem;">
-                    <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
+                <p>Les experts rappellent enfin que les inspections environnementales sur le terrain sont rares au
+                    Brésil. Il est fréquent que des opérations minières clandestines utilisent des permis légaux pour
+                    blanchir des minerais extraits illégalement dans des zones protégées.</p>
+
+                <div style="text-align: center;">
+                    <a href="../index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
                 </div>
-
             </div>
 
         </div>
