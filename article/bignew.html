@@ -521,7 +521,7 @@
                     avancés.</p>
 
                 <div class="elegant-divider reveal"><i class="fas fa-leaf"></i></div>
-                
+
                 <h2>Pourquoi cette décision inquiète autant</h2>
                 <p>Malgré ces garde-fous, la décision a immédiatement suscité de fortes inquiétudes. Le ministère
                     brésilien des Peuples indigènes a rappelé que la région concernée abrite aussi des peuples en
@@ -572,7 +572,9 @@
 
             // --- Animation au Défilement (Reveal on Scroll) ---
             const reveals = document.querySelectorAll('.reveal');
-            const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+
+            // 1. On baisse le threshold à 0.05 pour que le grand bloc s'active plus facilement
+            const revealOptions = { threshold: 0.05, rootMargin: "0px 0px 50px 0px" };
 
             const revealOnScroll = new IntersectionObserver(function (entries, observer) {
                 entries.forEach(entry => {
@@ -585,15 +587,26 @@
 
             reveals.forEach(reveal => revealOnScroll.observe(reveal));
 
-            // Forcer l'apparition des éléments déjà visibles
-            setTimeout(() => {
+            // --- 2. CORRECTION BUG AFFICHAGE : Fonction pour forcer l'apparition ---
+            function forceReveal() {
                 reveals.forEach(reveal => {
                     const rect = reveal.getBoundingClientRect();
-                    if (rect.top < window.innerHeight) {
+                    // On donne une grosse marge (+200px) pour être sûr que ça s'affiche
+                    if (rect.top < window.innerHeight + 200) {
                         reveal.classList.add('active');
                     }
                 });
-            }, 100);
+            }
+
+            // 3. On lance la fonction immédiatement
+            forceReveal();
+
+            // 4. On la relance 200ms et 500ms plus tard (le temps que les images chargent)
+            setTimeout(forceReveal, 200);
+            setTimeout(forceReveal, 500);
+
+            // 5. Sécurité anti-bug (très utile si l'utilisateur utilise la flèche "Retour" de son navigateur)
+            window.addEventListener('pageshow', forceReveal);
         });
     </script>
 </body>
