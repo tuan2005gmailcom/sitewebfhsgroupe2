@@ -1,0 +1,808 @@
+<!DOCTYPE HTML>
+<html lang="fr" style="scroll-behavior: smooth;">
+
+<head>
+    <title>Actualité - La déforestation, une situation urgente</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        /* ===== PALETTE DE COULEURS ET VARIABLES ===== */
+        :root {
+            --bg-beige: #f6f5f0;
+            --green-dark: #12281b;
+            --green-mid: #1d3f2a;
+            --green-light: #e0e8e3;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --text-dark: #333333;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
+        /* ===== BASE ===== */
+        body {
+            background-color: var(--bg-beige);
+            font-family: var(--font-sans);
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* ===== LUEURS D'AMBIANCE EN FOND ===== */
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+            filter: blur(90px);
+        }
+
+        body::before {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+        }
+
+        body::after {
+            bottom: 10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(18, 40, 27, 0.06) 0%, transparent 70%);
+        }
+
+        /* ===== ANIMATION D'APPARITION (REVEAL) ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== CORRECTIF BUGS HTML5 UP ===== */
+        #navPanel,
+        #titleBar,
+        .navPanelToggle,
+        a[href="#navPanel"],
+        a[href="#menu"] {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
+        /* ===== EN-TÊTE ===== */
+        #header {
+            text-align: center;
+            padding: 2.5rem 0 1.5rem 0;
+            background: transparent;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            color: var(--green-dark);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        /* ===== NAVIGATION (STICKY + VERRE DÉPOLI) ===== */
+        #nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.2rem 2rem;
+            background: rgba(246, 245, 240, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            flex-wrap: wrap;
+            transition: all 0.3s ease;
+        }
+
+        #nav .links {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav .links li {
+            position: relative;
+        }
+
+        #nav .links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+        }
+
+        #nav .links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        #nav .active a {
+            color: var(--gold);
+        }
+
+        #nav .active a::after,
+        #nav .links a:hover::after {
+            width: 100%;
+        }
+
+        #nav .links a:hover {
+            color: var(--gold);
+        }
+
+        #nav .icons {
+            list-style: none;
+            display: flex;
+            gap: 1.2rem;
+            margin: 0 0 0 3rem;
+            padding: 0;
+        }
+
+        #nav .icons a {
+            color: var(--green-dark);
+            font-size: 1.1rem;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+        #nav .icons a:hover {
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .mobile-toggle:hover {
+            color: var(--gold);
+        }
+
+        /* ===== HERO ARTICLE ===== */
+        .article-hero {
+            position: relative;
+            text-align: center;
+            padding: 10rem 2rem 12rem 2rem;
+        }
+
+        .article-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            z-index: -2;
+        }
+
+        .article-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(18, 40, 27, 0.7), rgba(18, 40, 27, 0.98));
+            z-index: -1;
+        }
+
+        .article-title-icon {
+            display: block;
+            margin: 0 auto 1.5rem auto;
+            max-width: 100px;
+            height: auto;
+        }
+
+        .article-meta {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            backdrop-filter: blur(8px);
+            color: var(--gold-light);
+            border-radius: 30px;
+            padding: 8px 25px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-hero h1 {
+            font-family: var(--font-serif);
+            color: white;
+            font-size: 4rem;
+            line-height: 1.2;
+            margin: 0 auto;
+            max-width: 900px;
+            text-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        /* ===== CONTENU DE L'ARTICLE (MAGAZINE STYLE) ===== */
+        .article-container {
+            max-width: 900px;
+            margin: -6rem auto 6rem auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 5rem 6rem;
+            border-radius: 24px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 10;
+        }
+
+        .dropcap {
+            float: left;
+            font-family: var(--font-serif);
+            font-size: 5rem;
+            line-height: 0.8;
+            color: var(--gold);
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .article-container p {
+            font-size: 1.15rem;
+            color: #444;
+            line-height: 1.9;
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+
+        .article-container h2 {
+            font-family: var(--font-serif);
+            color: var(--green-dark);
+            font-size: 2.2rem;
+            margin: 3.5rem 0 1.5rem 0;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 0.5rem;
+        }
+
+        /* EFFET DE LÉVITATION SUR LES IMAGES */
+        .article-inline-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            margin: 2rem 0;
+            display: block;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .article-inline-image:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 40px rgba(18, 40, 27, 0.15);
+        }
+
+        .blockquote-gold {
+            border-left: 5px solid var(--gold);
+            background: linear-gradient(to right, rgba(212, 175, 55, 0.1), transparent);
+            padding: 2.5rem;
+            border-radius: 0 20px 20px 0;
+            margin: 3.5rem 0;
+            font-style: italic;
+            color: var(--green-dark);
+            font-size: 1.4rem;
+            font-family: var(--font-serif);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.03);
+        }
+
+        /* SURLIGNAGE STYLE MAGAZINE */
+        .highlight-gold {
+            background: linear-gradient(120deg, rgba(212, 175, 55, 0.4) 0%, rgba(212, 175, 55, 0.05) 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 35%;
+            background-position: 0 90%;
+            font-weight: 600;
+            color: var(--green-dark);
+            transition: background-size 0.3s ease;
+            padding: 0 4px;
+        }
+
+        .highlight-gold:hover {
+            background-size: 100% 100%;
+        }
+
+        /* SÉPARATEUR ÉLÉGANT */
+        .elegant-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 4rem 0;
+            color: var(--gold);
+            opacity: 0.7;
+            font-size: 1.5rem;
+        }
+
+        .elegant-divider::before,
+        .elegant-divider::after {
+            content: '';
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            flex: 1;
+            margin: 0 20px;
+            opacity: 0.5;
+        }
+
+        /* GRILLE DE STATISTIQUES */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-box {
+            background: var(--bg-beige);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-box::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.45) 50%, transparent 100%);
+            transform: translateX(-120%);
+            transition: transform 0.7s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.1);
+        }
+
+        .stat-box:hover::before {
+            transform: translateX(120%);
+        }
+
+        .stat-number {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            color: var(--gold);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--green-dark);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* STYLE DU BOUTON RETOUR */
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 1rem 2.5rem;
+            background: var(--bg-beige);
+            color: var(--green-dark);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background: var(--gold);
+            color: white;
+            border-color: var(--gold);
+            transform: translateX(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        /* ===== FOOTER ===== */
+        #footer {
+            background: white;
+            padding: 4rem 20px;
+            text-align: center;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-content h3 {
+            font-family: var(--font-serif);
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .footer-content p {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .footer-icons {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .footer-icons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--bg-beige);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            color: var(--green-dark);
+            transition: all 0.3s;
+            font-size: 1.3rem;
+        }
+
+        .footer-icons a:hover {
+            background: var(--gold);
+            color: white;
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        #copyright {
+            text-align: center;
+            padding: 2rem 20px;
+            color: #888;
+            font-size: 0.9rem;
+            background: #fbfbfb;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media screen and (max-width: 900px) {
+            .article-container {
+                padding: 3rem 2rem;
+                margin-top: -3rem;
+            }
+
+            .article-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .blockquote-gold {
+                padding: 1.5rem;
+                font-size: 1.1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            #nav {
+                justify-content: space-between;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            #nav .links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                padding: 1rem 0;
+                gap: 1.5rem;
+            }
+
+            #nav .links.active {
+                display: flex;
+            }
+
+            #nav .icons {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <header id="header">
+            <a href="index.html" class="logo">Amazonie</a>
+        </header>
+
+        <nav id="nav">
+            <button class="mobile-toggle" id="mobile-toggle-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="links" id="nav-links">
+                <li><a href="index.html">ACCUEIL</a></li>
+                <li><a href="generic.html">Contexte</a></li>
+                <li><a href="elements.html">Podcast</a></li>
+                <li><a href="apropos.html">À propos</a></li>
+                <li><a href="bibliographie.html">Bibliographie</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <ul class="icons">
+                <li><a href="https://www.facebook.com/ISEN.Ouest/" target="_blank" rel="noopener noreferrer"><i
+                            class="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://www.instagram.com/isenbrest/" target="_blank" rel="noopener noreferrer"><i
+                            class="fab fa-instagram"></i></a></li>
+                <li><a href="https://www.linkedin.com/company/isen-yncrea-ouest/" target="_blank"
+                        rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></li>
+            </ul>
+        </nav>
+
+        <div id="main">
+
+            <section class="article-hero reveal">
+                <img src="" alt="" class="article-title-icon">
+
+                <div class="article-meta">Grand format — Amazonie en alerte</div>
+                <h1>La déforestation en Amazonie : une urgence qui dépasse la forêt</h1>
+            </section>
+
+            <div class="article-container reveal">
+
+                <div style="text-align: left;">
+                    <a href="../index.html" class="btn-back" style="margin-top: 0; margin-bottom: 2.5rem;"><i
+                            class="fas fa-arrow-left"></i> Retour à l'accueil</a>
+                </div>
+
+                <p><span class="dropcap">L</span>a déforestation en Amazonie ne se résume pas à une disparition
+                    progressive d'arbres sur une carte. Elle désorganise un immense équilibre écologique, climatique et
+                    humain. Lorsque la forêt recule, ce sont aussi les cycles de pluie, la biodiversité, les sols, les
+                    rivières et les conditions de vie de populations entières qui se fragilisent. Pour mesurer la
+                    gravité de cette crise, il faut comprendre qu'elle s'inscrit dans une histoire longue, mais qu'elle
+                    a désormais atteint une échelle qui en fait l'une des urgences majeures de notre époque.</p>
+
+                <div class="elegant-divider reveal"><i class="fas fa-leaf"></i></div>
+
+                <h2 class="reveal">Aux origines de la destruction : du bois brésilien au bétail</h2>
+                <p class="reveal">La destruction de la forêt amazonienne n'est pas née d'un seul événement brutal. Elle
+                    s'est construite par étapes, au rythme des logiques d'exploitation imposées au territoire. Dès le
+                    XVIe siècle, les navigateurs portugais s'intéressent au <span class="highlight-gold">bois brésilien
+                        (Pau-Brasil)</span>, recherché en Europe pour la teinture des textiles. Cette première phase
+                    annonce déjà une relation extractive à la forêt : on prélève, on transforme, on exporte, sans
+                    considérer l'équilibre de l'écosystème.</p>
+
+                <p class="reveal">Au XIXe siècle, l'extension des plantations de caoutchouc, de café et de canne à sucre
+                    accentue encore cette transformation. Puis, à la fin du XXe siècle, un tournant décisif s'impose :
+                    la progression de <strong>l'élevage bovin à grande échelle</strong>. À partir de là, la
+                    déforestation ne relève plus seulement d'une exploitation ponctuelle, mais d'une conversion durable
+                    des terres. La forêt cesse d'être un milieu à préserver et devient, dans une logique productiviste,
+                    une surface à conquérir.</p>
+
+                <img src="../images/7eme/DETER-aug1-jan31-2026-1200x675.jpg" alt="Déforestation et extension des activités humaines" class="article-inline-image reveal">
+
+                <div class="elegant-divider reveal"><i class="fas fa-leaf"></i></div>
+
+                <h2 class="reveal">Un état des lieux alarmant : le spectre du point de bascule</h2>
+                <p class="reveal">Le constat dressé par l'Institut des Géosciences de l'Environnement est sans ambiguïté
+                    : <span class="highlight-gold">17 % de la forêt amazonienne originelle a déjà été déboisée</span>.
+                    Ce chiffre, à lui seul, dit l'ampleur du basculement. Mais il faut aller plus loin : la
+                    déforestation n'est pas un phénomène diffus et incompréhensible. Ses moteurs sont connus, documentés
+                    et profondément liés à des choix économiques et territoriaux.</p>
+
+                <div class="stats-grid reveal">
+                    <div class="stat-box">
+                        <span class="stat-number">80%</span>
+                        <span class="stat-label">Agriculture & Élevage bovin</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">20%</span>
+                        <span class="stat-label">Exploitation forestière & Minière</span>
+                    </div>
+                </div>
+
+                <p class="reveal">Dans le détail, l'agriculture intensive représente 40 % de la perte forestière,
+                    l'élevage bovin 40 %, l'exploitation forestière commerciale 13 %, tandis que l'activité minière et
+                    d'autres infrastructures comptent pour les 7 % restants. Autrement dit, la forêt disparaît moins par
+                    accident que sous la pression d'un modèle d'occupation de l'espace qui privilégie le rendement
+                    immédiat au détriment du long terme.</p>
+
+                <blockquote class="blockquote-gold reveal">
+                    « Si un seuil critique de destruction est franchi, la forêt tropicale humide pourrait perdre sa
+                    capacité à se maintenir et évoluer vers un biome de type savane. »
+                </blockquote>
+
+                <p class="reveal">C'est là qu'intervient la notion de <span class="highlight-gold">point de
+                        bascule</span>, ou <em>tipping point</em>. L'idée est simple, mais redoutable : au-delà d'un
+                    certain seuil, la forêt pourrait ne plus être capable de générer l'humidité nécessaire à sa propre
+                    stabilité. Si ce mécanisme s'effondre, le processus de savanisation deviendrait difficile à enrayer,
+                    avec des conséquences potentiellement irréversibles à l'échelle régionale.</p>
+
+                <div class="elegant-divider reveal"><i class="fas fa-leaf"></i></div>
+
+                <h2 class="reveal">Comment la science mesure un déséquilibre aussi vaste</h2>
+                <p class="reveal">Face à un phénomène aussi vaste, la science ne peut pas se contenter d'observer la
+                    disparition des arbres depuis le sol ou par satellite. Les chercheurs étudient aussi la manière dont
+                    cette perte forestière modifie l'air, l'humidité, les températures et les circulations
+                    atmosphériques. Les travaux relayés par l'IGE montrent que l'analyse repose sur plusieurs approches
+                    complémentaires :</p>
+
+                <ol style="color: #444; font-size: 1.15rem; line-height: 1.9; margin-bottom: 2rem;" class="reveal">
+                    <li style="margin-bottom: 10px;"><strong>Comparer le terrain :</strong> les chercheurs mesurent des
+                        variables atmosphériques entre des zones encore boisées et des zones récemment défrichées afin
+                        d'identifier les changements microclimatiques immédiats.</li>
+                    <li style="margin-bottom: 10px;"><strong>Tester des cas simplifiés :</strong> ils résolvent les
+                        équations du mouvement atmosphérique dans des situations théoriques pour isoler certains
+                        mécanismes et mieux comprendre les effets directs de la déforestation.</li>
+                    <li style="margin-bottom: 10px;"><strong>Construire des scénarios réalistes :</strong> grâce à la
+                        modélisation numérique, ils simulent l'impact de la déforestation à différentes échelles, car
+                        les perturbations ne sont pas les mêmes selon l'étendue des surfaces touchées.</li>
+                </ol>
+
+                <img src="../images/7eme/070815-cnre-kirstensilvius.jpeg" alt="Recherche scientifique sur le climat et la déforestation"
+                    class="article-inline-image reveal">
+
+                <div class="elegant-divider reveal"><i class="fas fa-leaf"></i></div>
+
+                <h2 class="reveal">Des répercussions bien au-delà de la forêt</h2>
+                <p class="reveal">L'un des apports majeurs de ces recherches est de montrer que les conséquences de la
+                    déforestation ne s'arrêtent pas à la lisière des zones abattues. La forêt amazonienne participe
+                    activement à la circulation de l'humidité à travers le continent. Lorsqu'elle est fragmentée ou
+                    détruite, c'est tout un système atmosphérique qui se dérègle, du niveau local jusqu'à l'échelle
+                    continentale.</p>
+
+                <p class="reveal">Concrètement, la perte de couverture forestière dans l'Amazonie brésilienne perturbe
+                    le transport de l'humidité vers des régions éloignées. Cette rupture peut réduire les précipitations
+                    nocturnes au-dessus de l'est des Andes boliviennes et péruviennes. Une telle baisse des pluies
+                    fragilise les vallées andines, les forêts montagnardes humides et les espèces endémiques qui
+                    dépendent de ces conditions très spécifiques.</p>
+
+                <p class="reveal">Plus inquiétant encore, cette perturbation du cycle de l'eau peut affecter <span
+                        class="highlight-gold">le bilan de masse des glaciers des Andes tropicales</span>. En modifiant
+                    l'humidité de l'air, la déforestation amazonienne agit donc indirectement sur des milieux situés à
+                    des milliers de kilomètres. Elle révèle une réalité essentielle : l'écosystème sud-américain forme
+                    un ensemble interdépendant, et l'Amazonie en constitue l'un des centres vitaux.</p>
+
+                <p class="reveal">Derrière chaque hectare détruit, ce n'est donc pas seulement un paysage qui disparaît,
+                    mais une fonction essentielle du vivant qui s'affaiblit. Parler de déforestation amazonienne, c'est
+                    parler d'un enjeu écologique majeur, mais aussi d'un choix de société : continuer à traiter la forêt
+                    comme une réserve à exploiter, ou reconnaître enfin qu'elle conditionne une partie de notre avenir
+                    commun.</p>
+
+                <div style="text-align: center; margin-top: 4rem;" class="reveal">
+                    <a href="../index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <footer id="footer">
+            <div class="footer-content">
+                <h3>Rejoignez la communauté</h3>
+                <p>Suivez l'avancée du projet documentaire Amazonie 2026 sur nos différents réseaux sociaux.</p>
+                <ul class="footer-icons">
+                    <li><a href="https://www.facebook.com/ISEN.Ouest/" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/isenbrest/" target="_blank"><i
+                                class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.linkedin.com/company/isen-yncrea-ouest/" target="_blank"><i
+                                class="fab fa-linkedin-in"></i></a></li>
+                </ul>
+            </div>
+        </footer>
+
+        <div id="copyright">
+            &copy; ISEN 2026 | Projet Documentaire Amazonie
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // --- Menu Mobile ---
+            const mobileToggleBtn = document.getElementById("mobile-toggle-btn");
+            const navLinks = document.getElementById("nav-links");
+
+            if (mobileToggleBtn) {
+                mobileToggleBtn.addEventListener("click", function () {
+                    navLinks.classList.toggle("active");
+                });
+            }
+
+            // --- Animation au Défilement (Reveal on Scroll) ---
+            const reveals = document.querySelectorAll('.reveal');
+
+            const revealOptions = { threshold: 0.05, rootMargin: "0px 0px 50px 0px" };
+
+            const revealOnScroll = new IntersectionObserver(function (entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            reveals.forEach(reveal => revealOnScroll.observe(reveal));
+
+            // --- FORCER L'APPARITION (ANTI BUG ECRAN VIDE) ---
+            function forceReveal() {
+                reveals.forEach(reveal => {
+                    const rect = reveal.getBoundingClientRect();
+                    if (rect.top < window.innerHeight + 200) {
+                        reveal.classList.add('active');
+                    }
+                });
+            }
+
+            forceReveal();
+            setTimeout(forceReveal, 200);
+            setTimeout(forceReveal, 500);
+
+            window.addEventListener('pageshow', forceReveal);
+        });
+    </script>
+</body>
+
+</html>

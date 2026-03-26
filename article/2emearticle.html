@@ -77,6 +77,27 @@
             letter-spacing: -1px;
         }
 
+        /* SÉPARATEUR ÉLÉGANT */
+        .elegant-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 4rem 0;
+            color: var(--gold);
+            opacity: 0.7;
+            font-size: 1.5rem;
+        }
+
+        .elegant-divider::before,
+        .elegant-divider::after {
+            content: '';
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            flex: 1;
+            margin: 0 20px;
+            opacity: 0.5;
+        }
+
         /* ===== NAVIGATION (STICKY + VERRE DÉPOLI) ===== */
         #nav {
             position: sticky;
@@ -491,17 +512,20 @@
                     59 millions d'hectares supplémentaires d'ici 2050, transformant le plus grand puits de carbone du
                     monde en une véritable bombe climatique.</p>
 
+                <div class="elegant-divider reveal"><i class="fas fa-leaf"></i></div>
+
                 <h2>L'échec économique du modèle prédateur</h2>
                 <p>Malgré les milliards générés par l'agrobusiness (soja, élevage bovin) dans des États comme le Mato
                     Grosso ou le Pará, la richesse ruisselle peu. Les statistiques montrent un paradoxe accablant :
                     l'exploitation intensive ne se traduit pas par un développement local. L'Amazonie abrite aujourd'hui
                     <strong>les populations les plus pauvres et marginalisées du Brésil</strong>, avec un Indice de
                     Développement Humain (IDH) systématiquement inférieur à la moyenne nationale dans les municipalités
-                    déboisées.</p>
+                    déboisées.
+                </p>
 
                 <img src="../images/2eme/Capture.png" alt="Description de l'image 1 (Impact humain ou terres dégradées)"
                     class="article-inline-image">
-
+                <div class="elegant-divider reveal"><i class="fas fa-leaf"></i></div>
                 <h2>Un changement de paradigme à 40 milliards de réais</h2>
                 <p>Un rapport décisif intitulé <em>"Nouvelle économie pour l'Amazonie brésilienne"</em>, élaboré par le
                     World Resources Institute (WRI) en partenariat avec plus de 70 chercheurs, vient pulvériser
@@ -515,14 +539,15 @@
                     du Brésil. Ce coût est deux fois inférieur aux pertes financières colossales (sécheresses,
                     effondrement agricole) causées par l'inaction. »
                 </blockquote>
-
+                <div class="elegant-divider reveal"><i class="fas fa-leaf"></i></div>
                 <h2>Quatre leviers industriels et technologiques</h2>
                 <p>Pour accomplir cette métamorphose, le rapport identifie quatre chantiers d'envergure nationale :</p>
                 <ol style="color: #444; font-size: 1.15rem; line-height: 1.9; margin-bottom: 2rem;">
                     <li><strong>L'explosion de la bioéconomie :</strong> Actuellement évaluée à 2,5 milliards de
                         dollars, l'exploitation durable de 13 produits forestiers natifs (açaï, noix du Brésil, huile de
                         pracaxi ou de copaïba pour l'industrie cosmétique et pharmaceutique) pourrait atteindre
-                        <strong>8 milliards de dollars</strong> d'ici 2050.</li>
+                        <strong>8 milliards de dollars</strong> d'ici 2050.
+                    </li>
                     <li><strong>La restauration des pâturages :</strong> Le Brésil compte plus de 50 millions d'hectares
                         de terres dégradées. La mise en place de Systèmes Agroforestiers (SAF) permet de combiner arbres
                         natifs et agriculture commerciale, multipliant la rentabilité au mètre carré sans abattre un
@@ -612,7 +637,8 @@
                 });
             }, 100);
         });
-    </script><script>
+    </script>
+    <script>
         document.addEventListener("DOMContentLoaded", function () {
             // --- Menu Mobile ---
             const mobileToggleBtn = document.getElementById("mobile-toggle-btn");
@@ -626,7 +652,7 @@
 
             // --- Animation au Défilement (Reveal on Scroll) ---
             const reveals = document.querySelectorAll('.reveal');
-            
+
             // J'ai baissé le threshold à 0.05 pour que les très grands blocs s'activent plus vite
             const revealOptions = { threshold: 0.05, rootMargin: "0px 0px 50px 0px" };
 
@@ -654,7 +680,7 @@
 
             // On lance la fonction immédiatement
             forceReveal();
-            
+
             // On la relance 200ms et 500ms plus tard au cas où une image mettrait du temps à charger
             setTimeout(forceReveal, 200);
             setTimeout(forceReveal, 500);
