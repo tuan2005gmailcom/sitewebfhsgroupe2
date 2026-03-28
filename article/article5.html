@@ -1,0 +1,834 @@
+<!DOCTYPE HTML>
+<html lang="fr" style="scroll-behavior: smooth;">
+
+<head>
+    <title>Actualité - La rentabilité de la conservation</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        /* ===== PALETTE DE COULEURS ET VARIABLES ===== */
+        :root {
+            --bg-beige: #f6f5f0;
+            --green-dark: #12281b;
+            --green-mid: #1d3f2a;
+            --green-light: #e0e8e3;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --text-dark: #333333;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
+        /* ===== BASE ===== */
+        body {
+            background-color: var(--bg-beige);
+            font-family: var(--font-sans);
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* ===== ANIMATION D'APPARITION (REVEAL) ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== CORRECTIF BUGS HTML5 UP ===== */
+        #navPanel,
+        #titleBar,
+        .navPanelToggle,
+        a[href="#navPanel"],
+        a[href="#menu"] {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
+        /* ===== EN-TÊTE ===== */
+        #header {
+            text-align: center;
+            padding: 2.5rem 0 1.5rem 0;
+            background: var(--bg-beige);
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            color: var(--green-dark);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        /* SÉPARATEUR ÉLÉGANT */
+        .elegant-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 4rem 0;
+            color: var(--gold);
+            opacity: 0.7;
+            font-size: 1.5rem;
+        }
+
+        .elegant-divider::before,
+        .elegant-divider::after {
+            content: '';
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            flex: 1;
+            margin: 0 20px;
+            opacity: 0.5;
+        }
+
+/* ===== ARTICLE 5 PREMIUM DESIGN ===== */
+.article-container {
+    padding: 3rem 0;
+    background: #f4f7f9;
+    color: #1c1c1c;
+    font-family: 'Inter', sans-serif;
+}
+
+.article-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    color: #0d3b66;
+    margin-bottom: 0.5rem;
+}
+
+.article-header .meta {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.article-image {
+    width: 100%;
+    border-radius: 16px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* ===== HIGHLIGHT SECTIONS ===== */
+.highlight-section {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: linear-gradient(120deg, #d0e6f6, #ffffff);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+.highlight-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    color: #0d3b66;
+    margin-bottom: 1rem;
+}
+
+.highlight-section i {
+    color: #ff6f61;
+    margin-right: 0.5rem;
+}
+
+/* ===== IMAGE CARDS ===== */
+.image-card {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.image-card img {
+    max-width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.image-card img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+.image-card .caption {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 0.5rem;
+}
+
+/* ===== STATS GRID ===== */
+.stats-section {
+    margin: 4rem 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem;
+}
+
+.stat-box {
+    background: linear-gradient(145deg, #ffffff, #e2f0f9);
+    border-radius: 24px;
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ff6f61;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #0d3b66;
+}
+
+/* ===== CONCLUSION ===== */
+.conclusion {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: #fff8f2;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.conclusion .button {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.8rem 2rem;
+    background: #ff6f61;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.conclusion .button:hover {
+    background: #e85b50;
+}
+
+/* ===== RESPONSIVE ===== */
+@media screen and (max-width: 980px) {
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+@media screen and (max-width: 736px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .highlight-section {
+        padding: 1.5rem;
+    }
+}        
+
+
+/* ===== NAVIGATION (STICKY + VERRE DÉPOLI) ===== */
+        #nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.2rem 2rem;
+            background: rgba(246, 245, 240, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            flex-wrap: wrap;
+            transition: all 0.3s ease;
+        }
+
+        #nav .links {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav .links li {
+            position: relative;
+        }
+
+        #nav .links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+        }
+
+        #nav .links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        #nav .active a {
+            color: var(--gold);
+        }
+
+        #nav .active a::after,
+        #nav .links a:hover::after {
+            width: 100%;
+        }
+
+        #nav .links a:hover {
+            color: var(--gold);
+        }
+
+        #nav .icons {
+            list-style: none;
+            display: flex;
+            gap: 1.2rem;
+            margin: 0 0 0 3rem;
+            padding: 0;
+        }
+
+        #nav .icons a {
+            color: var(--green-dark);
+            font-size: 1.1rem;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+        #nav .icons a:hover {
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .mobile-toggle:hover {
+            color: var(--gold);
+        }
+
+        /* ===== HERO ARTICLE ===== */
+        .article-hero {
+            position: relative;
+            text-align: center;
+            padding: 10rem 2rem 12rem 2rem;
+        }
+
+        .article-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('../images/pic02.jpg') center/cover no-repeat;
+            z-index: -2;
+        }
+
+        .article-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(18, 40, 27, 0.7), rgba(18, 40, 27, 0.98));
+            z-index: -1;
+        }
+
+        .article-title-icon {
+            display: block;
+            margin: 0 auto 1.5rem auto;
+            max-width: 100px;
+            height: auto;
+        }
+
+        .article-meta {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            backdrop-filter: blur(8px);
+            color: var(--gold-light);
+            border-radius: 30px;
+            padding: 8px 25px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-hero h1 {
+            font-family: var(--font-serif);
+            color: white;
+            font-size: 4rem;
+            line-height: 1.2;
+            margin: 0 auto;
+            max-width: 900px;
+            text-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        /* ===== CONTENU DE L'ARTICLE (MAGAZINE STYLE) ===== */
+        .article-container {
+            max-width: 900px;
+            margin: -6rem auto 6rem auto;
+            background: white;
+            padding: 5rem 6rem;
+            border-radius: 24px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            position: relative;
+            z-index: 10;
+        }
+
+        .dropcap {
+            float: left;
+            font-family: var(--font-serif);
+            font-size: 5rem;
+            line-height: 0.8;
+            color: var(--gold);
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .article-container p {
+            font-size: 1.15rem;
+            color: #444;
+            line-height: 1.9;
+            margin-bottom: 2rem;
+        }
+
+        .article-container h2 {
+            font-family: var(--font-serif);
+            color: var(--green-dark);
+            font-size: 2.2rem;
+            margin: 3.5rem 0 1.5rem 0;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-inline-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            margin: 2rem 0;
+            display: block;
+        }
+
+        .blockquote-gold {
+            border-left: 5px solid var(--gold);
+            background: linear-gradient(to right, rgba(212, 175, 55, 0.1), transparent);
+            padding: 2.5rem;
+            border-radius: 0 20px 20px 0;
+            margin: 3.5rem 0;
+            font-style: italic;
+            color: var(--green-dark);
+            font-size: 1.4rem;
+            font-family: var(--font-serif);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.03);
+        }
+
+        /* STYLE DU BOUTON RETOUR */
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 1rem 2.5rem;
+            background: var(--bg-beige);
+            color: var(--green-dark);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background: var(--gold);
+            color: white;
+            border-color: var(--gold);
+            transform: translateX(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        /* ===== FOOTER ===== */
+        #footer {
+            background: white;
+            padding: 4rem 20px;
+            text-align: center;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-content h3 {
+            font-family: var(--font-serif);
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .footer-content p {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .footer-icons {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .footer-icons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--bg-beige);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            color: var(--green-dark);
+            transition: all 0.3s;
+            font-size: 1.3rem;
+        }
+
+        .footer-icons a:hover {
+            background: var(--gold);
+            color: white;
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        #copyright {
+            text-align: center;
+            padding: 2rem 20px;
+            color: #888;
+            font-size: 0.9rem;
+            background: #fbfbfb;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media screen and (max-width: 900px) {
+            .article-container {
+                padding: 3rem 2rem;
+                margin-top: -3rem;
+            }
+
+            .article-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .blockquote-gold {
+                padding: 1.5rem;
+                font-size: 1.1rem;
+            }
+
+            #nav {
+                justify-content: space-between;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            #nav .links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                padding: 1rem 0;
+                gap: 1.5rem;
+            }
+
+            #nav .links.active {
+                display: flex;
+            }
+
+            #nav .icons {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <header id="header">
+            <a href="index.html" class="logo">Amazonie</a>
+        </header>
+
+        <nav id="nav">
+            <button class="mobile-toggle" id="mobile-toggle-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="links" id="nav-links">
+                <li><a href="index.html">ACCUEIL</a></li>
+                <li><a href="generic.html">Contexte</a></li>
+                <li><a href="elements.html">Podcast</a></li>
+                <li><a href="apropos.html">À propos</a></li>
+                <li><a href="bibliographie.html">Bibliographie</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <ul class="icons">
+                <li><a href="https://www.facebook.com/ISEN.Ouest/" target="_blank" rel="noopener noreferrer"><i
+                            class="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://www.instagram.com/isenbrest/" target="_blank" rel="noopener noreferrer"><i
+                            class="fab fa-instagram"></i></a></li>
+                <li><a href="https://www.linkedin.com/company/isen-yncrea-ouest/" target="_blank"
+                        rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></li>
+            </ul>
+        </nav>
+
+        <main>
+    <section id="article5" class="article-container reveal">
+        <div class="container">
+            <article>
+                <!-- ARTICLE HEADER -->
+                <header class="article-header">
+                    <h1>La Technologie et la Société : Entre Progrès et Dépendance</h1>
+                    <p class="meta">
+                        <span class="date">Publié le 28 mars 2026</span> |
+                        <span class="author">Par [Ton Nom]</span>
+                    </p>
+                    <img src="images/tech-societe-hero.jpg" alt="Technologie et société" class="article-image reveal">
+                </header>
+
+                <!-- INTRODUCTION -->
+                <section class="intro reveal">
+                    <p class="dropcap">
+                        La révolution technologique transforme profondément notre manière de vivre, de travailler et de communiquer. Cependant, cette avancée rapide pose des questions cruciales : sommes-nous réellement les maîtres de la technologie, ou devenons-nous dépendants de ses innovations incessantes ?
+                    </p>
+                </section>
+
+                <!-- SECTION 1 : Innovation -->
+                <section class="highlight-section reveal">
+                    <h2><i class="fas fa-robot"></i> L'Innovation Technologique : Progrès ou Défi ?</h2>
+                    <p>
+                        Les innovations, qu’il s’agisse d’intelligence artificielle, de robotique ou de biotechnologies, offrent des opportunités sans précédent. Mais elles soulèvent également des défis éthiques et sociaux majeurs. La rapidité de leur adoption dépasse souvent notre capacité à réguler et comprendre leurs impacts.
+                    </p>
+                    <div class="image-card reveal">
+                        <img src="images/innovation-tech.jpg" alt="Innovation technologique">
+                        <p class="caption">Les technologies avancées redéfinissent notre quotidien.</p>
+                    </div>
+                </section>
+
+                <!-- SECTION 2 : Stats / Infographics -->
+                <section class="stats-section reveal">
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <span class="stat-number">85%</span>
+                            <span class="stat-label">Population connectée</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number"><i class="fas fa-mobile-alt"></i></span>
+                            <span class="stat-label">Appareils mobiles</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number"><i class="fas fa-cloud"></i></span>
+                            <span class="stat-label">Stockage cloud</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">72%</span>
+                            <span class="stat-label">Utilisateurs réseaux sociaux</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 3 : Impact social -->
+                <section class="highlight-section reveal">
+                    <h2><i class="fas fa-users"></i> Impact Social et Dépendance</h2>
+                    <p>
+                        Les réseaux sociaux, applications et plateformes numériques ont transformé nos interactions. Si elles favorisent la communication, elles peuvent aussi créer une dépendance, influencer nos comportements et polariser nos opinions. Les jeunes générations sont particulièrement sensibles à ces effets.
+                    </p>
+                    <div class="image-card right reveal">
+                        <img src="images/dependance-tech.jpg" alt="Dépendance technologique">
+                        <p class="caption">L'usage intensif des technologies peut engendrer une dépendance subtile.</p>
+                    </div>
+                </section>
+
+                <!-- SECTION 4 : Environnement -->
+                <section class="highlight-section reveal">
+                    <h2><i class="fas fa-leaf"></i> Technologie et Environnement</h2>
+                    <p>
+                        L’essor technologique a un coût écologique : consommation énergétique, obsolescence rapide et production de déchets électroniques. Néanmoins, certaines technologies permettent de réduire l’impact environnemental, comme les smart grids ou les solutions de mobilité verte.
+                    </p>
+                    <div class="image-card reveal">
+                        <img src="images/tech-ecologie.jpg" alt="Technologie écologique">
+                        <p class="caption">Des innovations technologiques pour un futur plus durable.</p>
+                    </div>
+                </section>
+
+                <!-- CONCLUSION -->
+                <section class="conclusion reveal">
+                    <p>
+                        La technologie est une épée à double tranchant : elle peut améliorer la qualité de vie, mais elle comporte également des risques de dépendance et des impacts sociaux et environnementaux. La clé réside dans un usage réfléchi et éthique, combiné à des régulations adaptées pour protéger la société et la planète.
+                    </p>
+                    <a href="articles.html" class="button">Retour aux articles</a>
+                </section>
+            </article>
+        </div>
+    </section>
+</main>
+
+
+        </footer>
+
+        <div id="copyright">
+            &copy; ISEN 2026 | Projet Documentaire Amazonie
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // --- Menu Mobile ---
+            const mobileToggleBtn = document.getElementById("mobile-toggle-btn");
+            const navLinks = document.getElementById("nav-links");
+
+            if (mobileToggleBtn) {
+                mobileToggleBtn.addEventListener("click", function () {
+                    navLinks.classList.toggle("active");
+                });
+            }
+
+            // --- Animation au Défilement (Reveal on Scroll) ---
+            const reveals = document.querySelectorAll('.reveal');
+            const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+
+            const revealOnScroll = new IntersectionObserver(function (entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            reveals.forEach(reveal => revealOnScroll.observe(reveal));
+
+            // Forcer l'apparition des éléments déjà visibles
+            setTimeout(() => {
+                reveals.forEach(reveal => {
+                    const rect = reveal.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) {
+                        reveal.classList.add('active');
+                    }
+                });
+            }, 100);
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // --- Menu Mobile ---
+            const mobileToggleBtn = document.getElementById("mobile-toggle-btn");
+            const navLinks = document.getElementById("nav-links");
+
+            if (mobileToggleBtn) {
+                mobileToggleBtn.addEventListener("click", function () {
+                    navLinks.classList.toggle("active");
+                });
+            }
+
+            // --- Animation au Défilement (Reveal on Scroll) ---
+            const reveals = document.querySelectorAll('.reveal');
+
+            // J'ai baissé le threshold à 0.05 pour que les très grands blocs s'activent plus vite
+            const revealOptions = { threshold: 0.05, rootMargin: "0px 0px 50px 0px" };
+
+            const revealOnScroll = new IntersectionObserver(function (entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            reveals.forEach(reveal => revealOnScroll.observe(reveal));
+
+            // --- CORRECTION BUG AFFICHAGE : Fonction pour forcer l'apparition ---
+            function forceReveal() {
+                reveals.forEach(reveal => {
+                    const rect = reveal.getBoundingClientRect();
+                    // On donne une grosse marge (+200px) pour être sûr que ça s'affiche
+                    if (rect.top < window.innerHeight + 200) {
+                        reveal.classList.add('active');
+                    }
+                });
+            }
+
+            // On lance la fonction immédiatement
+            forceReveal();
+
+            // On la relance 200ms et 500ms plus tard au cas où une image mettrait du temps à charger
+            setTimeout(forceReveal, 200);
+            setTimeout(forceReveal, 500);
+
+            // Sécurité anti-bug : très utile si l'utilisateur utilise le bouton "Précédent" de son navigateur
+            window.addEventListener('pageshow', forceReveal);
+        });
+    </script>
+</body>
+
+</html>
