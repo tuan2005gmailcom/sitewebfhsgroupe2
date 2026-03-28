@@ -9,13 +9,12 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
+        /* ===== PALETTE DE COULEURS ET VARIABLES ===== */
         :root {
             --bg-beige: #f6f5f0;
             --green-dark: #12281b;
@@ -28,313 +27,178 @@
             --font-sans: 'Montserrat', sans-serif;
         }
 
+        /* ===== BASE ===== */
         body {
             background-color: var(--bg-beige);
             font-family: var(--font-sans);
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             color: var(--text-dark);
             line-height: 1.8;
             overflow-x: hidden;
         }
 
-        /* Header & Navigation */
-        #header {
-            text-align: center;
-            padding: 2.5rem 0 1.5rem 0;
-            background: var(--bg-beige);
+        /* ===== LUEURS D'AMBIANCE EN FOND ===== */
+        body::before, body::after {
+            content: ''; position: fixed; border-radius: 50%; z-index: 0; pointer-events: none; filter: blur(90px);
+        }
+        body::before {
+            top: -10%; left: -10%; width: 50vw; height: 50vw;
+            background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%);
+        }
+        body::after {
+            bottom: 10%; right: -10%; width: 60vw; height: 60vw;
+            background: radial-gradient(circle, rgba(18,40,27,0.06) 0%, transparent 70%);
         }
 
-        .logo {
-            font-family: var(--font-serif);
-            font-size: 4rem;
-            color: var(--green-dark);
-            text-decoration: none;
-            font-weight: 700;
-            letter-spacing: -1px;
+        /* ===== ANIMATION D'APPARITION (REVEAL) ===== */
+        .reveal {
+            opacity: 0; transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* ===== CORRECTIF BUGS HTML5 UP ===== */
+        #navPanel, #titleBar, .navPanelToggle, a[href="#navPanel"], a[href="#menu"] {
+            display: none !important; visibility: hidden !important;
         }
 
+        /* ===== EN-TÊTE ===== */
+        #header { text-align: center; padding: 2.5rem 0 1.5rem 0; background: transparent; position: relative; z-index: 10; }
+        .logo { font-family: var(--font-serif); font-size: 4rem; color: var(--green-dark); text-decoration: none; font-weight: 700; letter-spacing: -1px; }
+
+        /* ===== NAVIGATION (STICKY + VERRE DÉPOLI) ===== */
         #nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1.2rem 2rem;
-            background: rgba(246, 245, 240, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            position: sticky; top: 0; z-index: 1000;
+            display: flex; justify-content: center; align-items: center;
+            padding: 1.2rem 2rem; background: rgba(246, 245, 240, 0.85);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
             border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-            flex-wrap: wrap;
-            transition: all 0.3s ease;
+            flex-wrap: wrap; transition: all 0.3s ease;
         }
 
-        #nav .links {
-            list-style: none;
-            display: flex;
-            gap: 2.5rem;
-            margin: 0;
-            padding: 0;
-        }
-
+        #nav .links { list-style: none; display: flex; gap: 2.5rem; margin: 0; padding: 0; }
+        #nav .links li { position: relative; }
         #nav .links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 0.5rem 0;
-            transition: color 0.3s;
+            text-decoration: none; color: var(--text-dark); font-size: 0.85rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1.5px; padding: 0.5rem 0; transition: color 0.3s;
         }
-
         #nav .links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background-color: var(--gold);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
+            content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 50%;
+            background-color: var(--gold); transition: all 0.3s ease; transform: translateX(-50%);
         }
+        #nav .active a { color: var(--gold); }
+        #nav .active a::after, #nav .links a:hover::after { width: 100%; }
+        #nav .links a:hover { color: var(--gold); }
 
-        #nav .links a:hover::after,
-        #nav .active a::after {
-            width: 100%;
-        }
+        .mobile-toggle { display: none; background: none; border: none; color: var(--green-dark); font-size: 1.8rem; cursor: pointer; transition: color 0.3s; }
+        .mobile-toggle:hover { color: var(--gold); }
 
-        #nav .links a:hover {
-            color: var(--gold);
-        }
-
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--green-dark);
-            font-size: 1.8rem;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .mobile-toggle:hover {
-            color: var(--gold);
-        }
-
-        /* Hero article */
+        /* ===== HERO ARTICLE ===== */
         .article-hero {
-            position: relative;
-            text-align: center;
-            padding: 10rem 2rem 12rem 2rem;
-            background: url('../images/pic02.jpg') center/cover no-repeat;
+            position: relative; text-align: center; padding: 10rem 2rem 12rem 2rem;
         }
-
+        .article-hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            z-index: -2;
+        }
         .article-hero::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background: linear-gradient(to bottom, rgba(18, 40, 27, 0.7), rgba(18, 40, 27, 0.98));
             z-index: -1;
         }
 
         .article-meta {
-            background: rgba(212, 175, 55, 0.15);
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            backdrop-filter: blur(8px);
-            color: var(--gold-light);
-            border-radius: 30px;
-            padding: 8px 25px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 1.5rem;
+            background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.4); backdrop-filter: blur(8px);
+            color: var(--gold-light); border-radius: 30px; padding: 8px 25px; font-size: 0.8rem;
+            text-transform: uppercase; letter-spacing: 3px; font-weight: 600; display: inline-block; margin-bottom: 1.5rem;
         }
 
-        .article-hero h1 {
-            font-family: var(--font-serif);
-            color: white;
-            font-size: 4rem;
-            line-height: 1.2;
-            margin: 0 auto;
-            max-width: 900px;
-            text-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-        }
+        .article-hero h1 { font-family: var(--font-serif); color: white; font-size: 4rem; line-height: 1.2; margin: 0 auto; max-width: 900px; text-shadow: 0 15px 40px rgba(0,0,0,0.6); }
 
-        /* Article content magazine style */
+        /* ===== CONTENU DE L'ARTICLE ===== */
         .article-container {
-            max-width: 900px;
-            margin: -6rem auto 6rem auto;
-            background: white;
-            padding: 5rem 6rem;
-            border-radius: 24px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(0, 0, 0, 0.03);
-            position: relative;
-            z-index: 10;
+            max-width: 900px; margin: -6rem auto 6rem auto; background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px); padding: 5rem 6rem; border-radius: 24px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.08); border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative; z-index: 10;
         }
 
         .dropcap {
-            float: left;
-            font-family: var(--font-serif);
-            font-size: 5rem;
-            line-height: 0.8;
-            color: var(--gold);
-            margin-right: 15px;
-            margin-top: 5px;
+            float: left; font-family: var(--font-serif); font-size: 5rem; line-height: 0.8;
+            color: var(--gold); margin-right: 15px; margin-top: 5px;
         }
 
-        .article-container p {
-            font-size: 1.15rem;
-            color: #444;
-            line-height: 1.9;
-            margin-bottom: 2rem;
-        }
-
-        .article-container h2 {
-            font-family: var(--font-serif);
-            color: var(--green-dark);
-            font-size: 2.2rem;
-            margin: 3.5rem 0 1.5rem 0;
-            border-bottom: 2px solid rgba(212, 175, 55, 0.2);
-            padding-bottom: 0.5rem;
-        }
-
+        .article-container p { font-size: 1.15rem; color: #444; line-height: 1.9; margin-bottom: 2rem; }
+        .article-container h2 { font-family: var(--font-serif); color: var(--green-dark); font-size: 2.2rem; margin: 3.5rem 0 1.5rem 0; border-bottom: 2px solid rgba(212, 175, 55, 0.2); padding-bottom: 0.5rem; }
+        
+        /* EFFET DE LÉVITATION SUR LES IMAGES */
         .article-inline-image {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-            margin: 2rem 0;
-            display: block;
+            width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            margin: 2rem 0; display: block; transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
+        .article-inline-image:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 25px 40px rgba(18, 40, 27, 0.15); }
 
-        .blockquote-gold {
-            border-left: 5px solid var(--gold);
-            background: linear-gradient(to right, rgba(212, 175, 55, 0.1), transparent);
-            padding: 2.5rem;
-            border-radius: 0 20px 20px 0;
-            margin: 3.5rem 0;
-            font-style: italic;
-            color: var(--green-dark);
-            font-size: 1.4rem;
-            font-family: var(--font-serif);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.03);
+        /* SURLIGNAGE MAGAZINE */
+        .highlight-gold {
+            background: linear-gradient(120deg, rgba(212, 175, 55, 0.4) 0%, rgba(212, 175, 55, 0.05) 100%);
+            background-repeat: no-repeat; background-size: 100% 35%; background-position: 0 90%;
+            font-weight: 600; color: var(--green-dark); transition: background-size 0.3s ease; padding: 0 4px;
         }
+        .highlight-gold:hover { background-size: 100% 100%; }
 
+        /* SÉPARATEUR ÉLÉGANT */
+        .elegant-divider { display: flex; align-items: center; justify-content: center; margin: 4rem 0; color: var(--gold); opacity: 0.7; font-size: 1.5rem; }
+        .elegant-divider::before, .elegant-divider::after { content: ''; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); flex: 1; margin: 0 20px; opacity: 0.5; }
+
+        /* STYLE DU BOUTON RETOUR */
         .btn-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 1rem 2.5rem;
-            background: var(--bg-beige);
-            color: var(--green-dark);
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border-radius: 30px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            display: inline-flex; align-items: center; gap: 12px; padding: 1rem 2.5rem;
+            background: var(--bg-beige); color: var(--green-dark); text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;
+            border-radius: 30px; border: 1px solid rgba(0,0,0,0.1); transition: all 0.3s ease;
+        }
+        .btn-back:hover { background: var(--gold); color: white; border-color: var(--gold); transform: translateX(-5px); box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3); }
+
+        /* ===== GALERIE INTÉGRÉE ===== */
+        .gallery-section { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.05); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .gallery-item {
+            overflow: hidden; border-radius: 16px; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+            background: var(--bg-beige); transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid rgba(0,0,0,0.03);
+        }
+        .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 25px 50px rgba(212, 175, 55, 0.15); }
+        .gallery-image {
+            width: 100%; height: 200px; object-fit: cover; display: block;
+        }
+        .gallery-caption {
+            padding: 1rem 1.2rem; font-size: 0.95rem; color: var(--green-dark);
+            font-family: var(--font-sans); text-align: center; margin: 0; font-weight: 500;
         }
 
-        .btn-back:hover {
-            background: var(--gold);
-            color: white;
-            border-color: var(--gold);
-            transform: translateX(-5px);
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
-        }
+        /* ===== FOOTER ===== */
+        #footer { background: white; padding: 4rem 20px; text-align: center; border-top: 1px solid rgba(0,0,0,0.05); position: relative; z-index: 10; }
+        .footer-icons { list-style: none; padding: 0; margin: 1.5rem 0 0 0; display: flex; justify-content: center; gap: 1.5rem; }
+        .footer-icons a { display: flex; justify-content: center; align-items: center; width: 50px; height: 50px; border-radius: 50%; background: var(--bg-beige); border: 1px solid rgba(0,0,0,0.05); color: var(--green-dark); transition: all 0.3s; font-size: 1.3rem; }
+        .footer-icons a:hover { background: var(--gold); color: white; border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(212,175,55,0.3); }
+        #copyright { text-align: center; padding: 2rem 20px; color: #888; font-size: 0.9rem; background: #fbfbfb; position: relative; z-index: 10; }
 
-        /* Footer */
-        #footer {
-            background: white;
-            padding: 4rem 20px;
-            text-align: center;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .footer-icons {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .footer-icons a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--bg-beige);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            color: var(--green-dark);
-            transition: all 0.3s;
-            font-size: 1.3rem;
-        }
-
-        .footer-icons a:hover {
-            background: var(--gold);
-            color: white;
-            border-color: var(--gold);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
-        }
-
-        #copyright {
-            text-align: center;
-            padding: 2rem 20px;
-            color: #888;
-            font-size: 0.9rem;
-            background: #fbfbfb;
-        }
-
-        /* Responsive */
+        /* ===== RESPONSIVE ===== */
         @media screen and (max-width: 900px) {
-            .article-container {
-                padding: 3rem 2rem;
-                margin-top: -3rem;
-            }
-
-            .article-hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .blockquote-gold {
-                padding: 1.5rem;
-                font-size: 1.1rem;
-            }
-
-            #nav .links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                text-align: center;
-                padding: 1rem 0;
-            }
-
-            #nav .links.active {
-                display: flex;
-            }
-
-            .mobile-toggle {
-                display: block;
-            }
+            .article-container { padding: 3rem 2rem; margin-top: -3rem; }
+            .article-hero h1 { font-size: 2.5rem; }
+            #nav { justify-content: space-between; }
+            .mobile-toggle { display: block; }
+            #nav .links { display: none; flex-direction: column; width: 100%; text-align: center; padding: 1rem 0; gap: 1.5rem; }
+            #nav .links.active { display: flex; }
         }
     </style>
 </head>
 
 <body>
+
     <div id="wrapper">
+
         <header id="header">
             <a href="index.html" class="logo">Amazonie</a>
         </header>
@@ -353,157 +217,128 @@
             </ul>
         </nav>
 
-        <!-- Hero -->
-        <section class="article-hero">
-            <div class="article-meta">Publié le 26 mars 2026 | Par [Ton Nom]</div>
-            <h1>La Rentabilité Avant Tout ? Les Paradoxes d'un Modèle Économique Contesté</h1>
-        </section>
+        <div id="main">
 
-        <!-- Contenu -->
-        <div class="article-container">
-            <p class="dropcap">D</p>
-            <p>
-                ans un monde où le capitalisme dominant place la rentabilité au cœur de son modèle, de nombreuses contradictions émergent, affectant non seulement l'environnement mais aussi la société. L'impératif de maximiser les profits à tout prix entraîne des effets secondaires néfastes, tels que l'épuisement des ressources naturelles, la précarisation des travailleurs, et des inégalités croissantes. Cet article explore les paradoxes d'un modèle économique de plus en plus contesté, où la quête de rentabilité semble se faire au détriment du bien-être social et écologique.
-            </p>
+            <section class="article-hero reveal">
+                <div class="article-meta">Analyse Économique</div>
+                <h1>La Rentabilité Avant Tout ? Les Paradoxes d'un Modèle Contesté</h1>
+            </section>
 
-            <img src="../images/economie1.jpg" alt="Exploitation économique" class="article-inline-image reveal">
+            <div class="article-container reveal">
+                
+                <div style="text-align: left;">
+                    <a href="../index.html" class="btn-back" style="margin-top: 0; margin-bottom: 2.5rem;"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
+                </div>
 
-            <h2>Le Modèle Économique Centré sur la Rentabilité : Un Paradoxe Inhérent</h2>
-            <p>
-                Le modèle économique dominant dans les sociétés modernes repose sur un principe simple : maximiser les profits pour assurer la croissance économique. Ce modèle valorise avant tout la rentabilité des entreprises, souvent au détriment de considérations sociales ou environnementales. L'obsession de la rentabilité immédiate incite les entreprises à externaliser les coûts sociaux et écologiques, transférant ainsi la responsabilité à la collectivité.
-            </p>
-            <p>
-                Ce paradoxe réside dans le fait que, bien que le modèle basé sur la rentabilité assure une croissance économique à court terme, il génère à long terme des conséquences graves. La surexploitation des ressources naturelles, l'épuisement des écosystèmes et la précarisation des populations, notamment dans les pays en développement, témoignent des limites d'une croissance qui ne prend pas en compte les externalités négatives.
-            </p>
+                <p><span class="dropcap">D</span>ans un monde où le capitalisme dominant place la rentabilité au cœur de son modèle, de nombreuses contradictions émergent, affectant non seulement l'environnement mais aussi la société. L'impératif de maximiser les profits à tout prix entraîne des effets secondaires néfastes, tels que <span class="highlight-gold">l'épuisement des ressources naturelles</span>, la précarisation des travailleurs, et des inégalités croissantes. Cet article explore les paradoxes d'un modèle économique de plus en plus contesté, où la quête de rentabilité semble se faire au détriment du bien-être social et écologique.</p>
 
-            <img src="../images/economie2.jpg" alt="Inégalités sociales" class="article-inline-image reveal">
+                <img src="../images/economie1.jpg" alt="Exploitation économique" class="article-inline-image reveal">
 
-            <h2>Les Conséquences Sociales : Un Accroissement des Inégalités</h2>
-            <p>
-                L'un des paradoxes les plus frappants de ce modèle économique est l'accent mis sur la rentabilité au détriment de la justice sociale. L'augmentation des inégalités est une conséquence directe de cette logique. Les travailleurs sont souvent poussés à accepter des conditions de travail précaires et mal rémunérées pour maximiser les profits des entreprises, en particulier dans les secteurs de la production de masse, du commerce de détail et de l'agriculture intensive.
-            </p>
+                <div class="elegant-divider reveal"><i class="fas fa-leaf"></i></div>
 
-            <img src="../images/economie3.jpg" alt="Exploitation environnementale" class="article-inline-image reveal">
+                <h2 class="reveal">Le Modèle Économique : Un Paradoxe Inhérent</h2>
+                <p class="reveal">Le modèle économique dominant dans les sociétés modernes repose sur un principe simple : maximiser les profits pour assurer la croissance économique. Ce modèle valorise avant tout la rentabilité des entreprises, souvent au détriment de considérations sociales ou environnementales. L'obsession de la rentabilité immédiate incite les entreprises à externaliser les coûts sociaux et écologiques, transférant ainsi la responsabilité à la collectivité.</p>
+                <p class="reveal">Ce paradoxe réside dans le fait que, bien que le modèle basé sur la rentabilité assure une croissance économique à court terme, il génère à long terme des conséquences graves. La surexploitation des ressources naturelles, l'épuisement des écosystèmes et la précarisation des populations témoignent des limites d'une croissance qui ne prend pas en compte les externalités négatives.</p>
 
-            <h2>Les Conséquences Environnementales : L'Exploitation au Service de la Rentabilité</h2>
-            <p>
-                Sur le plan environnemental, la rentabilité à tout prix conduit à une exploitation effrénée des ressources naturelles. L'agriculture intensive, l'exploitation forestière, le développement immobilier et l'extraction minière sont autant d'industries qui, dans leur quête de profits, détruisent des écosystèmes fragiles et contribuent au dérèglement climatique.
-            </p>
+                <img src="../images/economie2.jpg" alt="Inégalités sociales" class="article-inline-image reveal">
 
-            <h2>Le Paradoxe de l'Innovation : Progrès ou Dérive ?</h2>
-            <p>
-                L'innovation technologique, souvent vue comme un moteur du progrès économique, ne fait pas exception à ce paradoxe. Si elle peut apporter des solutions pour une production plus efficace ou plus « verte », elle est aussi un moyen de maximiser la rentabilité des entreprises. Cependant, cette innovation est fréquemment orientée vers des solutions qui privilégient le court terme et l'accroissement de la rentabilité, plutôt que la durabilité à long terme.
-            </p>
+                <div class="elegant-divider reveal"><i class="fas fa-leaf"></i></div>
 
-            <h2>Les Alternatives : Vers un Modèle Économique Plus Durable</h2>
-            <p>
-                Face aux paradoxes d'un modèle économique fondé sur la rentabilité à tout prix, de nombreuses voix s'élèvent pour proposer des alternatives. Des concepts comme l'économie circulaire, l'économie de la fonctionnalité, ou les modèles de développement durable mettent l'accent sur la nécessité d'une économie respectueuse de l'environnement et socialement juste.
-            </p>
+                <h2 class="reveal">Les Conséquences : Inégalités et Environnement</h2>
+                <p class="reveal">L'un des paradoxes les plus frappants de ce modèle économique est l'accent mis sur la rentabilité au détriment de la justice sociale. L'augmentation des inégalités est une conséquence directe de cette logique. Les travailleurs sont souvent poussés à accepter des conditions de travail précaires et mal rémunérées pour maximiser les profits.</p>
+                <p class="reveal">Sur le plan environnemental, la rentabilité à tout prix conduit à une exploitation effrénée. L'agriculture intensive, l'exploitation forestière et l'extraction minière sont autant d'industries qui détruisent des écosystèmes fragiles et contribuent au dérèglement climatique.</p>
 
-            <h2>Conclusion : Un Modèle Économique en Mutation</h2>
-            <p>
-                Le modèle économique basé sur la rentabilité avant tout, bien qu'il ait permis une certaine forme de croissance et d'innovation, est aujourd'hui de plus en plus contesté. Ses paradoxes, notamment les inégalités sociales et la destruction de l'environnement, deviennent insoutenables. Si nous voulons un avenir plus équitable et durable, il est impératif de repenser les fondements mêmes de l'économie pour en faire un outil au service de l'humanité et de la planète.
-            </p>
+                <section class="gallery-section reveal">
+                    <h2>Galerie Illustrative</h2>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="images/amazonia1.jpg" alt="Forêt amazonienne" class="gallery-image">
+                            <p class="gallery-caption">La richesse de la biodiversité en Amazonie.</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/amazonia2.jpg" alt="Rivière amazone" class="gallery-image">
+                            <p class="gallery-caption">Le fleuve Amazone, cœur de l'écosystème.</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/amazonia3.jpg" alt="Faune amazonienne" class="gallery-image">
+                            <p class="gallery-caption">Des espèces uniques menacées par la déforestation.</p>
+                        </div>
+                    </div>
+                </section>
 
-            <a href="articles.html" class="btn-back"><i class="fas fa-arrow-left"></i> Retour aux articles</a>
+                <div class="elegant-divider reveal"><i class="fas fa-leaf"></i></div>
+
+                <h2 class="reveal">Vers un Modèle Économique Plus Durable</h2>
+                <p class="reveal">Face aux paradoxes d'un modèle économique fondé sur la rentabilité à tout prix, de nombreuses voix s'élèvent pour proposer des alternatives. Des concepts comme l'économie circulaire, l'économie de la fonctionnalité, ou les modèles de développement durable mettent l'accent sur la nécessité d'une économie respectueuse de l'environnement et socialement juste.</p>
+
+                <p class="reveal">Le modèle économique basé sur la rentabilité avant tout, bien qu'il ait permis une certaine forme de croissance et d'innovation, est aujourd'hui de plus en plus contesté. Ses paradoxes deviennent insoutenables. Si nous voulons un avenir plus équitable et durable, il est impératif de repenser les fondements mêmes de l'économie.</p>
+
+                <div style="text-align: center; margin-top: 4rem;" class="reveal">
+                    <a href="../index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
+                </div>
+
+            </div>
+
         </div>
 
-        <!-- Footer -->
         <footer id="footer">
             <div class="footer-content">
-                <h3>Rejoignez la communauté</h3>
-                <p>Suivez l'avancée du projet documentaire Amazonie 2026 sur nos différents réseaux sociaux.</p>
+                <h3 style="font-family: var(--font-serif); color: var(--green-dark); font-size: 1.8rem;">Rejoignez la communauté</h3>
+                <p style="color: #666;">Suivez l'avancée du projet documentaire Amazonie 2026 sur nos différents réseaux sociaux.</p>
                 <ul class="footer-icons">
                     <li><a href="https://www.facebook.com/ISEN.Ouest/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
                     <li><a href="https://www.instagram.com/isenbrest/" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="https://www.linkedin.com/company/isen-Je comprends que tu souhaites intégrer des blocs d’images et des sections avec un design cohérent avec celui de ton `index.html`, en conservant la palette de couleurs, les ombres, les bordures arrondies, et le style magazine moderne que tu utilises déjà. Voici un exemple complet que tu peux directement intégrer dans ton article, avec un HTML et CSS adaptés :  
+                    <li><a href="https://www.linkedin.com/company/isen-yncrea-ouest/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                </ul>
+            </div>
+        </footer>
 
-```html
-<section class="article-gallery reveal">
-    <h2>Galerie Illustrative</h2>
-    <div class="gallery-grid">
-        <div class="gallery-item">
-            <img src="images/amazonia1.jpg" alt="Forêt amazonienne" class="gallery-image">
-            <p class="gallery-caption">La richesse de la biodiversité en Amazonie.</p>
+        <div id="copyright">
+            &copy; ISEN 2026 | Projet Documentaire Amazonie
         </div>
-        <div class="gallery-item">
-            <img src="images/amazonia2.jpg" alt="Rivière amazone" class="gallery-image">
-            <p class="gallery-caption">Le fleuve Amazone, cœur de l'écosystème.</p>
-        </div>
-        <div class="gallery-item">
-            <img src="images/amazonia3.jpg" alt="Faune amazonienne" class="gallery-image">
-            <p class="gallery-caption">Des espèces uniques menacées par la déforestation.</p>
-        </div>
+
     </div>
-</section>
 
-<style>
-    /* ===== BLOCS D'IMAGES ET GALERIE ===== */
-    .article-gallery {
-        max-width: 900px;
-        margin: 6rem auto;
-        background: white;
-        padding: 3rem 3rem 5rem 3rem;
-        border-radius: 24px;
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
-        border: 1px solid rgba(0, 0, 0, 0.03);
-        position: relative;
-        z-index: 10;
-    }
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const mobileToggleBtn = document.getElementById("mobile-toggle-btn");
+            const navLinks = document.getElementById("nav-links");
 
-    .article-gallery h2 {
-        font-family: var(--font-serif);
-        color: var(--green-dark);
-        font-size: 2.2rem;
-        margin-bottom: 3rem;
-        border-bottom: 2px solid rgba(212, 175, 55, 0.2);
-        padding-bottom: 0.5rem;
-    }
+            if (mobileToggleBtn) {
+                mobileToggleBtn.addEventListener("click", function () {
+                    navLinks.classList.toggle("active");
+                });
+            }
 
-    .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-    }
+            const reveals = document.querySelectorAll('.reveal');
+            const revealOptions = { threshold: 0.05, rootMargin: "0px 0px 50px 0px" };
 
-    .gallery-item {
-        overflow: hidden;
-        border-radius: 16px;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
-        background: var(--green-light);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+            const revealOnScroll = new IntersectionObserver(function (entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
 
-    .gallery-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
-    }
+            reveals.forEach(reveal => revealOnScroll.observe(reveal));
 
-    .gallery-image {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-top-left-radius: 16px;
-        border-top-right-radius: 16px;
-        display: block;
-    }
+            function forceReveal() {
+                reveals.forEach(reveal => {
+                    const rect = reveal.getBoundingClientRect();
+                    if (rect.top < window.innerHeight + 200) {
+                        reveal.classList.add('active');
+                    }
+                });
+            }
 
-    .gallery-caption {
-        padding: 1rem 1.2rem;
-        font-size: 1rem;
-        color: var(--green-dark);
-        font-family: var(--font-sans);
-        text-align: center;
-        background: white;
-    }
+            forceReveal();
+            setTimeout(forceReveal, 200);
+            setTimeout(forceReveal, 500);
 
-    /* RESPONSIVE */
-    @media screen and (max-width: 600px) {
-        .gallery-image {
-            height: 180px;
-        }
-        .article-gallery {
-            padding: 2rem 1.5rem 3rem 1.5rem;
-        }
-    }
-</style>
+            window.addEventListener('pageshow', forceReveal);
+        });
+    </script>
+</body>
+</html>
