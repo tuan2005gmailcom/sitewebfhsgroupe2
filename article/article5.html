@@ -2,9 +2,10 @@
 <html lang="fr" style="scroll-behavior: smooth;">
 
 <head>
-    <title>Actualité - La rentabilité de la conservation</title>
+    <title>Actualité - La Rentabilité Avant Tout</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="description" content="Analyse critique du modèle économique centré sur la rentabilité, et les paradoxes qu'il engendre dans la société moderne.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +16,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
-        /* ===== PALETTE DE COULEURS ET VARIABLES ===== */
         :root {
             --bg-beige: #f6f5f0;
             --green-dark: #12281b;
@@ -28,7 +28,6 @@
             --font-sans: 'Montserrat', sans-serif;
         }
 
-        /* ===== BASE ===== */
         body {
             background-color: var(--bg-beige);
             font-family: var(--font-sans);
@@ -39,29 +38,7 @@
             overflow-x: hidden;
         }
 
-        /* ===== ANIMATION D'APPARITION (REVEAL) ===== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ===== CORRECTIF BUGS HTML5 UP ===== */
-        #navPanel,
-        #titleBar,
-        .navPanelToggle,
-        a[href="#navPanel"],
-        a[href="#menu"] {
-            display: none !important;
-            visibility: hidden !important;
-        }
-
-        /* ===== EN-TÊTE ===== */
+        /* Header & Navigation */
         #header {
             text-align: center;
             padding: 2.5rem 0 1.5rem 0;
@@ -77,185 +54,6 @@
             letter-spacing: -1px;
         }
 
-        /* SÉPARATEUR ÉLÉGANT */
-        .elegant-divider {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 4rem 0;
-            color: var(--gold);
-            opacity: 0.7;
-            font-size: 1.5rem;
-        }
-
-        .elegant-divider::before,
-        .elegant-divider::after {
-            content: '';
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--gold), transparent);
-            flex: 1;
-            margin: 0 20px;
-            opacity: 0.5;
-        }
-
-/* ===== ARTICLE 5 PREMIUM DESIGN ===== */
-.article-container {
-    padding: 3rem 0;
-    background: #f4f7f9;
-    color: #1c1c1c;
-    font-family: 'Inter', sans-serif;
-}
-
-.article-header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.8rem;
-    color: #0d3b66;
-    margin-bottom: 0.5rem;
-}
-
-.article-header .meta {
-    font-size: 0.95rem;
-    color: #555;
-}
-
-.article-image {
-    width: 100%;
-    border-radius: 16px;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
-
-/* ===== HIGHLIGHT SECTIONS ===== */
-.highlight-section {
-    margin: 3rem 0;
-    padding: 2rem;
-    background: linear-gradient(120deg, #d0e6f6, #ffffff);
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-    position: relative;
-}
-
-.highlight-section h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.9rem;
-    color: #0d3b66;
-    margin-bottom: 1rem;
-}
-
-.highlight-section i {
-    color: #ff6f61;
-    margin-right: 0.5rem;
-}
-
-/* ===== IMAGE CARDS ===== */
-.image-card {
-    margin-top: 1.5rem;
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
-.image-card img {
-    max-width: 100%;
-    border-radius: 16px;
-    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.image-card img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-}
-
-.image-card .caption {
-    font-size: 0.9rem;
-    color: #555;
-    margin-top: 0.5rem;
-}
-
-/* ===== STATS GRID ===== */
-.stats-section {
-    margin: 4rem 0;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 2rem;
-}
-
-.stat-box {
-    background: linear-gradient(145deg, #ffffff, #e2f0f9);
-    border-radius: 24px;
-    padding: 2rem 1rem;
-    text-align: center;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.stat-box:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.12);
-}
-
-.stat-number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #ff6f61;
-    margin-bottom: 0.5rem;
-}
-
-.stat-label {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #0d3b66;
-}
-
-/* ===== CONCLUSION ===== */
-.conclusion {
-    margin: 3rem 0;
-    padding: 2rem;
-    background: #fff8f2;
-    border-radius: 20px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.05);
-    text-align: center;
-}
-
-.conclusion .button {
-    display: inline-block;
-    margin-top: 1.5rem;
-    padding: 0.8rem 2rem;
-    background: #ff6f61;
-    color: #fff;
-    font-weight: 600;
-    border-radius: 12px;
-    text-decoration: none;
-    transition: background 0.3s ease;
-}
-
-.conclusion .button:hover {
-    background: #e85b50;
-}
-
-/* ===== RESPONSIVE ===== */
-@media screen and (max-width: 980px) {
-    .stats-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
-}
-
-@media screen and (max-width: 736px) {
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .highlight-section {
-        padding: 1.5rem;
-    }
-}        
-
-
-/* ===== NAVIGATION (STICKY + VERRE DÉPOLI) ===== */
         #nav {
             position: sticky;
             top: 0;
@@ -281,10 +79,6 @@
             padding: 0;
         }
 
-        #nav .links li {
-            position: relative;
-        }
-
         #nav .links a {
             text-decoration: none;
             color: var(--text-dark);
@@ -308,37 +102,13 @@
             transform: translateX(-50%);
         }
 
-        #nav .active a {
-            color: var(--gold);
-        }
-
-        #nav .active a::after,
-        #nav .links a:hover::after {
+        #nav .links a:hover::after,
+        #nav .active a::after {
             width: 100%;
         }
 
         #nav .links a:hover {
             color: var(--gold);
-        }
-
-        #nav .icons {
-            list-style: none;
-            display: flex;
-            gap: 1.2rem;
-            margin: 0 0 0 3rem;
-            padding: 0;
-        }
-
-        #nav .icons a {
-            color: var(--green-dark);
-            font-size: 1.1rem;
-            transition: color 0.3s, transform 0.3s;
-            display: inline-block;
-        }
-
-        #nav .icons a:hover {
-            color: var(--gold);
-            transform: translateY(-2px);
         }
 
         .mobile-toggle {
@@ -355,40 +125,20 @@
             color: var(--gold);
         }
 
-        /* ===== HERO ARTICLE ===== */
+        /* Hero article */
         .article-hero {
             position: relative;
             text-align: center;
             padding: 10rem 2rem 12rem 2rem;
-        }
-
-        .article-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
             background: url('../images/pic02.jpg') center/cover no-repeat;
-            z-index: -2;
         }
 
         .article-hero::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background: linear-gradient(to bottom, rgba(18, 40, 27, 0.7), rgba(18, 40, 27, 0.98));
             z-index: -1;
-        }
-
-        .article-title-icon {
-            display: block;
-            margin: 0 auto 1.5rem auto;
-            max-width: 100px;
-            height: auto;
         }
 
         .article-meta {
@@ -416,7 +166,7 @@
             text-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
         }
 
-        /* ===== CONTENU DE L'ARTICLE (MAGAZINE STYLE) ===== */
+        /* Article content magazine style */
         .article-container {
             max-width: 900px;
             margin: -6rem auto 6rem auto;
@@ -477,7 +227,6 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.03);
         }
 
-        /* STYLE DU BOUTON RETOUR */
         .btn-back {
             display: inline-flex;
             align-items: center;
@@ -502,29 +251,12 @@
             box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
         }
 
-        /* ===== FOOTER ===== */
+        /* Footer */
         #footer {
             background: white;
             padding: 4rem 20px;
             text-align: center;
             border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .footer-content h3 {
-            font-family: var(--font-serif);
-            color: var(--green-dark);
-            font-size: 1.8rem;
-            margin: 0 0 1.5rem 0;
-        }
-
-        .footer-content p {
-            color: #666;
-            margin-bottom: 2rem;
         }
 
         .footer-icons {
@@ -566,7 +298,7 @@
             background: #fbfbfb;
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* Responsive */
         @media screen and (max-width: 900px) {
             .article-container {
                 padding: 3rem 2rem;
@@ -582,38 +314,27 @@
                 font-size: 1.1rem;
             }
 
-            #nav {
-                justify-content: space-between;
-            }
-
-            .mobile-toggle {
-                display: block;
-            }
-
             #nav .links {
                 display: none;
                 flex-direction: column;
                 width: 100%;
                 text-align: center;
                 padding: 1rem 0;
-                gap: 1.5rem;
             }
 
             #nav .links.active {
                 display: flex;
             }
 
-            #nav .icons {
-                display: none;
+            .mobile-toggle {
+                display: block;
             }
         }
     </style>
 </head>
 
 <body>
-
     <div id="wrapper">
-
         <header id="header">
             <a href="index.html" class="logo">Amazonie</a>
         </header>
@@ -630,205 +351,159 @@
                 <li><a href="bibliographie.html">Bibliographie</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <ul class="icons">
-                <li><a href="https://www.facebook.com/ISEN.Ouest/" target="_blank" rel="noopener noreferrer"><i
-                            class="fab fa-facebook-f"></i></a></li>
-                <li><a href="https://www.instagram.com/isenbrest/" target="_blank" rel="noopener noreferrer"><i
-                            class="fab fa-instagram"></i></a></li>
-                <li><a href="https://www.linkedin.com/company/isen-yncrea-ouest/" target="_blank"
-                        rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></li>
-            </ul>
         </nav>
 
-        <main>
-    <section id="article5" class="article-container reveal">
-        <div class="container">
-            <article>
-                <!-- ARTICLE HEADER -->
-                <header class="article-header">
-                    <h1>La Technologie et la Société : Entre Progrès et Dépendance</h1>
-                    <p class="meta">
-                        <span class="date">Publié le 28 mars 2026</span> |
-                        <span class="author">Par [Ton Nom]</span>
-                    </p>
-                    <img src="images/tech-societe-hero.jpg" alt="Technologie et société" class="article-image reveal">
-                </header>
+        <!-- Hero -->
+        <section class="article-hero">
+            <div class="article-meta">Publié le 26 mars 2026 | Par [Ton Nom]</div>
+            <h1>La Rentabilité Avant Tout ? Les Paradoxes d'un Modèle Économique Contesté</h1>
+        </section>
 
-                <!-- INTRODUCTION -->
-                <section class="intro reveal">
-                    <p class="dropcap">
-                        La révolution technologique transforme profondément notre manière de vivre, de travailler et de communiquer. Cependant, cette avancée rapide pose des questions cruciales : sommes-nous réellement les maîtres de la technologie, ou devenons-nous dépendants de ses innovations incessantes ?
-                    </p>
-                </section>
+        <!-- Contenu -->
+        <div class="article-container">
+            <p class="dropcap">D</p>
+            <p>
+                ans un monde où le capitalisme dominant place la rentabilité au cœur de son modèle, de nombreuses contradictions émergent, affectant non seulement l'environnement mais aussi la société. L'impératif de maximiser les profits à tout prix entraîne des effets secondaires néfastes, tels que l'épuisement des ressources naturelles, la précarisation des travailleurs, et des inégalités croissantes. Cet article explore les paradoxes d'un modèle économique de plus en plus contesté, où la quête de rentabilité semble se faire au détriment du bien-être social et écologique.
+            </p>
 
-                <!-- SECTION 1 : Innovation -->
-                <section class="highlight-section reveal">
-                    <h2><i class="fas fa-robot"></i> L'Innovation Technologique : Progrès ou Défi ?</h2>
-                    <p>
-                        Les innovations, qu’il s’agisse d’intelligence artificielle, de robotique ou de biotechnologies, offrent des opportunités sans précédent. Mais elles soulèvent également des défis éthiques et sociaux majeurs. La rapidité de leur adoption dépasse souvent notre capacité à réguler et comprendre leurs impacts.
-                    </p>
-                    <div class="image-card reveal">
-                        <img src="images/innovation-tech.jpg" alt="Innovation technologique">
-                        <p class="caption">Les technologies avancées redéfinissent notre quotidien.</p>
-                    </div>
-                </section>
+            <img src="../images/economie1.jpg" alt="Exploitation économique" class="article-inline-image reveal">
 
-                <!-- SECTION 2 : Stats / Infographics -->
-                <section class="stats-section reveal">
-                    <div class="stats-grid">
-                        <div class="stat-box">
-                            <span class="stat-number">85%</span>
-                            <span class="stat-label">Population connectée</span>
-                        </div>
-                        <div class="stat-box">
-                            <span class="stat-number"><i class="fas fa-mobile-alt"></i></span>
-                            <span class="stat-label">Appareils mobiles</span>
-                        </div>
-                        <div class="stat-box">
-                            <span class="stat-number"><i class="fas fa-cloud"></i></span>
-                            <span class="stat-label">Stockage cloud</span>
-                        </div>
-                        <div class="stat-box">
-                            <span class="stat-number">72%</span>
-                            <span class="stat-label">Utilisateurs réseaux sociaux</span>
-                        </div>
-                    </div>
-                </section>
+            <h2>Le Modèle Économique Centré sur la Rentabilité : Un Paradoxe Inhérent</h2>
+            <p>
+                Le modèle économique dominant dans les sociétés modernes repose sur un principe simple : maximiser les profits pour assurer la croissance économique. Ce modèle valorise avant tout la rentabilité des entreprises, souvent au détriment de considérations sociales ou environnementales. L'obsession de la rentabilité immédiate incite les entreprises à externaliser les coûts sociaux et écologiques, transférant ainsi la responsabilité à la collectivité.
+            </p>
+            <p>
+                Ce paradoxe réside dans le fait que, bien que le modèle basé sur la rentabilité assure une croissance économique à court terme, il génère à long terme des conséquences graves. La surexploitation des ressources naturelles, l'épuisement des écosystèmes et la précarisation des populations, notamment dans les pays en développement, témoignent des limites d'une croissance qui ne prend pas en compte les externalités négatives.
+            </p>
 
-                <!-- SECTION 3 : Impact social -->
-                <section class="highlight-section reveal">
-                    <h2><i class="fas fa-users"></i> Impact Social et Dépendance</h2>
-                    <p>
-                        Les réseaux sociaux, applications et plateformes numériques ont transformé nos interactions. Si elles favorisent la communication, elles peuvent aussi créer une dépendance, influencer nos comportements et polariser nos opinions. Les jeunes générations sont particulièrement sensibles à ces effets.
-                    </p>
-                    <div class="image-card right reveal">
-                        <img src="images/dependance-tech.jpg" alt="Dépendance technologique">
-                        <p class="caption">L'usage intensif des technologies peut engendrer une dépendance subtile.</p>
-                    </div>
-                </section>
+            <img src="../images/economie2.jpg" alt="Inégalités sociales" class="article-inline-image reveal">
 
-                <!-- SECTION 4 : Environnement -->
-                <section class="highlight-section reveal">
-                    <h2><i class="fas fa-leaf"></i> Technologie et Environnement</h2>
-                    <p>
-                        L’essor technologique a un coût écologique : consommation énergétique, obsolescence rapide et production de déchets électroniques. Néanmoins, certaines technologies permettent de réduire l’impact environnemental, comme les smart grids ou les solutions de mobilité verte.
-                    </p>
-                    <div class="image-card reveal">
-                        <img src="images/tech-ecologie.jpg" alt="Technologie écologique">
-                        <p class="caption">Des innovations technologiques pour un futur plus durable.</p>
-                    </div>
-                </section>
+            <h2>Les Conséquences Sociales : Un Accroissement des Inégalités</h2>
+            <p>
+                L'un des paradoxes les plus frappants de ce modèle économique est l'accent mis sur la rentabilité au détriment de la justice sociale. L'augmentation des inégalités est une conséquence directe de cette logique. Les travailleurs sont souvent poussés à accepter des conditions de travail précaires et mal rémunérées pour maximiser les profits des entreprises, en particulier dans les secteurs de la production de masse, du commerce de détail et de l'agriculture intensive.
+            </p>
 
-                <!-- CONCLUSION -->
-                <section class="conclusion reveal">
-                    <p>
-                        La technologie est une épée à double tranchant : elle peut améliorer la qualité de vie, mais elle comporte également des risques de dépendance et des impacts sociaux et environnementaux. La clé réside dans un usage réfléchi et éthique, combiné à des régulations adaptées pour protéger la société et la planète.
-                    </p>
-                    <a href="articles.html" class="button">Retour aux articles</a>
-                </section>
-            </article>
-        </div>
-    </section>
-</main>
+            <img src="../images/economie3.jpg" alt="Exploitation environnementale" class="article-inline-image reveal">
 
+            <h2>Les Conséquences Environnementales : L'Exploitation au Service de la Rentabilité</h2>
+            <p>
+                Sur le plan environnemental, la rentabilité à tout prix conduit à une exploitation effrénée des ressources naturelles. L'agriculture intensive, l'exploitation forestière, le développement immobilier et l'extraction minière sont autant d'industries qui, dans leur quête de profits, détruisent des écosystèmes fragiles et contribuent au dérèglement climatique.
+            </p>
 
-        </footer>
+            <h2>Le Paradoxe de l'Innovation : Progrès ou Dérive ?</h2>
+            <p>
+                L'innovation technologique, souvent vue comme un moteur du progrès économique, ne fait pas exception à ce paradoxe. Si elle peut apporter des solutions pour une production plus efficace ou plus « verte », elle est aussi un moyen de maximiser la rentabilité des entreprises. Cependant, cette innovation est fréquemment orientée vers des solutions qui privilégient le court terme et l'accroissement de la rentabilité, plutôt que la durabilité à long terme.
+            </p>
 
-        <div id="copyright">
-            &copy; ISEN 2026 | Projet Documentaire Amazonie
+            <h2>Les Alternatives : Vers un Modèle Économique Plus Durable</h2>
+            <p>
+                Face aux paradoxes d'un modèle économique fondé sur la rentabilité à tout prix, de nombreuses voix s'élèvent pour proposer des alternatives. Des concepts comme l'économie circulaire, l'économie de la fonctionnalité, ou les modèles de développement durable mettent l'accent sur la nécessité d'une économie respectueuse de l'environnement et socialement juste.
+            </p>
+
+            <h2>Conclusion : Un Modèle Économique en Mutation</h2>
+            <p>
+                Le modèle économique basé sur la rentabilité avant tout, bien qu'il ait permis une certaine forme de croissance et d'innovation, est aujourd'hui de plus en plus contesté. Ses paradoxes, notamment les inégalités sociales et la destruction de l'environnement, deviennent insoutenables. Si nous voulons un avenir plus équitable et durable, il est impératif de repenser les fondements mêmes de l'économie pour en faire un outil au service de l'humanité et de la planète.
+            </p>
+
+            <a href="articles.html" class="btn-back"><i class="fas fa-arrow-left"></i> Retour aux articles</a>
         </div>
 
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="footer-content">
+                <h3>Rejoignez la communauté</h3>
+                <p>Suivez l'avancée du projet documentaire Amazonie 2026 sur nos différents réseaux sociaux.</p>
+                <ul class="footer-icons">
+                    <li><a href="https://www.facebook.com/ISEN.Ouest/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/isenbrest/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.linkedin.com/company/isen-Je comprends que tu souhaites intégrer des blocs d’images et des sections avec un design cohérent avec celui de ton `index.html`, en conservant la palette de couleurs, les ombres, les bordures arrondies, et le style magazine moderne que tu utilises déjà. Voici un exemple complet que tu peux directement intégrer dans ton article, avec un HTML et CSS adaptés :  
+
+```html
+<section class="article-gallery reveal">
+    <h2>Galerie Illustrative</h2>
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <img src="images/amazonia1.jpg" alt="Forêt amazonienne" class="gallery-image">
+            <p class="gallery-caption">La richesse de la biodiversité en Amazonie.</p>
+        </div>
+        <div class="gallery-item">
+            <img src="images/amazonia2.jpg" alt="Rivière amazone" class="gallery-image">
+            <p class="gallery-caption">Le fleuve Amazone, cœur de l'écosystème.</p>
+        </div>
+        <div class="gallery-item">
+            <img src="images/amazonia3.jpg" alt="Faune amazonienne" class="gallery-image">
+            <p class="gallery-caption">Des espèces uniques menacées par la déforestation.</p>
+        </div>
     </div>
+</section>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // --- Menu Mobile ---
-            const mobileToggleBtn = document.getElementById("mobile-toggle-btn");
-            const navLinks = document.getElementById("nav-links");
+<style>
+    /* ===== BLOCS D'IMAGES ET GALERIE ===== */
+    .article-gallery {
+        max-width: 900px;
+        margin: 6rem auto;
+        background: white;
+        padding: 3rem 3rem 5rem 3rem;
+        border-radius: 24px;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(0, 0, 0, 0.03);
+        position: relative;
+        z-index: 10;
+    }
 
-            if (mobileToggleBtn) {
-                mobileToggleBtn.addEventListener("click", function () {
-                    navLinks.classList.toggle("active");
-                });
-            }
+    .article-gallery h2 {
+        font-family: var(--font-serif);
+        color: var(--green-dark);
+        font-size: 2.2rem;
+        margin-bottom: 3rem;
+        border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+        padding-bottom: 0.5rem;
+    }
 
-            // --- Animation au Défilement (Reveal on Scroll) ---
-            const reveals = document.querySelectorAll('.reveal');
-            const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
 
-            const revealOnScroll = new IntersectionObserver(function (entries, observer) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, revealOptions);
+    .gallery-item {
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+        background: var(--green-light);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-            reveals.forEach(reveal => revealOnScroll.observe(reveal));
+    .gallery-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    }
 
-            // Forcer l'apparition des éléments déjà visibles
-            setTimeout(() => {
-                reveals.forEach(reveal => {
-                    const rect = reveal.getBoundingClientRect();
-                    if (rect.top < window.innerHeight) {
-                        reveal.classList.add('active');
-                    }
-                });
-            }, 100);
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // --- Menu Mobile ---
-            const mobileToggleBtn = document.getElementById("mobile-toggle-btn");
-            const navLinks = document.getElementById("nav-links");
+    .gallery-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        display: block;
+    }
 
-            if (mobileToggleBtn) {
-                mobileToggleBtn.addEventListener("click", function () {
-                    navLinks.classList.toggle("active");
-                });
-            }
+    .gallery-caption {
+        padding: 1rem 1.2rem;
+        font-size: 1rem;
+        color: var(--green-dark);
+        font-family: var(--font-sans);
+        text-align: center;
+        background: white;
+    }
 
-            // --- Animation au Défilement (Reveal on Scroll) ---
-            const reveals = document.querySelectorAll('.reveal');
-
-            // J'ai baissé le threshold à 0.05 pour que les très grands blocs s'activent plus vite
-            const revealOptions = { threshold: 0.05, rootMargin: "0px 0px 50px 0px" };
-
-            const revealOnScroll = new IntersectionObserver(function (entries, observer) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, revealOptions);
-
-            reveals.forEach(reveal => revealOnScroll.observe(reveal));
-
-            // --- CORRECTION BUG AFFICHAGE : Fonction pour forcer l'apparition ---
-            function forceReveal() {
-                reveals.forEach(reveal => {
-                    const rect = reveal.getBoundingClientRect();
-                    // On donne une grosse marge (+200px) pour être sûr que ça s'affiche
-                    if (rect.top < window.innerHeight + 200) {
-                        reveal.classList.add('active');
-                    }
-                });
-            }
-
-            // On lance la fonction immédiatement
-            forceReveal();
-
-            // On la relance 200ms et 500ms plus tard au cas où une image mettrait du temps à charger
-            setTimeout(forceReveal, 200);
-            setTimeout(forceReveal, 500);
-
-            // Sécurité anti-bug : très utile si l'utilisateur utilise le bouton "Précédent" de son navigateur
-            window.addEventListener('pageshow', forceReveal);
-        });
-    </script>
-</body>
-
-</html>
+    /* RESPONSIVE */
+    @media screen and (max-width: 600px) {
+        .gallery-image {
+            height: 180px;
+        }
+        .article-gallery {
+            padding: 2rem 1.5rem 3rem 1.5rem;
+        }
+    }
+</style>
