@@ -326,6 +326,83 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.03);
         }
 
+/* ===== STATS GRID PREMIUM ===== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2.5rem;
+    margin: 4rem 0;
+}
+
+/* ===== STAT BOX DESIGN ===== */
+.stat-box {
+    background: linear-gradient(145deg, #e0e8e3, #f6f5f0);
+    border-radius: 24px;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.07);
+    border: 1px solid rgba(18,40,27,0.05);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* ===== ANIMATION FLOTTE LÉGÈRE ===== */
+@keyframes floatBox {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.stat-box:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 30px 50px rgba(18,40,27,0.15);
+    animation: floatBox 1.2s ease-in-out infinite;
+}
+
+/* ===== NUMÉRO OU ICÔNE ===== */
+.stat-number {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.stat-box:hover .stat-number {
+    transform: scale(1.2) rotate(-2deg);
+    color: var(--green-dark);
+}
+
+/* ===== LABEL ===== */
+.stat-label {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--green-dark);
+}
+
+/* ===== ICONES FONTE AWESOME ===== */
+.stat-number i {
+    font-size: 2.5rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media screen and (max-width: 980px) {
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+@media screen and (max-width: 736px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
         /* STYLE DU BOUTON RETOUR */
         .btn-back {
             display: inline-flex;
@@ -522,20 +599,20 @@
             naturelle de régénération.
         </p>
 
-        <div class="stats-grid">
-            <div class="stat-box">
-                <span class="stat-number">-40%</span>
-                <span class="stat-label">Intensité recommandée</span>
-            </div>
-            <div class="stat-box">
-                <span class="stat-number">🌎</span>
-                <span class="stat-label">Amérique / Asie</span>
-            </div>
-            <div class="stat-box">
-                <span class="stat-number">🌍</span>
-                <span class="stat-label">Afrique</span>
-            </div>
-        </div>
+<div class="stats-grid reveal">
+    <div class="stat-box">
+        <span class="stat-number">-40%</span>
+        <span class="stat-label">Intensité recommandée</span>
+    </div>
+    <div class="stat-box">
+        <span class="stat-number"><i class="fas fa-globe-americas"></i></span>
+        <span class="stat-label">Amérique / Asie</span>
+    </div>
+    <div class="stat-box">
+        <span class="stat-number"><i class="fas fa-earth-africa"></i></span>
+        <span class="stat-label">Afrique</span>
+    </div>
+</div>
 
         <p>
             Une réduction d’au moins 40% permettrait de maintenir la production de bois
