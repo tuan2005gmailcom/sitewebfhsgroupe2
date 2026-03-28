@@ -5,11 +5,13 @@
     <title>À propos - Amazonie</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
@@ -26,11 +28,32 @@
             --font-sans: 'Montserrat', sans-serif;
         }
 
+        #nav .icons {
+            list-style: none;
+            display: flex;
+            gap: 1.2rem;
+            margin: 0 0 0 3rem;
+            padding: 0;
+        }
+
+        #nav .icons a {
+            color: var(--green-dark);
+            font-size: 1.1rem;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+        #nav .icons a:hover {
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
         /* ===== BASE ===== */
         body {
             background-color: var(--bg-beige);
             font-family: var(--font-sans);
-            margin: 0; padding: 0;
+            margin: 0;
+            padding: 0;
             color: var(--text-dark);
             line-height: 1.8;
             overflow-x: hidden;
@@ -41,105 +64,289 @@
             transform: translateY(30px);
             transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         /* ===== NAVIGATION (STICKY) ===== */
         #nav {
-            position: sticky; top: 0; z-index: 1000;
-            display: flex; justify-content: center; align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 1.2rem 2rem;
             background: rgba(246, 245, 240, 0.85);
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
             border-bottom: 1px solid rgba(255, 255, 255, 0.5);
         }
 
-        #nav .links { list-style: none; display: flex; gap: 2.5rem; margin: 0; padding: 0; }
-        #nav .links a { text-decoration: none; color: var(--text-dark); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.5rem 0; transition: color 0.3s; position: relative; }
-        #nav .links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 50%; background-color: var(--gold); transition: all 0.3s ease; transform: translateX(-50%); }
-        #nav .active a { color: var(--gold); }
-        #nav .active a::after, #nav .links a:hover::after { width: 100%; }
+        #nav .links {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav .links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        #nav .links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        #nav .active a {
+            color: var(--gold);
+        }
+
+        #nav .active a::after,
+        #nav .links a:hover::after {
+            width: 100%;
+        }
 
         /* ===== HERO SECTION ===== */
         .hero-about {
-            position: relative; text-align: center;
-            padding: 8rem 2rem 10rem 2rem; margin-bottom: 4rem;
+            position: relative;
+            text-align: center;
+            padding: 8rem 2rem 10rem 2rem;
+            margin-bottom: 4rem;
         }
+
         .hero-about::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
             z-index: -2;
         }
+
         .hero-about::after {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: linear-gradient(to bottom, rgba(18, 40, 27, 0.5), rgba(18, 40, 27, 0.95));
             z-index: -1;
         }
-        .hero-title { font-family: var(--font-serif); color: white; font-size: 4.5rem; margin: 0; text-shadow: 0 15px 40px rgba(0,0,0,0.6); }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            color: white;
+            font-size: 4.5rem;
+            margin: 0;
+            text-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
 
         /* ===== CONTENT SECTIONS (SPLIT) ===== */
-        .main-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .main-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
         .split-section {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 4rem; align-items: center; margin-bottom: 6rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 6rem;
         }
-        .split-section.reverse { direction: rtl; }
-        .split-section.reverse .text-content { direction: ltr; }
 
-        .text-content h2 { font-family: var(--font-serif); color: var(--green-dark); font-size: 2.5rem; margin-bottom: 1.5rem; }
-        .text-content p { font-size: 1.1rem; color: #555; margin-bottom: 1.5rem; }
-        .text-content ul { list-style: none; padding: 0; }
-        .text-content li { padding-left: 30px; position: relative; margin-bottom: 12px; font-weight: 500; }
-        .text-content li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); }
+        .split-section.reverse {
+            direction: rtl;
+        }
+
+        .split-section.reverse .text-content {
+            direction: ltr;
+        }
+
+        .text-content h2 {
+            font-family: var(--font-serif);
+            color: var(--green-dark);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .text-content p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .text-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .text-content li {
+            padding-left: 30px;
+            position: relative;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .text-content li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
 
         .image-content img {
-            width: 100%; border-radius: 24px;
+            width: 100%;
+            border-radius: 24px;
             box-shadow: 0 25px 50px rgba(18, 40, 27, 0.12);
             transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .image-content img:hover { transform: scale(1.03) rotate(1deg); }
+
+        .image-content img:hover {
+            transform: scale(1.03) rotate(1deg);
+        }
 
         /* ===== TEAM GRID ===== */
-        .team-section { text-align: center; margin: 8rem 0; }
-        .team-section h2 { font-family: var(--font-serif); font-size: 3rem; color: var(--green-dark); margin-bottom: 4rem; }
-        
+        .team-section {
+            text-align: center;
+            margin: 8rem 0;
+        }
+
+        .team-section h2 {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            color: var(--green-dark);
+            margin-bottom: 4rem;
+        }
+
         .team-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2.5rem;
         }
-        
+
         .team-card {
-            background: white; padding: 3rem 2rem; border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
             border-top: 4px solid var(--gold);
             transition: all 0.4s ease;
         }
-        .team-card:hover { transform: translateY(-15px); border-top-width: 8px; box-shadow: 0 25px 50px rgba(212, 175, 55, 0.15); }
-        
+
+        .team-card:hover {
+            transform: translateY(-15px);
+            border-top-width: 8px;
+            box-shadow: 0 25px 50px rgba(212, 175, 55, 0.15);
+        }
+
         .avatar-box {
-            width: 80px; height: 80px; background: var(--bg-beige);
-            margin: 0 auto 1.5rem auto; border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-            font-size: 2.5rem; color: var(--green-dark);
+            width: 80px;
+            height: 80px;
+            background: var(--bg-beige);
+            margin: 0 auto 1.5rem auto;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            color: var(--green-dark);
             transition: transform 0.3s;
         }
-        .team-card:hover .avatar-box { transform: scale(1.1); color: var(--gold); }
-        
-        .team-card h3 { font-family: var(--font-serif); font-size: 1.5rem; margin: 0; color: var(--green-dark); }
-        .role { color: var(--gold); font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; margin: 8px 0 15px 0; display: block; }
-        .team-card p { font-size: 0.9rem; color: #777; line-height: 1.6; }
+
+        .team-card:hover .avatar-box {
+            transform: scale(1.1);
+            color: var(--gold);
+        }
+
+        .team-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin: 0;
+            color: var(--green-dark);
+        }
+
+        .role {
+            color: var(--gold);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin: 8px 0 15px 0;
+            display: block;
+        }
+
+        .team-card p {
+            font-size: 0.9rem;
+            color: #777;
+            line-height: 1.6;
+        }
 
         /* ===== FOOTER ===== */
-        #footer { border-top: 1px solid rgba(0,0,0,0.05); padding: 5rem 20px; text-align: center; background: white; }
-        .footer-logo { font-family: var(--font-serif); font-size: 2.5rem; color: var(--green-dark); text-decoration: none; font-weight: 700; }
-        .copyright { margin-top: 2rem; color: #aaa; font-size: 0.85rem; }
+        #footer {
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 5rem 20px;
+            text-align: center;
+            background: white;
+        }
+
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--green-dark);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            color: #aaa;
+            font-size: 0.85rem;
+        }
 
         @media screen and (max-width: 900px) {
-            .split-section { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
-            .split-section.reverse { direction: ltr; }
-            .hero-title { font-size: 3rem; }
-            .main-container { padding: 0 30px; }
+            .split-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2.5rem;
+            }
+
+            .split-section.reverse {
+                direction: ltr;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .main-container {
+                padding: 0 30px;
+            }
         }
     </style>
 </head>
@@ -155,13 +362,23 @@
             <li><a href="bibliographie.html">Bibliographie</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
+        <ul class="icons">
+            <li><a href="https://www.facebook.com/ISEN.Ouest/" target="_blank" rel="noopener noreferrer"><i
+                        class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://www.instagram.com/isenbrest/" target="_blank" rel="noopener noreferrer"><i
+                        class="fab fa-instagram"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/isen-yncrea-ouest/" target="_blank"
+                    rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></li>
+        </ul>
     </nav>
 
     <div id="main">
 
         <section class="hero-about">
             <div class="reveal">
-                <div style="background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.4); backdrop-filter: blur(8px); color: var(--gold-light); border-radius: 30px; padding: 8px 25px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 600; display: inline-block; margin-bottom: 1.5rem;">Documentaire</div>
+                <div
+                    style="background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.4); backdrop-filter: blur(8px); color: var(--gold-light); border-radius: 30px; padding: 8px 25px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 600; display: inline-block; margin-bottom: 1.5rem;">
+                    Documentaire</div>
                 <h1 class="hero-title">Notre Histoire</h1>
             </div>
         </section>
@@ -171,8 +388,10 @@
             <section class="split-section reveal">
                 <div class="text-content">
                     <h2>Notre projet</h2>
-                    <p>Nous avons choisi d’étudier l’exploitation de la forêt amazonienne, un sujet central qui relie environnement, économie et société.</p>
-                    <p>À travers ce projet, nous analysons comment les grandes entreprises transforment cet écosystème unique et les conséquences dramatiques de ces actions à long terme.</p>
+                    <p>Nous avons choisi d’étudier l’exploitation de la forêt amazonienne, un sujet central qui relie
+                        environnement, économie et société.</p>
+                    <p>À travers ce projet, nous analysons comment les grandes entreprises transforment cet écosystème
+                        unique et les conséquences dramatiques de ces actions à long terme.</p>
                 </div>
                 <div class="image-content">
                     <img src="images/amazonie1.jpg" alt="Forêt amazonienne">
@@ -182,8 +401,10 @@
             <section class="split-section reverse reveal">
                 <div class="text-content">
                     <h2>Pourquoi est-ce vital ?</h2>
-                    <p>L’Amazonie joue un rôle essentiel dans la régulation du climat mondial. Sa destruction a des conséquences à l’échelle planétaire, affectant le cycle de l'eau et la température de l'air.</p>
-                    <p>Les populations locales sont les premières victimes de ces changements, perdant leurs ressources ancestrales et leur mode de vie unique.</p>
+                    <p>L’Amazonie joue un rôle essentiel dans la régulation du climat mondial. Sa destruction a des
+                        conséquences à l’échelle planétaire, affectant le cycle de l'eau et la température de l'air.</p>
+                    <p>Les populations locales sont les premières victimes de ces changements, perdant leurs ressources
+                        ancestrales et leur mode de vie unique.</p>
                 </div>
                 <div class="image-content">
                     <img src="images/amazonie2.jpg" alt="Déforestation">
@@ -252,14 +473,14 @@
 
     <footer id="footer">
         <a href="index.html" class="footer-logo">Amazonie</a>
-        <div class="copyright">&copy; ISEN 2026 | Projet Documentaire Amazonie</div>
+        <div class="copyright">&copy; ISEN 2026</div>
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const reveals = document.querySelectorAll('.reveal');
             const revealOptions = { threshold: 0.15 };
-            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            const revealOnScroll = new IntersectionObserver(function (entries, observer) {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
@@ -271,4 +492,5 @@
         });
     </script>
 </body>
+
 </html>
