@@ -28,26 +28,6 @@
             --font-sans: 'Montserrat', sans-serif;
         }
 
-        #nav .icons {
-            list-style: none;
-            display: flex;
-            gap: 1.2rem;
-            margin: 0 0 0 3rem;
-            padding: 0;
-        }
-
-        #nav .icons a {
-            color: var(--green-dark);
-            font-size: 1.1rem;
-            transition: color 0.3s, transform 0.3s;
-            display: inline-block;
-        }
-
-        #nav .icons a:hover {
-            color: var(--gold);
-            transform: translateY(-2px);
-        }
-
         /* ===== BASE ===== */
         body {
             background-color: var(--bg-beige);
@@ -68,6 +48,22 @@
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* ===== EN-TÊTE ===== */
+        #header {
+            text-align: center;
+            padding: 2.5rem 0 1.5rem 0;
+            background: var(--bg-beige);
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            color: var(--green-dark);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: -1px;
         }
 
         /* ===== NAVIGATION (STICKY) ===== */
@@ -125,6 +121,26 @@
         #nav .active a::after,
         #nav .links a:hover::after {
             width: 100%;
+        }
+
+        #nav .icons {
+            list-style: none;
+            display: flex;
+            gap: 1.2rem;
+            margin: 0 0 0 3rem;
+            padding: 0;
+        }
+
+        #nav .icons a {
+            color: var(--green-dark);
+            font-size: 1.1rem;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+        #nav .icons a:hover {
+            color: var(--gold);
+            transform: translateY(-2px);
         }
 
         /* ===== HERO SECTION ===== */
@@ -307,28 +323,173 @@
             line-height: 1.6;
         }
 
-        /* ===== FOOTER ===== */
+        /* ===== FOOTER ET CONTACT ===== */
         #footer {
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-            padding: 5rem 20px;
-            text-align: center;
-            background: white;
+            max-width: 1000px;
+            margin: 4rem auto 0 auto;
+            padding: 4rem 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
 
-        .footer-logo {
+        #footer > section {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        #footer h3 {
             font-family: var(--font-serif);
-            font-size: 2.5rem;
+            color: var(--green-dark);
+            font-size: 1.6rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .fields {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .field {
+            flex: 1;
+            min-width: 100%;
+        }
+
+        .field.half {
+            min-width: calc(50% - 0.75rem);
+        }
+
+        #footer label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--green-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        #footer input[type="text"],
+        #footer textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            background: white;
+            font-family: var(--font-sans);
+            color: var(--text-dark);
+            outline: none;
+            transition: all 0.3s;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.02);
+        }
+
+        #footer input[type="text"]:focus,
+        #footer textarea:focus {
+            border-color: var(--gold);
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.02), 0 0 10px rgba(212, 175, 55, 0.2);
+        }
+
+        .actions {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .actions input[type="submit"] {
+            background: var(--green-dark);
+            color: white;
+            border: none;
+            padding: 1.2rem 3rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(18, 40, 27, 0.2);
+        }
+
+        .actions input[type="submit"]:hover {
+            background: var(--gold);
+            color: var(--green-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .split.contact section {
+            margin-bottom: 2.5rem;
+        }
+
+        .split.contact p {
+            margin: 0;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .split.contact a {
             color: var(--green-dark);
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 600;
+            transition: color 0.3s;
         }
 
-        .copyright {
+        .split.contact a:hover {
+            color: var(--gold);
+        }
+
+        .split.contact .icons {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .split.contact .icons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            color: var(--green-dark);
+            transition: all 0.3s;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .split.contact .icons a:hover {
+            background: var(--gold);
+            color: white;
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        #copyright {
+            text-align: center;
+            padding: 2rem 20px;
+            color: #888;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
             margin-top: 2rem;
-            color: #aaa;
-            font-size: 0.85rem;
         }
 
+        #copyright ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
         @media screen and (max-width: 900px) {
             .split-section {
                 grid-template-columns: 1fr;
@@ -347,11 +508,24 @@
             .main-container {
                 padding: 0 30px;
             }
+
+            #footer {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            .field.half {
+                min-width: 100%;
+            }
         }
     </style>
 </head>
 
 <body>
+
+    <header id="header">
+        <a href="index.html" class="logo">Amazonie</a>
+    </header>
 
     <nav id="nav">
         <ul class="links">
@@ -472,8 +646,61 @@
     </div>
 
     <footer id="footer">
-        <div class="copyright">&copy; ISEN 2026</div>
+        <section>
+            <h3>Contactez-nous</h3>
+            <form method="post" action="#">
+                <div class="fields">
+                    <div class="field half">
+                        <label for="name">Nom</label>
+                        <input type="text" name="name" id="name" placeholder="Votre nom" />
+                    </div>
+                    <div class="field half">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" placeholder="Votre email" />
+                    </div>
+                    <div class="field">
+                        <label for="message">Message</label>
+                        <textarea name="message" id="message" rows="4" placeholder="Votre message..."></textarea>
+                    </div>
+                </div>
+                <ul class="actions">
+                    <li><input type="submit" value="Envoyer" /></li>
+                </ul>
+            </form>
+        </section>
+
+        <section class="split contact">
+            <section class="alt">
+                <h3>Adresse</h3>
+                <p>20 rue Cuirassé, Brest, Bretagne, France</p>
+            </section>
+            <section>
+                <h3>Téléphone</h3>
+                <p><a href="#">(000) 000-0000</a></p>
+            </section>
+            <section>
+                <h3>Email</h3>
+                <p><a href="mailto:fhsgroupe2@gmail.com">fhsgroupe2@gmail.com</a></p>
+            </section>
+            <section>
+                <h3>Réseaux Sociaux</h3>
+                <ul class="icons">
+                    <li><a href="https://www.facebook.com/ISEN.Ouest/" target="_blank" rel="noopener noreferrer"><i
+                                class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/isenbrest/" target="_blank" rel="noopener noreferrer"><i
+                                class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.linkedin.com/company/isen-yncrea-ouest/" target="_blank"
+                            rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></li>
+                </ul>
+            </section>
+        </section>
     </footer>
+
+    <div id="copyright">
+        <ul>
+            <li>&copy; ISEN 2026</li>
+        </ul>
+    </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
