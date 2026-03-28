@@ -1,0 +1,1061 @@
+<!DOCTYPE HTML>
+<html lang="fr" style="scroll-behavior: smooth;">
+
+<head>
+    <title>Actualité - Vagues de froid en Amazonie</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        :root {
+            --bg-beige: #f6f5f0;
+            --green-dark: #12281b;
+            --green-mid: #1d3f2a;
+            --green-light: #e0e8e3;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --text-dark: #333333;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-beige);
+            font-family: var(--font-sans);
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+            filter: blur(90px);
+        }
+
+        body::before {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+        }
+
+        body::after {
+            bottom: 10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(18, 40, 27, 0.06) 0%, transparent 70%);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #navPanel,
+        #titleBar,
+        .navPanelToggle,
+        a[href="#navPanel"],
+        a[href="#menu"] {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
+        #header {
+            text-align: center;
+            padding: 2.5rem 0 1.5rem 0;
+            background: transparent;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            color: var(--green-dark);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        #nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.2rem 2rem;
+            background: rgba(246, 245, 240, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            flex-wrap: wrap;
+            transition: all 0.3s ease;
+        }
+
+        #nav .links {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav .links li {
+            position: relative;
+        }
+
+        #nav .links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+        }
+
+        #nav .links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        #nav .active a {
+            color: var(--gold);
+        }
+
+        #nav .active a::after,
+        #nav .links a:hover::after {
+            width: 100%;
+        }
+
+        #nav .links a:hover {
+            color: var(--gold);
+        }
+
+        #nav .icons {
+            list-style: none;
+            display: flex;
+            gap: 1.2rem;
+            margin: 0 0 0 3rem;
+            padding: 0;
+        }
+
+        #nav .icons a {
+            color: var(--green-dark);
+            font-size: 1.1rem;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+        #nav .icons a:hover {
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .mobile-toggle:hover {
+            color: var(--gold);
+        }
+
+        .article-hero {
+            position: relative;
+            text-align: center;
+            padding: 10rem 2rem 12rem 2rem;
+        }
+
+        .article-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            z-index: -2;
+        }
+
+        .article-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(18, 40, 27, 0.68), rgba(18, 40, 27, 0.98));
+            z-index: -1;
+        }
+
+        .article-title-icon {
+            display: block;
+            margin: 0 auto 1.5rem auto;
+            max-width: 100px;
+            height: auto;
+        }
+
+        .article-meta {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            backdrop-filter: blur(8px);
+            color: var(--gold-light);
+            border-radius: 30px;
+            padding: 8px 25px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-hero h1 {
+            font-family: var(--font-serif);
+            color: white;
+            font-size: 4rem;
+            line-height: 1.2;
+            margin: 0 auto;
+            max-width: 950px;
+            text-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .article-container {
+            max-width: 900px;
+            margin: -6rem auto 6rem auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 5rem 6rem;
+            border-radius: 24px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 10;
+        }
+
+        .dropcap {
+            float: left;
+            font-family: var(--font-serif);
+            font-size: 5rem;
+            line-height: 0.8;
+            color: var(--gold);
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .article-container p {
+            font-size: 1.15rem;
+            color: #444;
+            line-height: 1.9;
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+
+        .article-container h2 {
+            font-family: var(--font-serif);
+            color: var(--green-dark);
+            font-size: 2.2rem;
+            margin: 3.5rem 0 1.5rem 0;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-inline-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            margin: 2rem 0;
+            display: block;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .article-inline-image:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 40px rgba(18, 40, 27, 0.15);
+        }
+
+        .lead-note {
+            margin: 2.5rem 0 3rem 0;
+            padding: 1.2rem 1.4rem;
+            border-top: 1px solid rgba(18, 40, 27, 0.12);
+            border-bottom: 1px solid rgba(18, 40, 27, 0.12);
+            font-size: 0.95rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(18, 40, 27, 0.75);
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* ----- NOUVEAUX STYLES INFOGRAPHIES (Basés sur la maquette) ----- */
+
+        .temperature-band {
+            position: relative;
+            margin: 3.5rem 0;
+            padding: 3rem 2.5rem 4.5rem 2.5rem;
+            border-radius: 16px;
+            background: linear-gradient(145deg, #ffffff, #fdfcf8);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            text-align: center;
+        }
+
+        .temperature-band h3 {
+            margin: 0 0 1.5rem 0;
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            color: var(--green-dark);
+        }
+
+        .temperature-band p {
+            margin-bottom: 1.5rem;
+        }
+
+        .temp-track {
+            position: relative;
+            margin-top: 4.5rem;
+            height: 2px;
+            background: rgba(212, 175, 55, 0.3);
+            width: 85%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .temp-track::before, .temp-track::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gold);
+        }
+
+        .temp-track::before { left: 0; }
+        .temp-track::after { right: 0; }
+
+        .temp-marker {
+            position: absolute;
+            top: -55px;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .temp-icon-wrapper {
+            background: #ffffff;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px auto;
+            color: var(--gold);
+            font-size: 1.3rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            position: relative;
+            z-index: 2;
+        }
+
+        .temp-marker strong {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--green-dark);
+            margin-bottom: 4px;
+        }
+
+        .temp-marker span {
+            display: block;
+            font-size: 0.8rem;
+            color: #666;
+            max-width: 120px;
+            line-height: 1.3;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 4rem 0;
+        }
+
+        .stat-box {
+            background: linear-gradient(145deg, #ffffff, #fdfcf8);
+            padding: 2.5rem 1.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .stat-number {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--green-dark);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #555;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .split-focus {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .split-panel {
+            padding: 2.5rem;
+            border-radius: 16px;
+            background: linear-gradient(145deg, #ffffff, #fdfcf8);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+        }
+
+        .split-panel h3 {
+            color: var(--green-dark);
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .custom-check-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 0 0;
+        }
+
+        .custom-check-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        .custom-check-list li::before {
+            content: '\f058';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 3px;
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+
+        .mini-facts {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .mini-fact {
+            padding-left: 1rem;
+            border-left: 3px solid var(--gold);
+        }
+
+        .mini-fact strong {
+            display: block;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--green-dark);
+        }
+
+        .ice-window {
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .ice-window h3 {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+        }
+
+        .ice-window > p {
+            margin-bottom: 2rem;
+        }
+
+        .ice-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .ice-card {
+            background: linear-gradient(145deg, #ffffff, #fdfcf8);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            position: relative;
+        }
+
+        .ice-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0.6;
+        }
+
+        .ice-grid-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .ice-card strong {
+            display: block;
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+        }
+
+        .ice-card span {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            display: block;
+        }
+
+        /* ----------------------------------------------------- */
+
+        .image-stage {
+            position: relative;
+            margin: 2.5rem 0 3rem 0;
+            padding: 0 0 1rem 1rem;
+        }
+
+        .image-stage::before {
+            content: '';
+            position: absolute;
+            inset: 22px 22px 0 0;
+            border: 1.5px solid rgba(212, 175, 55, 0.45);
+            border-radius: 18px;
+            pointer-events: none;
+        }
+
+        .image-stage .article-inline-image {
+            margin: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .image-caption {
+            margin-top: 1rem;
+            font-size: 0.92rem;
+            color: #68736c;
+            font-style: italic;
+            text-align: right;
+        }
+
+        .blockquote-gold {
+            border-left: 5px solid var(--gold);
+            background: linear-gradient(to right, rgba(212, 175, 55, 0.1), transparent);
+            padding: 2.5rem;
+            border-radius: 0 20px 20px 0;
+            margin: 3.5rem 0;
+            font-style: italic;
+            color: var(--green-dark);
+            font-size: 1.4rem;
+            font-family: var(--font-serif);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.03);
+        }
+
+        .highlight-gold {
+            background: linear-gradient(120deg, rgba(212, 175, 55, 0.4) 0%, rgba(212, 175, 55, 0.05) 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 35%;
+            background-position: 0 90%;
+            font-weight: 600;
+            color: var(--green-dark);
+            transition: background-size 0.3s ease;
+            padding: 0 4px;
+        }
+
+        .highlight-gold:hover {
+            background-size: 100% 100%;
+        }
+
+        .elegant-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 4rem 0;
+            color: var(--gold);
+            opacity: 0.7;
+            font-size: 1.5rem;
+        }
+
+        .elegant-divider::before,
+        .elegant-divider::after {
+            content: '';
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            flex: 1;
+            margin: 0 20px;
+            opacity: 0.5;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 1rem 2.5rem;
+            background: var(--bg-beige);
+            color: var(--green-dark);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background: var(--gold);
+            color: white;
+            border-color: var(--gold);
+            transform: translateX(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        #footer {
+            background: white;
+            padding: 4rem 20px;
+            text-align: center;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-content h3 {
+            font-family: var(--font-serif);
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .footer-content p {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .footer-icons {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .footer-icons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--bg-beige);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            color: var(--green-dark);
+            transition: all 0.3s;
+            font-size: 1.3rem;
+        }
+
+        .footer-icons a:hover {
+            background: var(--gold);
+            color: white;
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        #copyright {
+            text-align: center;
+            padding: 2rem 20px;
+            color: #888;
+            font-size: 0.9rem;
+            background: #fbfbfb;
+            position: relative;
+            z-index: 10;
+        }
+
+        @media screen and (max-width: 900px) {
+            .article-container {
+                padding: 3rem 2rem;
+                margin-top: -3rem;
+            }
+            .article-hero h1 {
+                font-size: 2.5rem;
+            }
+            .blockquote-gold {
+                padding: 1.5rem;
+                font-size: 1.1rem;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .split-focus,
+            .ice-grid {
+                grid-template-columns: 1fr;
+            }
+            .temperature-band {
+                padding-bottom: 7rem;
+            }
+            .temp-marker span {
+                font-size: 0.75rem;
+                max-width: 80px;
+            }
+            .temp-track {
+                width: 95%;
+            }
+            .lead-note {
+                font-size: 0.8rem;
+            }
+            #nav {
+                justify-content: space-between;
+            }
+            .mobile-toggle {
+                display: block;
+            }
+            #nav .links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                padding: 1rem 0;
+                gap: 1.5rem;
+            }
+            #nav .links.active {
+                display: flex;
+            }
+            #nav .icons {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <header id="header">
+            <a href="index.html" class="logo">Amazonie</a>
+        </header>
+
+        <nav id="nav">
+            <button class="mobile-toggle" id="mobile-toggle-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="links" id="nav-links">
+                <li><a href="index.html">ACCUEIL</a></li>
+                <li><a href="generic.html">Contexte</a></li>
+                <li><a href="elements.html">Podcast</a></li>
+                <li><a href="apropos.html">À propos</a></li>
+                <li><a href="bibliographie.html">Bibliographie</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <ul class="icons">
+                <li><a href="https://www.facebook.com/ISEN.Ouest/" target="_blank" rel="noopener noreferrer"><i
+                            class="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://www.instagram.com/isenbrest/" target="_blank" rel="noopener noreferrer"><i
+                            class="fab fa-instagram"></i></a></li>
+                <li><a href="https://www.linkedin.com/company/isen-yncrea-ouest/" target="_blank"
+                        rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></li>
+            </ul>
+        </nav>
+
+        <div id="main">
+
+            <section class="article-hero reveal">
+                <img src="" alt="" class="article-title-icon">
+                <div class="article-meta">Grand format — alerte scientifique récente</div>
+                <h1>10,5°C en pleine forêt amazonienne : quand des vagues de froid inattendues bousculent la faune tropicale</h1>
+            </section>
+
+            <div class="article-container reveal">
+
+                <div style="text-align: left;">
+                    <a href="../index.html" class="btn-back" style="margin-top: 0; margin-bottom: 2.5rem;"><i
+                            class="fas fa-arrow-left"></i> Retour à l'accueil</a>
+                </div>
+
+                <p><span class="dropcap">R</span>écemment relayée par la presse scientifique et environnementale, une étude menée dans le sud de l’Amazonie péruvienne rappelle qu’un autre visage du dérèglement climatique mérite désormais l’attention : le froid brutal en pleine forêt tropicale. En juin 2023, une masse d’air froid a fait chuter la température d’une moyenne quotidienne d’environ 23,9°C à un minimum de 10,5°C, et cette chute a duré presque une semaine. Pour une région généralement associée à une chaleur stable, l’événement a surpris par son intensité, mais surtout par ce qu’il révèle : même les écosystèmes tropicaux ne sont pas à l’abri d’extrêmes thermiques capables de perturber la vie animale.</p>
+
+
+                <section class="temperature-band reveal">
+                    <h3>Une chute thermique qui casse l’image d’forêt toujours chaude</h3>
+                    <p>Le choc ne vient pas seulement du chiffre final, mais de l’écart brutal entre la température habituelle de la forêt et le minimum atteint pendant l’épisode. Cette bascule rapide aide à comprendre pourquoi la faune tropicale peut être désorientée, même sans gel extrême.</p>
+                    <div class="temp-track">
+                        <div class="temp-marker" style="left: 10%;">
+                            <div class="temp-icon-wrapper"><i class="fas fa-thermometer-half"></i></div>
+                            <strong>23,9°C</strong>
+                            <span>moyenne avant l’épisode</span>
+                        </div>
+                        <div class="temp-marker" style="left: 50%;">
+                            <div class="temp-icon-wrapper"><i class="fas fa-snowflake"></i></div>
+                            <strong>10,5°C</strong>
+                            <span>minimum enregistré</span>
+                        </div>
+                        <div class="temp-marker" style="left: 90%;">
+                            <div class="temp-icon-wrapper"><i class="fas fa-hourglass-half"></i></div>
+                            <strong>~ 1 semaine</strong>
+                            <span>durée de la perturbation</span>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="elegant-divider reveal"><i class="fas fa-snowflake"></i></div>
+
+                <h2 class="reveal">Une actualité scientifique récente qui change le regard sur l’Amazonie</h2>
+                <p class="reveal">Le sujet est récent parce qu’il repose sur l’une des premières études quantitatives consacrées aux effets directs des vagues de froid sur la faune sauvage des basses terres amazoniennes. Longtemps, ces épisodes ont surtout été étudiés pour leurs conséquences sur l’agriculture. Désormais, les chercheurs montrent qu’ils affectent aussi l’activité des mammifères, la biomasse des insectes et l’équilibre d’espèces adaptées à des variations thermiques très limitées. L’Amazonie n’apparaît donc plus seulement comme une forêt menacée par la chaleur, la sécheresse ou les incendies, mais aussi comme un milieu vulnérable à des chocs climatiques plus contrastés.</p>
+
+                <p class="reveal">Ces épisodes, souvent appelés <span class="highlight-gold">friagem</span> ou <em>friaje</em>, ne sont pas totally inconnus dans le bassin amazonien. Entre 1980 et 2017, les scientifiques en ont identifié 67, parfois sur plusieurs jours. Mais l’intérêt récent de cette actualité vient du fait qu’on dispose désormais de données de terrain permettant de mesurer concrètement ce que ces vagues de froid provoquent dans un environnement tropical où la plupart des organismes ont évolué sous des températures relativement stables.</p>
+
+                <div class="image-stage reveal">
+                    <img src="../images/4eme/ATTO_Urwald_Regen_004_c_Sebastian-Brill_2.jpg" alt="Faune tropicale et baisse brutale des températures en Amazonie"
+                        class="article-inline-image reveal">
+                    <div class="image-caption">La forêt tropicale sous une lumière inhabituelle</div>
+                </div>
+
+                <div class="elegant-divider reveal"><i class="fas fa-snowflake"></i></div>
+
+                <h2 class="reveal">Quand le froid devient un stress écologique</h2>
+                <p class="reveal">Pendant la vague de froid observée en juin 2023, les chercheurs ont constaté une baisse marquée de l’activité de plusieurs groupes animaux. Les insectes volant ou vivant au sol se sont faits moins nombreux, et les mammifères captés par pièges photographiques sont apparus moins actifs que d’habitude. Cette baisse d’activité n’implique pas forcément une mortalité immédiate, mais elle signale un déséquilibre physiologique : pour beaucoup d’espèces tropicales, le problème n’est pas seulement la température elle-même, mais la rapidité de la chute et la durée de l’exposition.</p>
+
+                <p class="reveal">Les mammifères semblent avoir surtout réduit leurs déplacements pour économiser de l’énergie. Du côté des insectes, la situation est plus délicate. Une partie importante des espèces testées présentait une marge de sécurité thermique très faible par rapport au minimum enregistré. En d’autres termes, certaines n’étaient plus très loin d’un seuil où elles deviennent immobiles, incapables de se nourrir, de fuir ou de maintenir leurs fonctions normales. Dans un milieu tropical, ce type de stress peut suffire à perturber les chaînes écologiques bien au-delà de l’événement lui-même.</p>
+
+                <div class="stats-grid reveal">
+                    <div class="stat-box">
+                        <i class="fas fa-thermometer-empty stat-icon"></i>
+                        <span class="stat-number">10,5°C</span>
+                        <span class="stat-label">Minimum relevé pendant l’épisode</span>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-calendar-alt stat-icon"></i>
+                        <span class="stat-number">67</span>
+                        <span class="stat-label">Vagues de froid identifiées entre 1980 et 2017</span>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-chart-line stat-icon"></i>
+                        <span class="stat-number">25%</span>
+                        <span class="stat-label">D’insectes proches de leur limite de tolérance</span>
+                    </div>
+                </div>
+
+                <section class="split-focus reveal">
+                    <div class="split-panel">
+                        <h3>Ce qui inquiète vraiment les chercheurs</h3>
+                        <p>Dans un milieu tropical, beaucoup d’espèces vivent avec une marge thermique réduite. Elles tolèrent mal les écarts brusques, surtout lorsque le refroidissement dure plusieurs jours.</p>
+                        <ul class="custom-check-list">
+                            <li>baisse de l’activité pour économiser l’énergie ;</li>
+                            <li>moins de déplacements et d’alimentation ;</li>
+                            <li>risque accru pour les espèces à faible tolérance.</li>
+                        </ul>
+                    </div>
+                    <div class="split-panel">
+                        <h3>Une lecture plus fine du problème</h3>
+                        <p>Le danger n’est pas seulement la valeur minimale observée. C’est l’effet combiné entre la rapidité de la chute, la durée de l’exposition et la faible préparation physiologique d’une faune habituée à des températures relativement stables.</p>
+                        <div class="mini-facts">
+                            <div class="mini-fact">
+                                <strong>Stress discret</strong>
+                                <span>Les effets ne sont pas toujours spectaculaires, mais ils peuvent désorganiser les interactions écologiques.</span>
+                            </div>
+                            <div class="mini-fact">
+                                <strong>Signal nouveau</strong>
+                                <span>La forêt est vulnérable non seulement à la chaleur, mais aussi à des contrastes thermiques plus brusques.</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <blockquote class="blockquote-gold reveal">
+                    « En Amazonie, le dérèglement climatique ne signifie pas seulement plus de chaleur : il peut aussi intensifier des contrastes thermiques capables de déstabiliser une faune peu préparée à des refroidissements extrêmes. »
+                </blockquote>
+
+                <div class="elegant-divider reveal"><i class="fas fa-snowflake"></i></div>
+
+                <h2 class="reveal">Un signal d’alerte pour l’avenir</h2>
+                <p class="reveal">L’un des enseignements les plus importants de cette actualité récente est que les animaux observés ont, pour la plupart, fini par retrouver une activité normale après l’épisode froid. Mais cette capacité de récupération ne doit pas masquer le risque plus profond. Les chercheurs soulignent qu’une intensification future de ces vagues de froid pourrait mettre en danger les espèces les plus sensibles, notamment certains insectes dont la tolérance au froid est déjà presque atteinte lors d’événements comparables.</p>
+
+                <p class="reveal">Cette question devient centrale dans un contexte climatique instable, où les extrêmes gagnent en intensité. L’Amazonie est souvent évoquée à travers les sécheresses, les records de chaleur ou les incendies. Pourtant, cette étude récente montre qu’un autre déséquilibre est en train d’émerger : celui d’une forêt tropicale soumise à des écarts thermiques plus brutaux, capables de perturber la biodiversité à bas bruit, sans produire immédiatement des images spectaculaires, mais avec des effets potentiellement durables.</p>
+
+                <section class="ice-window reveal">
+                    <h3>Un climat plus instable, donc une forêt plus exposée</h3>
+                    <p>Ce type d’épisode oblige à penser l’Amazonie autrement : non comme un espace figé, mais comme un système vivant qui devient plus sensible aux contrastes, aux anomalies et aux séquences climatiques inhabituelles.</p>
+                    <div class="ice-grid">
+                        <div class="ice-card">
+                            <i class="fas fa-history ice-grid-icon"></i>
+                            <strong>Avant</strong>
+                            <span>La forêt tropicale était souvent imaginée comme thermiquement stable à l’échelle du quotidien.</span>
+                        </div>
+                        <div class="ice-card">
+                            <i class="fas fa-calendar-day ice-grid-icon"></i>
+                            <strong>Aujourd'hui</strong>
+                            <span>Les recherches récentes montrent qu’elle peut aussi être déstabilisée par des refroidissements anormaux.</span>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="image-stage reveal">
+                    <img src="../images/4eme/pexels-photo-975771.jpeg" alt="Forêt amazonienne sous brouillard froid et perturbations climatiques"
+                        class="article-inline-image reveal">
+                </div>
+
+                <div class="elegant-divider reveal"><i class="fas fa-snowflake"></i></div>
+
+                <h2 class="reveal">Pourquoi cette nouvelle compte vraiment</h2>
+                <p class="reveal">Cette page ne traite pas d’un simple épisode météorologique curieux. Elle parle d’un signal scientifique récent qui oblige à revoir l’image simplifiée d’une Amazonie toujours chaude et climatiquement uniforme. Lorsque des fronts froids venus du sud atteignent la forêt et y provoquent des chutes de température inhabituelles sur plusieurs jours, ce sont des milliers d’interactions biologiques qui peuvent être ralenties ou fragilisées. Dans une région où la biodiversité repose sur des équilibres très fins, ces anomalies deviennent un enjeu écologique réel.</p>
+
+                <p class="reveal">En cela, cette actualité s’inscrit pleinement dans les débats contemporains sur la vulnérabilité de l’Amazonie. Préserver la forêt ne consiste pas seulement à éviter sa destruction visible ; cela suppose aussi de comprendre comment un climat plus instable transforme les conditions de vie des espèces qui l’habitent. Le froid extrême en pleine forêt tropicale peut sembler contre-intuitif, mais c’est justement ce caractère inattendu qui en fait aujourd’hui une alerte si forte.</p>
+
+                <div style="text-align: center; margin-top: 4rem;" class="reveal">
+                    <a href="../index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <footer id="footer">
+            <div class="footer-content">
+                <h3>Rejoignez la communauté</h3>
+                <p>Suivez l'avancée du projet documentaire Amazonie 2026 sur nos différents réseaux sociaux.</p>
+                <ul class="footer-icons">
+                    <li><a href="https://www.facebook.com/ISEN.Ouest/" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/isenbrest/" target="_blank"><i
+                                class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.linkedin.com/company/isen-yncrea-ouest/" target="_blank"><i
+                                class="fab fa-linkedin-in"></i></a></li>
+                </ul>
+            </div>
+        </footer>
+
+        <div id="copyright">
+            &copy; ISEN 2026 | Projet Documentaire Amazonie
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const mobileToggleBtn = document.getElementById("mobile-toggle-btn");
+            const navLinks = document.getElementById("nav-links");
+
+            if (mobileToggleBtn) {
+                mobileToggleBtn.addEventListener("click", function () {
+                    navLinks.classList.toggle("active");
+                });
+            }
+
+            const reveals = document.querySelectorAll('.reveal');
+            const revealOptions = { threshold: 0.05, rootMargin: "0px 0px 50px 0px" };
+
+            const revealOnScroll = new IntersectionObserver(function (entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            reveals.forEach(reveal => revealOnScroll.observe(reveal));
+
+            function forceReveal() {
+                reveals.forEach(reveal => {
+                    const rect = reveal.getBoundingClientRect();
+                    if (rect.top < window.innerHeight + 200) {
+                        reveal.classList.add('active');
+                    }
+                });
+            }
+
+            forceReveal();
+            setTimeout(forceReveal, 200);
+            setTimeout(forceReveal, 500);
+
+            window.addEventListener('pageshow', forceReveal);
+        });
+    </script>
+</body>
+
+</html>
