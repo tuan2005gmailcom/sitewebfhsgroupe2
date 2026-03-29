@@ -50,6 +50,12 @@
             transform: translateY(0);
         }
 
+        /* ===== CORRECTIF BUGS HTML5 UP ===== */
+        #navPanel, #titleBar, .navPanelToggle, a[href="#navPanel"], a[href="#menu"] {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
         /* ===== EN-TÊTE ===== */
         #header {
             text-align: center;
@@ -66,7 +72,7 @@
             letter-spacing: -1px;
         }
 
-        /* ===== NAVIGATION (STICKY) ===== */
+        /* ===== NAVIGATION (STICKY + VERRE DÉPOLI) ===== */
         #nav {
             position: sticky;
             top: 0;
@@ -78,8 +84,10 @@
             background: rgba(246, 245, 240, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
             border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            flex-wrap: wrap;
+            transition: all 0.3s ease;
         }
 
         #nav .links {
@@ -89,6 +97,8 @@
             margin: 0;
             padding: 0;
         }
+
+        #nav .links li { position: relative; }
 
         #nav .links a {
             text-decoration: none;
@@ -123,6 +133,10 @@
             width: 100%;
         }
 
+        #nav .links a:hover {
+            color: var(--gold);
+        }
+
         #nav .icons {
             list-style: none;
             display: flex;
@@ -141,6 +155,20 @@
         #nav .icons a:hover {
             color: var(--gold);
             transform: translateY(-2px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .mobile-toggle:hover {
+            color: var(--gold);
         }
 
         /* ===== HERO SECTION ===== */
@@ -491,6 +519,27 @@
 
         /* ===== RESPONSIVE ===== */
         @media screen and (max-width: 900px) {
+            #nav {
+                justify-content: space-between;
+            }
+            .mobile-toggle {
+                display: block;
+            }
+            #nav .links {
+                display: none !important;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                padding: 1.5rem 0 1rem 0;
+                gap: 1.5rem;
+            }
+            #nav .links.active {
+                display: flex !important;
+            }
+            #nav .icons {
+                display: none !important;
+            }
+
             .split-section {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -523,19 +572,25 @@
 
 <body>
 
+<div id="wrapper">
+
     <header id="header">
         <a href="index.html" class="logo">Amazonie</a>
     </header>
 
     <nav id="nav">
-        <ul class="links">
+        <button class="mobile-toggle" id="mobile-toggle-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="links" id="nav-links">
             <li><a href="index.html">ACCUEIL</a></li>
             <li><a href="generic.html">Contexte</a></li>
             <li><a href="elements.html">Podcast</a></li>
             <li class="active"><a href="apropos.html">À propos</a></li>
             <li><a href="bibliographie.html">Bibliographie</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+            <li><a href="contacter.html">Contact</a></li> </ul>
+        
         <ul class="icons">
             <li><a href="https://www.facebook.com/ISEN.Ouest/" target="_blank" rel="noopener noreferrer"><i
                         class="fab fa-facebook-f"></i></a></li>
@@ -702,8 +757,21 @@
         </ul>
     </div>
 
+</div>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            // --- NOUVEAU SCRIPT POUR LE MENU MOBILE ---
+            const mobileToggleBtn = document.getElementById("mobile-toggle-btn");
+            const navLinks = document.getElementById("nav-links");
+
+            if (mobileToggleBtn) {
+                mobileToggleBtn.addEventListener("click", function () {
+                    navLinks.classList.toggle("active");
+                });
+            }
+
+            // --- REVEAL ON SCROLL ---
             const reveals = document.querySelectorAll('.reveal');
             const revealOptions = { threshold: 0.15 };
             const revealOnScroll = new IntersectionObserver(function (entries, observer) {
