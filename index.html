@@ -673,7 +673,8 @@
 			}
 		}
 
-		@media screen and (max-width: 736px) {
+		/* On passe à 900px pour couvrir tous les téléphones modernes */
+		@media screen and (max-width: 900px) {
 			#nav {
 				justify-content: space-between;
 			}
@@ -683,20 +684,22 @@
 			}
 
 			#nav .links {
-				display: none;
+				/* Le !important bloque le vieux script main.js */
+				display: none !important;
 				flex-direction: column;
 				width: 100%;
 				text-align: center;
-				padding: 1rem 0;
+				padding: 1.5rem 0 1rem 0;
 				gap: 1.5rem;
 			}
 
 			#nav .links.active {
-				display: flex;
+				/* Le !important force l'affichage quand on clique */
+				display: flex !important;
 			}
 
 			#nav .icons {
-				display: none;
+				display: none !important;
 			}
 
 			.intro-content h1 {
@@ -803,23 +806,23 @@
 				</article>
 
 				<article class="post-card reveal" style="transition-delay: 0.1s;">
-				    <a href="article/article3.html" class="post-card-image">
-					<img src="images/amazonie5.jpg" alt="Exploitation forestière durable" />
-				    </a>
-				    <div class="post-card-content">
-					<span class="post-date">26 Mars 2026</span>
-					<h3>
-					    <a href="article/article3.html">
-						Exploitation forestière : vers un nouveau modèle durable
-					    </a>
-					</h3>
-					<p>
-					    Réduire l’intensité, allonger les cycles et diversifier les espèces :
-					    trois leviers essentiels pour rendre l’exploitation forestière compatible
-					    avec la résilience climatique des écosystèmes.
-					</p>
-					<a href="article/article3.html" class="btn-read">Lire la suite</a>
-				    </div>
+					<a href="article/article3.html" class="post-card-image">
+						<img src="images/amazonie5.jpg" alt="Exploitation forestière durable" />
+					</a>
+					<div class="post-card-content">
+						<span class="post-date">26 Mars 2026</span>
+						<h3>
+							<a href="article/article3.html">
+								Exploitation forestière : vers un nouveau modèle durable
+							</a>
+						</h3>
+						<p>
+							Réduire l’intensité, allonger les cycles et diversifier les espèces :
+							trois leviers essentiels pour rendre l’exploitation forestière compatible
+							avec la résilience climatique des écosystèmes.
+						</p>
+						<a href="article/article3.html" class="btn-read">Lire la suite</a>
+					</div>
 				</article>
 
 				<article class="post-card reveal" style="transition-delay: 0.2s;">
@@ -836,23 +839,24 @@
 						<a href="article/article4.html" class="btn-read">Lire la suite</a>
 					</div>
 				</article>
-				
+
 				<article class="post-card reveal" style="transition-delay: 0.1s;">
-				    <a href="article/article5.html" class="post-card-image">
-				        <img src="images/amazonie6.jpg" alt="Analyse économique et environnementale" />
-				    </a>
-				    <div class="post-card-content">
-				        <span class="post-date">26 Mars 2026</span>
-				        <h3>
-				            <a href="article/article5.html">
-				                La Rentabilité Avant Tout ? Les Paradoxes d'un Modèle Économique
-				            </a>
-				        </h3>
-				        <p>
-				            Analyse critique du modèle économique centré sur la rentabilité, et les paradoxes qu'il engendre dans la société moderne, entre inégalités sociales et dégradation environnementale.
-				        </p>
-				        <a href="article/article5.html" class="btn-read">Lire la suite</a>
-				    </div>
+					<a href="article/article5.html" class="post-card-image">
+						<img src="images/amazonie6.jpg" alt="Analyse économique et environnementale" />
+					</a>
+					<div class="post-card-content">
+						<span class="post-date">26 Mars 2026</span>
+						<h3>
+							<a href="article/article5.html">
+								La Rentabilité Avant Tout ? Les Paradoxes d'un Modèle Économique
+							</a>
+						</h3>
+						<p>
+							Analyse critique du modèle économique centré sur la rentabilité, et les paradoxes qu'il
+							engendre dans la société moderne, entre inégalités sociales et dégradation environnementale.
+						</p>
+						<a href="article/article5.html" class="btn-read">Lire la suite</a>
+					</div>
 				</article>
 				<article class="post-card reveal" style="transition-delay: 0.1s;">
 					<a href="article/7emearticle.html" class="post-card-image">
